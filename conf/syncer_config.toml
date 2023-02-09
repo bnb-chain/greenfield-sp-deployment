@@ -8,22 +8,22 @@ Service = [
     MetaDBType = "mysql"
     [SyncerCfg.PieceConfig.Store]
         Storage = "s3"
-        BucketURL = "./data/secondary_payload_data"
+        BucketURL = "https://tf-nodereal-dev-greenfield-sp-a.s3.ap-northeast-1.amazonaws.com/"
         MaxRetries = 5
         TestMode = true
         AccessKey = "ACCESSKEY"
         SecretKey = "SECRETKEY"
-        SessionToken = "SESSIONTOKEN"
+        #SessionToken = "SESSIONTOKEN"
         NoSignRequest = false
         TlsInsecureSkipVerify = false
-    [SyncerCfg.MetaLevelDBConfig]
-        Path = "./data/meta"
-        NameSpace = "bnb-sp"
-        Cache = 4096
-        FileHandles = 1000
-        ReadOnly = false
+    #[SyncerCfg.MetaLevelDBConfig]
+        #Path = "./data/meta"
+        #NameSpace = "bnb-sp"
+        #Cache = 4096
+        #FileHandles = 1000
+        #ReadOnly = false
     [SyncerCfg.MetaSqlDBConfig]
-        User = "root"
+        User = "qebwghqo"
         Passwd = "test_pwd"
-        Address = "127.0.0.1:3306"
-        Database = "meta_db"
+        Address = "tf-20230209032748386800000001.cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
+        Database = "greenfield-sp-a"
