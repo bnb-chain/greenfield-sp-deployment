@@ -1,0 +1,25 @@
+Service = [
+  "StoneHub",
+]
+
+[StoneHubCfg]
+    StorageProvider = "bnb-sp"
+    Address = "127.0.0.1:9333"
+    JobDBType = "mysql"
+    MetaDBType = "mysql"
+    [StoneHubCfg.MetaLevelDBConfig]
+        Path = "./data/meta"
+        NameSpace = "bnb-sp"
+        Cache = 4096
+        FileHandles = 1000
+        ReadOnly = false
+    [StoneHubCfg.MetaSqlDBConfig]
+        User = "root"
+        Passwd = "test_pwd"
+        Address = "127.0.0.1:3306"
+        Database = "meta_db"
+    [StoneHubCfg.JobDBConfig]
+        User = "root"
+        Passwd = "test_pwd"
+        Address = "127.0.0.1:3306"
+        Database = "meta_db"

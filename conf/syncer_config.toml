@@ -1,0 +1,29 @@
+Service = [
+  "Syncer",
+]
+
+[SyncerCfg]
+    StorageProvider = "bnb-sp"
+    Address = "127.0.0.1:9533"
+    MetaDBType = "mysql"
+    [SyncerCfg.PieceConfig.Store]
+        Storage = "s3"
+        BucketURL = "./data/secondary_payload_data"
+        MaxRetries = 5
+        TestMode = true
+        AccessKey = "ACCESSKEY"
+        SecretKey = "SECRETKEY"
+        SessionToken = "SESSIONTOKEN"
+        NoSignRequest = false
+        TlsInsecureSkipVerify = false
+    [SyncerCfg.MetaLevelDBConfig]
+        Path = "./data/meta"
+        NameSpace = "bnb-sp"
+        Cache = 4096
+        FileHandles = 1000
+        ReadOnly = false
+    [SyncerCfg.MetaSqlDBConfig]
+        User = "root"
+        Passwd = "test_pwd"
+        Address = "127.0.0.1:3306"
+        Database = "meta_db"
