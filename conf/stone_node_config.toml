@@ -1,0 +1,22 @@
+Service = [
+  "StoneNode",
+]
+
+[StoneNodeCfg]
+    StorageProvider = "bnb-sp"
+    Address = "127.0.0.1:9433"
+    StoneHubServiceAddress = "127.0.0.1:9333"
+    SyncerServiceAddress = "127.0.0.1:9533"
+    StoneJobLimit = 64
+    [StoneNodeCfg.PieceConfig]
+        Shards = 0
+        [StoneNodeCfg.PieceConfig.Store]
+            Storage = "s3"
+            BucketURL = "./data/primary_payload_data"
+            MaxRetries = 5
+            TestMode = true
+            AccessKey = "ACCESSKEY"
+            SecretKey = "SECRETKEY"
+            SessionToken = "SESSIONTOKEN"
+            NoSignRequest = false
+            TlsInsecureSkipVerify = false

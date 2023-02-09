@@ -1,0 +1,9 @@
+Service = [
+  "Gateway",
+]
+      
+[GatewayCfg]
+    Address = "127.0.0.1:9033"
+    Domain = "bfs.nodereal.com"
+    UploaderServiceAddress = "127.0.0.1:9133"
+    DownloaderServiceAddress = "127.0.0.1:9233"
