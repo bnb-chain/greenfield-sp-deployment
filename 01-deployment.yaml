@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stoneHub-SP-ID
+  namespace: greenfield-sp
+  labels:
+    app: stoneHub-SP-ID
+spec:
+  selector:
+    matchLabels:
+      octopusexport: OctopusExport
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: stoneHub-SP-ID
+        octopusexport: OctopusExport
+    spec:
+      containers:
+        - name: stoneHub-SP-ID
+          image: 'ghcr.io/bnb-chain/greenfield-storage-provider:latest'
+          ports:
+            - name: component
+              containerPort: 80
+          volumeMounts:
+            - name: config
+              mountPath: /config/config.toml
+              subPath: ''
