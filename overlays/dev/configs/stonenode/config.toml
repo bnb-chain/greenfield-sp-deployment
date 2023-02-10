@@ -12,11 +12,11 @@ Service = [
         Shards = 0
         [StoneNodeCfg.PieceConfig.Store]
             Storage = "s3"
-            BucketURL = "https://tf-nodereal-dev-greenfield-sp-a.s3.ap-northeast-1.amazonaws.com/"
+            BucketURL = "https://s3.ap-northeast-1.amazonaws.com/tf-nodereal-dev-greenfield-sp-a"
             MaxRetries = 5
-            TestMode = true
-            AccessKey = "ACCESSKEY"
-            SecretKey = "SECRETKEY"
+            TestMode = false
+            AccessKey = "AKIAVBLMW7AUJY4FEPQR"
+            SecretKey = "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"
             #SessionToken = "SESSIONTOKEN"
             NoSignRequest = false
             TlsInsecureSkipVerify = false
