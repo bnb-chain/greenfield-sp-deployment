@@ -1,6 +1,4 @@
 resources:
   - imagepullsecret.yaml
-  - statefulset.yaml
-  - deployment.yaml
-  - service.yaml
+  - syncer.yaml
 
