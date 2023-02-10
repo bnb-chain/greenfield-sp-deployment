@@ -1,13 +1,23 @@
 bases:
   - ../../base
 
+namespace: greenfield-sp
+
+nameSuffix: -a
+
+commonLabels:
+    team: greenfield
+    biz: storage-provider
+    app: syncer
+    cluster_id: a
+
 configMapGenerator:
-- name: conf
+- name: config
   files:
-  - conf/downloader+challenge.toml
-  - conf/gateway.toml
-  - conf/stonehub.toml
-  - conf/stonenode.toml
-  - conf/syncer.toml
-  - conf/uploader.toml
+  - config/downloader_challenge.toml
+  - config/gateway.toml
+  - config/stonehub.toml
+  - config/stonenode.toml
+  - config/syncer.toml
+  - config/uploader.toml
 
