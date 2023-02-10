@@ -1,7 +1,7 @@
 bases:
   - ../../base
 
-namespace: greenfield-storage-provider
+namespace: greenfield-sp
 
 nameSuffix: -a
 
@@ -14,7 +14,7 @@ commonLabels:
 configMapGenerator:
 - name: config
   files:
-  - config/downloader+challenge.toml
+  - config/downloader_challenge.toml
   - config/gateway.toml
   - config/stonehub.toml
   - config/stonenode.toml
