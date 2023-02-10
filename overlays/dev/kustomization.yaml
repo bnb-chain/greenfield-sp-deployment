@@ -12,12 +12,22 @@ commonLabels:
     cluster_id: a
 
 configMapGenerator:
-- name: config
+- name: config-syncer
   files:
-  - config/downloader_challenge.toml
-  - config/gateway.toml
-  - config/stonehub.toml
-  - config/stonenode.toml
-  - config/syncer.toml
-  - config/uploader.toml
+  - configs/syncer/config.toml
+- name: config-uploader
+  files:
+  - configs/uploader/config.toml
+- name: config-downloader-challenge
+  files:
+  - configs/downloader_challenge/config.toml
+- name: config-gateway
+  files:
+  - configs/gateway/config.toml
+- name: config-stonehub
+  files:
+  - configs/stonehub/config.toml
+- name: config-stonenode
+  files:
+  - configs/stonenode/config.toml
 
