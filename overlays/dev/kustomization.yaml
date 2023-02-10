@@ -1,0 +1,13 @@
+bases:
+  - ../../base
+
+configMapGenerator:
+- name: conf
+  files:
+  - conf/downloader+challenge.toml
+  - conf/gateway.toml
+  - conf/stonehub.toml
+  - conf/stonenode.toml
+  - conf/syncer.toml
+  - conf/uploader.toml
+
