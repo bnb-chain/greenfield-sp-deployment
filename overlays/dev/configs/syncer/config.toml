@@ -11,7 +11,7 @@ Service = [
         BucketURL = "https://s3.ap-northeast-1.amazonaws.com/tf-nodereal-dev-greenfield-sp-a"
         MaxRetries = 5
         TestMode = false
-        AccessKey = "AKIAVBLMW7AUJY4FEPQR"
+        AccessKey = ""
         SecretKey = "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"
         #SessionToken = "SESSIONTOKEN"
         NoSignRequest = false
@@ -24,6 +24,6 @@ Service = [
         #ReadOnly = false
     [SyncerCfg.MetaSqlDBConfig]
         User = "qebwghqo"
-        Passwd = "1eSdg790IHCFCNzX"
+        Passwd = ""
         Address = "tf-20230209032748386800000001.cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
         Database = "greenfield-sp-a"
