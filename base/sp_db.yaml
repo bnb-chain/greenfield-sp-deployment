@@ -1,0 +1,11 @@
+apiVersion: v1
+data:
+  MDU: base64-encoded-string
+  MDP: base64-encoded-string
+  JDU: base64-encoded-string
+  JDP: base64-encoded-string
+kind: Secret
+metadata:
+  name: sp_db
+  namespace: greenfield-sp
+type: Opaque

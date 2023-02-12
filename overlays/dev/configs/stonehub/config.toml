@@ -12,14 +12,10 @@ Service = [
         #NameSpace = "bnb-sp"
         #Cache = 4096
         #FileHandles = 1000
-        #ReadOnly = false
+        #ReadOnly = true
     [StoneHubCfg.MetaSqlDBConfig]
-        User = "qebwghqo"
-        Passwd = ""
         Address = "tf-20230209032748386800000001.cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
         Database = "greenfield-sp-a"
     [StoneHubCfg.JobDBConfig]
-        User = "qebwghqo"
-        Passwd = ""
         Address = "tf-20230209032748386800000001.cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
         Database = "greenfield-sp-a"

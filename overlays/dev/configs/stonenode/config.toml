@@ -5,8 +5,8 @@ Service = [
 [StoneNodeCfg]
     StorageProvider = "bnb-sp"
     Address = "127.0.0.1:9433"
-    StoneHubServiceAddress = "127.0.0.1:9333"
-    SyncerServiceAddress = "127.0.0.1:9533"
+    StoneHubServiceAddress = "stonehub:9333"
+    SyncerServiceAddress = "syncer:9533"
     StoneJobLimit = 64
     [StoneNodeCfg.PieceConfig]
         Shards = 0
@@ -15,8 +15,5 @@ Service = [
             BucketURL = "https://s3.ap-northeast-1.amazonaws.com/tf-nodereal-dev-greenfield-sp-a"
             MaxRetries = 5
             TestMode = false
-            AccessKey = ""
-            SecretKey = "1vb534onOTay+tZMgyzXZPTy9AhFy+Ks366k0mCk"
-            #SessionToken = "SESSIONTOKEN"
             NoSignRequest = false
             TlsInsecureSkipVerify = false
