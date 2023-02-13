@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  AK: base64-encoded-string
+  SK: base64-encoded-string
+  ST: ""
+kind: Secret
+metadata:
+  name: sp_s3
+  namespace: greenfield-sp
+type: Opaque

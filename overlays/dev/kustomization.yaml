@@ -31,3 +31,56 @@ configMapGenerator:
   files:
   - configs/stonenode/config.toml
 
+patchesJson6902:
+- target:
+    # group: "apiVersion"
+    version: v1
+    kind: Secret
+    name: sp_db
+  patch: |-
+    - op: replace
+      path: /data/MDU
+      value: d2llYmpkd3Y=
+- target:
+    # group: "apiVersion"
+    version: v1
+    kind: Secret
+    name: sp_db
+  patch: |-
+    - op: replace
+      path: /data/MDP
+      value: X1NvenNpUmhET05Xc3NPcg==
+- target:
+    # group: "apiVersion"
+    version: v1
+    kind: Secret
+    name: sp_db
+  patch: |-
+    - op: replace
+      path: /data/JDU
+      value: d2llYmpkd3Y=
+- target:
+    # group: "apiVersion"
+    version: v1
+    kind: Secret
+    name: sp_db
+  patch: |-
+    - op: replace
+      path: /data/JDP
+      value: X1NvenNpUmhET05Xc3NPcg==
+- target:
+    version: v1
+    kind: Secret
+    name: sp_s3
+  patch: |-
+    - op: replace
+      path: /data/AK
+      value: QUtJQVZCTE1XN0FVS1FMSUFQRFI=
+- target:
+    version: v1
+    kind: Secret
+    name: sp_s3
+  patch: |-
+    - op: replace
+      path: /data/SK
+      value: cHVKWE5ER1g4aC9QQTBpeE1TdHNZMlBjeUtSSUV3YlVJWWlNREx5OA==

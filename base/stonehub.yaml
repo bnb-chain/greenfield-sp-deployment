@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: stonehub
+spec:
+  replicas: 1
+  serviceName: "stonehub"
+  selector:
+    matchLabels:
+      app: stonehub
+  template:
+    metadata:
+      labels:
+        app: stonehub
+    spec:
+      containers:
+      - name: stonehub
+        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.1
+        env:
+          - name: META_DB_USER
+            valueFrom:
+              secretKeyRef:
+                key: MDU
+                name: sp_db
+          - name: META_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: MDP
+                name: sp_db
+          - name: JOB_DB_USER
+            valueFrom:
+              secretKeyRef:
+                key: JDU
+                name: sp_db
+          - name: JOB_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: JDP
+                name: sp_db
+        resources:
+          limits:
+            cpu: "2"
+            memory: 4Gi
+          requests:
+            cpu: "1"
+            memory: 2Gi
+        ports:
+          - containerPort: 9333
+            name: stoneHub
+        volumeMounts:
+        - mountPath: /config
+          name: config
+      imagePullSecrets:
+      - name: image-pull
+      volumes:
+      - name: config
+        configMap:
+          name: config-stonehub
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: stonehub
+spec:
+  ports:
+  - port: 9333
+    targetPort: 9333
+    name: stonehub
+  selector:
+    app: stonehub
