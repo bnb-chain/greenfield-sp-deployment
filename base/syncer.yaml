@@ -8,7 +8,7 @@ spec:
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: main
+      app: syncer
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -17,46 +17,74 @@ spec:
   template:
     metadata:
       labels:
-        app: main
+        app: syncer
     spec:
       containers:
-      - name: default
+      - name: syncer
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.1
         env:
-        - name: POD_NAME
-          valueFrom:
-            fieldRef:
-              apiVersion: v1
-              fieldPath: metadata.name
-        - name: POD_NAMESPACE
-          valueFrom:
-            fieldRef:
-              apiVersion: v1
-              fieldPath: metadata.namespace
-        - name: NODE_IP
-          valueFrom:
-            fieldRef:
-              apiVersion: v1
-              fieldPath: status.hostIP
+        - name: AWS_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                key: AK
+                name: sp_s3
+          - name: AWS_SECRET_KEY
+            valueFrom:
+              secretKeyRef:
+                key: SK
+                name: sp_s3
+          - name: AWS_SESSION_TOKEN
+            valueFrom:
+              secretKeyRef:
+                key: ST
+                name: sp_s3
+          - name: META_DB_USER
+            valueFrom:
+              secretKeyRef:
+                key: MDU
+                name: sp_db
+          - name: META_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: MDP
+                name: sp_db
+          - name: JOB_DB_USER
+            valueFrom:
+              secretKeyRef:
+                key: JDU
+                name: sp_db
+          - name: JOB_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: JDP
+                name: sp_db
         resources:
           limits:
             cpu: "2"
             memory: 4Gi
           requests:
-            cpu: "1"
-            memory: 2Gi
+            cpu: "2"
+            memory: 4Gi
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         volumeMounts:
         - mountPath: /config
           name: config
       imagePullSecrets:
-      - name: image-pull
-      serviceAccount: default
-      serviceAccountName: default
-      terminationGracePeriodSeconds: 30
+        - name: image-pull
       volumes:
-      - name: config
-        configMap:
-          name: config-syncer
-
+        - name: config
+          configMap:
+            name: config-syncer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: syncer
+spec:
+  ports:
+  - port: 9433
+    targetPort: 9533
+    name: syncer
+  selector:
+    app: syncer
