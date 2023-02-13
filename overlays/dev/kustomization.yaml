@@ -8,7 +8,7 @@ nameSuffix: -a
 commonLabels:
     team: greenfield
     biz: storage-provider
-    app: syncer
+    # app: syncer
     cluster_id: a
 
 configMapGenerator:

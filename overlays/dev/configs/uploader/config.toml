@@ -18,5 +18,5 @@ Service = [
             TlsInsecureSkipVerify = false
     [UploaderCfg.MetaSqlDBConfig]
         Address = "tf-20230210045544154100000001.cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
-        Database = "greenfield-sp-a"
+        Database = "meta_db"
         
