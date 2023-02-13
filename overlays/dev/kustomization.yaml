@@ -36,7 +36,7 @@ patchesJson6902:
     # group: "apiVersion"
     version: v1
     kind: Secret
-    name: sp_db
+    name: sp-db-a
   patch: |-
     - op: replace
       path: /data/MDU
@@ -45,7 +45,7 @@ patchesJson6902:
     # group: "apiVersion"
     version: v1
     kind: Secret
-    name: sp_db
+    name: sp-db-a
   patch: |-
     - op: replace
       path: /data/MDP
@@ -54,7 +54,7 @@ patchesJson6902:
     # group: "apiVersion"
     version: v1
     kind: Secret
-    name: sp_db
+    name: sp-db-a
   patch: |-
     - op: replace
       path: /data/JDU
@@ -63,7 +63,7 @@ patchesJson6902:
     # group: "apiVersion"
     version: v1
     kind: Secret
-    name: sp_db
+    name: sp-db-a
   patch: |-
     - op: replace
       path: /data/JDP
@@ -71,7 +71,7 @@ patchesJson6902:
 - target:
     version: v1
     kind: Secret
-    name: s-s3
+    name: sp-s3-a
   patch: |-
     - op: replace
       path: /data/AK
@@ -79,7 +79,7 @@ patchesJson6902:
 - target:
     version: v1
     kind: Secret
-    name: s-s3
+    name: sp-s3-a
   patch: |-
     - op: replace
       path: /data/SK
