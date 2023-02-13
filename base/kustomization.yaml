@@ -4,6 +4,8 @@ resources:
   - stonehub.yaml
   - stonenode.yaml
   - gateway.yaml
+  - downloader_challenge.yaml
+  - uploader.yaml
   - sp_db.yaml
   - sp_s3.yaml
 
