@@ -1,4 +1,9 @@
 resources:
   - imagepullsecret.yaml
   - syncer.yaml
+  - stonehub.yaml
+  - stonenode.yaml
+  - gateway.yaml
+  - sp_db.yaml
+  - sp_s3.yaml
 
