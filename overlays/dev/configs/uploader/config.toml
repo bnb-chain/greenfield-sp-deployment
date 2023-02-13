@@ -10,23 +10,13 @@ Service = [
     [UploaderCfg.PieceStoreConfig]
         Shards = 0
         [UploaderCfg.PieceStoreConfig.Store]
-            Storage = "s3"
+            Storage = "S3"
             BucketURL = "https://s3.ap-northeast-1.amazonaws.com/tf-nodereal-dev-greenfield-sp-a"
             MaxRetries = 5
             TestMode = false
-            AccessKey = ""
-            SecretKey = "1vb534onOTay+tZMgyzXZPTy9AhFy+Ks366k0mCk"
-            #SessionToken = "SESSIONTOKEN"
             NoSignRequest = false
             TlsInsecureSkipVerify = false
-    #[UploaderCfg.MetaLevelDBConfig]
-        #Path = "./data/meta"
-        #NameSpace = "bnb-sp"
-        #Cache = 4096
-        #FileHandles = 1000
-        #ReadOnly = false
     [UploaderCfg.MetaSqlDBConfig]
-        User = "qebwghqo"
-        Passwd = ""
         Address = "tf-20230209032748386800000001.cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
         Database = "greenfield-sp-a"
+        
