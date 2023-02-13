@@ -14,8 +14,8 @@ Service = [
         #FileHandles = 1000
         #ReadOnly = true
     [StoneHubCfg.MetaSqlDBConfig]
-        Address = "tf-20230209032748386800000001.cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
+        Address = "tf-20230210045544154100000001.cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
         Database = "greenfield-sp-a"
     [StoneHubCfg.JobDBConfig]
-        Address = "tf-20230209032748386800000001.cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
+        Address = "tf-20230210045544154100000001.cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
         Database = "greenfield-sp-a"
