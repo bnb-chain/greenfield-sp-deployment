@@ -3,19 +3,12 @@ Service = [
 ]
 
 [StoneHubCfg]
-    StorageProvider = "bnb-sp"
-    Address = "127.0.0.1:9333"
-    JobDBType = "mysql"
-    MetaDBType = "mysql"
-    #[StoneHubCfg.MetaLevelDBConfig]
-        #Path = "./data/meta"
-        #NameSpace = "bnb-sp"
-        #Cache = 4096
-        #FileHandles = 1000
-        #ReadOnly = true
-    [StoneHubCfg.MetaSqlDBConfig]
-        Address = "tf-20230210045544154100000001.cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
-        Database = "greenfield-sp-a"
-    [StoneHubCfg.JobDBConfig]
-        Address = "tf-20230210045544154100000001.cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
-        Database = "greenfield-sp-a"
+StorageProvider = "bnb-sp"
+Address = "127.0.0.1:9333"
+JobDBType = "mysql"
+MetaDBType = "mysql"
+[StoneHubCfg.JobSqlDBConfig]
+    Database = "job_db"
+[StoneHubCfg.MetaSqlDBConfig]
+    Address = "127.0.0.1:3306"
+    Database = "meta_db"
