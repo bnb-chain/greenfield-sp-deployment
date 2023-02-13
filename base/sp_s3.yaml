@@ -5,6 +5,6 @@ data:
   ST: ""
 kind: Secret
 metadata:
-  name: sp_s3
+  name: sp-s3
   namespace: greenfield-sp
 type: Opaque

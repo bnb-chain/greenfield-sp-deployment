@@ -6,6 +6,6 @@ data:
   JDP: base64-encoded-string
 kind: Secret
 metadata:
-  name: sp_db
+  name: sp-db
   namespace: greenfield-sp
 type: Opaque

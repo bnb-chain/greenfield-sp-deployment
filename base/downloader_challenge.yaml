@@ -1,48 +1,48 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: downloader_challenge
+  name: downloader-challenge
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: downloader_challenge
+      app: downloader-challenge
   strategy:
     type: RollingUpdate
   template:
     metadata:
       labels:
-        app: downloader_challenge
+        app: downloader-challenge
     spec:
       containers:
-      - name: downloader_challenge
+      - name: downloader-challenge
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.1
         env:	
           - name: AWS_ACCESS_KEY	
             valueFrom:	
               secretKeyRef:	
                 key: AK	
-                name: sp_s3	
+                name: sp-s3-a
           - name: AWS_SECRET_KEY	
             valueFrom:	
               secretKeyRef:	
                 key: SK	
-                name: sp_s3	
+                name: sp-s3-a	
           - name: AWS_SESSION_TOKEN	
             valueFrom:	
               secretKeyRef:	
                 key: ST	
-                name: sp_s3
+                name: sp-s3-a
           - name: META_DB_USER
             valueFrom:
               secretKeyRef:
                 key: MDU
-                name: sp_db
+                name: sp-db-a
           - name: META_DB_PASSWORD
             valueFrom:
               secretKeyRef:
                 key: MDP
-                name: sp_db
+                name: sp-db-a
         resources:
           limits:
             cpu: "3"
@@ -68,7 +68,7 @@ spec:
 apiVersion: v1	
 kind: Service	
 metadata:	
-  name: downloader_challenge	
+  name: downloader-challenge	
 spec:	
   ports:	
   - port: 9233	
@@ -78,4 +78,4 @@ spec:
     targetPort: 9033	
     name: challenge	
   selector:	
-    app: downloader_challenge
+    app: downloader-challenge

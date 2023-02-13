@@ -71,7 +71,7 @@ patchesJson6902:
 - target:
     version: v1
     kind: Secret
-    name: sp_s3
+    name: s-s3
   patch: |-
     - op: replace
       path: /data/AK
@@ -79,7 +79,7 @@ patchesJson6902:
 - target:
     version: v1
     kind: Secret
-    name: sp_s3
+    name: s-s3
   patch: |-
     - op: replace
       path: /data/SK
