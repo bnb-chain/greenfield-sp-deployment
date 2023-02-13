@@ -23,7 +23,7 @@ spec:
       - name: syncer
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.1
         env:
-        - name: AWS_ACCESS_KEY
+          - name: AWS_ACCESS_KEY
             valueFrom:
               secretKeyRef:
                 key: AK
