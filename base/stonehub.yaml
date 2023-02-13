@@ -21,22 +21,22 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: MDU
-                name: sp_db
+                name: sp-db-a
           - name: META_DB_PASSWORD
             valueFrom:
               secretKeyRef:
                 key: MDP
-                name: sp_db
+                name: sp-db-a
           - name: JOB_DB_USER
             valueFrom:
               secretKeyRef:
                 key: JDU
-                name: sp_db
+                name: sp-db-a
           - name: JOB_DB_PASSWORD
             valueFrom:
               secretKeyRef:
                 key: JDP
-                name: sp_db
+                name: sp-db-a
         resources:
           limits:
             cpu: "2"
