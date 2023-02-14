@@ -20,17 +20,17 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: AK
-                name: s-s3-a
+                name: sp-s3-a
           - name: AWS_SECRET_KEY
             valueFrom:
               secretKeyRef:
                 key: SK
-                name: s-s3-a
+                name: sp-s3-a
           - name: AWS_SESSION_TOKEN
             valueFrom:
               secretKeyRef:
                 key: ST
-                name: s-s3-a
+                name: sp-s3-a
         resources:
           limits:
             cpu: "2"

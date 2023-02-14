@@ -5,7 +5,7 @@ Service = [
 [UploaderCfg]
     StorageProvider = "bnb-sp"
     Address = "127.0.0.1:9133"
-    StoneHubServiceAddress = "stonehub:9333"
+    StoneHubServiceAddress = "stonehub-a:9333"
     MetaDBType = "mysql"
     [UploaderCfg.PieceStoreConfig]
         Shards = 0
@@ -17,6 +17,6 @@ Service = [
             NoSignRequest = false
             TlsInsecureSkipVerify = false
     [UploaderCfg.MetaSqlDBConfig]
-        Address = "tf-20230210045544154100000001.cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
+        Address = "greenfield-sp-dev-a-instance-1.cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
         Database = "meta_db"
         
