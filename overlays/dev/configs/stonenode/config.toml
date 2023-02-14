@@ -5,8 +5,8 @@ Service = [
 [StoneNodeCfg]
     StorageProvider = "bnb-sp"
     Address = "127.0.0.1:9433"
-    StoneHubServiceAddress = "stonehub:9333"
-    SyncerServiceAddress = "syncer:9533"
+    StoneHubServiceAddress = "stonehub-a:9333"
+    SyncerServiceAddress = ["syncer-a:9533"]
     StoneJobLimit = 64
     [StoneNodeCfg.PieceConfig]
         Shards = 0

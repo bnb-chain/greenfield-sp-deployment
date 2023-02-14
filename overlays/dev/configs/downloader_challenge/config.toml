@@ -19,7 +19,7 @@ Service = [
     StorageProvider = "bnb-sp"
     MetaDBType = "mysql"
     [ChallengeCfg.MetaSqlDBConfig]
-        Address = "tf-20230210045544154100000001.cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
+        Address = "greenfield-sp-dev-a-instance-1.cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
         Database = "job_db"
     [ChallengeCfg.PieceStoreConfig]
         Shards = 0

@@ -14,5 +14,5 @@ Service = [
         NoSignRequest = false
         TlsInsecureSkipVerify = false
     [SyncerCfg.MetaSqlDBConfig]
-        Address = "tf-20230210045544154100000001.cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
+        Address = "greenfield-sp-dev-a-instance-1.cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
         Database = "meta_db"
