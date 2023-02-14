@@ -16,11 +16,11 @@ Service = [
 
 [ChallengeCfg]
     Address = "127.0.0.1:9033"
-    StorageProvider = "ç"
+    StorageProvider = "bnb-sp"
     MetaDBType = "mysql"
     [ChallengeCfg.MetaSqlDBConfig]
         Address = "tf-20230210045544154100000001.cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
-        Database = "greenfield-sp-a"
+        Database = "job_db"
     [ChallengeCfg.PieceStoreConfig]
         Shards = 0
         [ChallengeCfg.PieceStoreConfig.Store]

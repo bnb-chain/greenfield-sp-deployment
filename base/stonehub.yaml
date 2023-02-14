@@ -16,27 +16,27 @@ spec:
       containers:
       - name: stonehub
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.1
-        env:
-          - name: META_DB_USER
-            valueFrom:
-              secretKeyRef:
-                key: MDU
-                name: sp-db-a
-          - name: META_DB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                key: MDP
-                name: sp-db-a
-          - name: JOB_DB_USER
-            valueFrom:
-              secretKeyRef:
-                key: JDU
-                name: sp-db-a
-          - name: JOB_DB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                key: JDP
-                name: sp-db-a
+        # env:
+        #   - name: META_DB_USER
+        #     valueFrom:
+        #       secretKeyRef:
+        #         key: MDU
+        #         name: sp-db-a
+        #   - name: META_DB_PASSWORD
+        #     valueFrom:
+        #       secretKeyRef:
+        #         key: MDP
+        #         name: sp-db-a
+        #   - name: JOB_DB_USER
+        #     valueFrom:
+        #       secretKeyRef:
+        #         key: JDU
+        #         name: sp-db-a
+        #   - name: JOB_DB_PASSWORD
+        #     valueFrom:
+        #       secretKeyRef:
+        #         key: JDP
+        #         name: sp-db-a
         resources:
           limits:
             cpu: "2"
@@ -46,7 +46,7 @@ spec:
             memory: 2Gi
         ports:
           - containerPort: 9333
-            name: stoneHub
+            name: stonehub
         volumeMounts:
         - mountPath: /config
           name: config
@@ -56,6 +56,15 @@ spec:
       - name: config
         configMap:
           name: config-stonehub
+  # volumeClaimTemplates:
+  #   - metadata:
+  #       name: data
+  #     spec:
+  #       accessModes: [ "ReadWriteOnce" ]
+  #       storageClassName: "ebs-sc"
+  #       resources:
+  #         requests:
+  #           storage: 10Gi
 ---
 apiVersion: v1
 kind: Service
