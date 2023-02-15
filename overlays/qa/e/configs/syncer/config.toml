@@ -1,0 +1,18 @@
+Service = [
+  "Syncer",
+]
+
+[SyncerCfg]
+    StorageProvider = "bnb-sp"
+    Address = "0.0.0.0:9533"
+    MetaDBType = "mysql"
+    [SyncerCfg.PieceConfig.Store]
+        Storage = "s3"
+        BucketURL = "https://s3.us-east-1.amazonaws.com/tf-nodereal-qa-greenfield-sp-e"
+        MaxRetries = 5
+        TestMode = true
+        NoSignRequest = false
+        TlsInsecureSkipVerify = false
+    [SyncerCfg.MetaSqlDBConfig]
+        Address = "greenfield-sp-qa-e-cluster.cluster-cb6vaj1ctcqk.us-east-1.rds.amazonaws.com:3306"
+        Database = "meta_db"

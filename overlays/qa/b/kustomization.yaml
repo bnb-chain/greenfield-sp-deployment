@@ -1,0 +1,76 @@
+bases:
+  - ../../../base
+
+namespace: gf-sp-b
+
+commonLabels:
+    team: greenfield
+    biz: storage-provider
+
+configMapGenerator:
+- name: config-syncer
+  files:
+  - configs/syncer/config.toml
+- name: config-uploader-downloader-challenge
+  files:
+  - configs/uploader_downloader_challenge/config.toml
+- name: config-gateway
+  files:
+  - configs/gateway/config.toml
+- name: config-stonehub
+  files:
+  - configs/stonehub/config.toml
+- name: config-stonenode
+  files:
+  - configs/stonenode/config.toml
+
+patchesJson6902:
+- target:
+    version: v1
+    kind: Secret
+    name: sp-db
+  patch: |-
+    - op: replace
+      path: /data/MDU
+      value: Zm5jeGdlYW4=
+- target:
+    version: v1
+    kind: Secret
+    name: sp-db
+  patch: |-
+    - op: replace
+      path: /data/MDP
+      value: em9mdkZjT3JtV05wcF94JQ==
+- target:
+    version: v1
+    kind: Secret
+    name: sp-db
+  patch: |-
+    - op: replace
+      path: /data/JDU
+      value: Zm5jeGdlYW4=
+- target:
+    version: v1
+    kind: Secret
+    name: sp-db
+  patch: |-
+    - op: replace
+      path: /data/JDP
+      value: em9mdkZjT3JtV05wcF94JQ==
+- target:
+    version: v1
+    kind: Secret
+    name: sp-s3
+  patch: |-
+    - op: replace
+      path: /data/AK
+      value: QUtJQVZCTE1XN0FVTllITUxMUFI=
+- target:
+    version: v1
+    kind: Secret
+    name: sp-s3
+  patch: |-
+    - op: replace
+      path: /data/SK
+      value: ZFlxVVllMXZLRFdmL0tsbUIwN0l2emF6TjVYa3JZTWJiR05CNDBUNw==
+

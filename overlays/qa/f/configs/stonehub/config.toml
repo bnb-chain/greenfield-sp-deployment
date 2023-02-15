@@ -1,0 +1,15 @@
+Service = [
+  "StoneHub",
+]
+
+[StoneHubCfg]
+StorageProvider = "bnb-sp"
+Address = "0.0.0.0:9333"
+JobDBType = "mysql"
+MetaDBType = "mysql"
+[StoneHubCfg.JobSqlDBConfig]
+    Address = "greenfield-sp-qa-f-cluster.cluster-cb6vaj1ctcqk.us-east-1.rds.amazonaws.com:3306"
+    Database = "job_db"
+[StoneHubCfg.MetaSqlDBConfig]
+    Address = "greenfield-sp-qa-f-cluster.cluster-cb6vaj1ctcqk.us-east-1.rds.amazonaws.com:3306"
+    Database = "meta_db"
