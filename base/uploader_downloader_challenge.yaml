@@ -51,7 +51,7 @@ spec:
             cpu: "2"
             memory: 8Gi
         ports:
-          - containerPort: 9333
+          - containerPort: 9133
             name: uploader
           - containerPort: 9233
             name: downloader
@@ -73,11 +73,11 @@ metadata:
   name: uploader
 spec:
   ports:
-  - port: 9333
-    targetPort: 9333
+  - port: 9133
+    targetPort: 9133
     name: uploader
   selector:
-    app: uploader-downlader-challenge
+    app: uploader-downloader-challenge
 ---
 apiVersion: v1
 kind: Service
@@ -89,17 +89,17 @@ spec:
     targetPort: 9233
     name: downloader
   selector:
-    app: uploader-downlader-challenge
+    app: uploader-downloader-challenge
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: downloader-challenge
+  name: challenge
 spec:
   ports:
   - port: 9033
     targetPort: 9033
     name: challenge
   selector:
-    app: uploader-downlader-challenge
+    app: uploader-downloader-challenge
 
