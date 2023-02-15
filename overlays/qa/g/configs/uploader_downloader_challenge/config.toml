@@ -22,9 +22,9 @@ Service = [
 
 [DownloaderCfg]
     Address = "0.0.0.0:9233"
-    [DownloaderCfg.PieceConfig]
+    [DownloaderCfg.PieceStoreConfig]
         Shards = 0
-        [DownloaderCfg.PieceConfig.Store]
+        [DownloaderCfg.PieceStoreConfig.Store]
             Storage = "S3"
             BucketURL = "https://s3.us-east-1.amazonaws.com/tf-nodereal-qa-greenfield-sp-g"
             MaxRetries = 5
