@@ -4,7 +4,7 @@ Service = [
 
 [StoneHubCfg]
 StorageProvider = "bnb-sp"
-Address = "127.0.0.1:9333"
+Address = "0.0.0.0:9333"
 JobDBType = "mysql"
 MetaDBType = "mysql"
 [StoneHubCfg.JobSqlDBConfig]

@@ -1,9 +1,27 @@
 Service = [
-  "Downloader", "Challenage",
+  "Uploader", "Downloader", "Challenage",
 ]
 
+[UploaderCfg]
+    StorageProvider = "bnb-sp"
+    Address = "0.0.0.0:9133"
+    StoneHubServiceAddress = "stonehub:9333"
+    MetaDBType = "mysql"
+    [UploaderCfg.PieceStoreConfig]
+        Shards = 0
+        [UploaderCfg.PieceStoreConfig.Store]
+            Storage = "S3"
+            BucketURL = "https://s3.ap-northeast-1.amazonaws.com/tf-nodereal-dev-greenfield-sp-a"
+            MaxRetries = 5
+            TestMode = true
+            NoSignRequest = false
+            TlsInsecureSkipVerify = false
+    [UploaderCfg.MetaSqlDBConfig]
+        Address = "greenfield-sp-dev-a-instance-1.cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
+        Database = "meta_db"
+
 [DownloaderCfg]
-    Address = "127.0.0.1:9233"
+    Address = "0.0.0.0:9233"
     [DownloaderCfg.PieceStoreConfig]
         Shards = 0
         [DownloaderCfg.PieceStoreConfig.Store]
@@ -15,7 +33,7 @@ Service = [
             TlsInsecureSkipVerify = false
 
 [ChallengeCfg]
-    Address = "127.0.0.1:9033"
+    Address = "0.0.0.0:9033"
     StorageProvider = "bnb-sp"
     MetaDBType = "mysql"
     [ChallengeCfg.MetaSqlDBConfig]

@@ -1,11 +1,11 @@
 resources:
+  - namespace.yaml
   - imagepullsecret.yaml
   - syncer.yaml
   - stonehub.yaml
   - stonenode.yaml
   - gateway.yaml
-  - downloader_challenge.yaml
-  - uploader.yaml
+  - uploader_downloader_challenge.yaml
   - sp_db.yaml
   - sp_s3.yaml
 

@@ -1,26 +1,19 @@
 bases:
   - ../../base
 
-namespace: greenfield-sp
-
-nameSuffix: -a
+namespace: gf-sp-a
 
 commonLabels:
     team: greenfield
     biz: storage-provider
-    # app: syncer
-    cluster_id: a
 
 configMapGenerator:
 - name: config-syncer
   files:
   - configs/syncer/config.toml
-- name: config-uploader
+- name: config-uploader-downloader-challenge
   files:
-  - configs/uploader/config.toml
-- name: config-downloader-challenge
-  files:
-  - configs/downloader_challenge/config.toml
+  - configs/uploader_downloader_challenge/config.toml
 - name: config-gateway
   files:
   - configs/gateway/config.toml
@@ -33,37 +26,33 @@ configMapGenerator:
 
 patchesJson6902:
 - target:
-    # group: "apiVersion"
     version: v1
     kind: Secret
-    name: sp-db-a
+    name: sp-db
   patch: |-
     - op: replace
       path: /data/MDU
       value: d2llYmpkd3Y=
 - target:
-    # group: "apiVersion"
     version: v1
     kind: Secret
-    name: sp-db-a
+    name: sp-db
   patch: |-
     - op: replace
       path: /data/MDP
       value: X1NvenNpUmhET05Xc3NPcg==
 - target:
-    # group: "apiVersion"
     version: v1
     kind: Secret
-    name: sp-db-a
+    name: sp-db
   patch: |-
     - op: replace
       path: /data/JDU
       value: d2llYmpkd3Y=
 - target:
-    # group: "apiVersion"
     version: v1
     kind: Secret
-    name: sp-db-a
+    name: sp-db
   patch: |-
     - op: replace
       path: /data/JDP
@@ -71,7 +60,7 @@ patchesJson6902:
 - target:
     version: v1
     kind: Secret
-    name: sp-s3-a
+    name: sp-s3
   patch: |-
     - op: replace
       path: /data/AK
@@ -79,8 +68,9 @@ patchesJson6902:
 - target:
     version: v1
     kind: Secret
-    name: sp-s3-a
+    name: sp-s3
   patch: |-
     - op: replace
       path: /data/SK
       value: U1MzVHQ1WGNKdUhuY0s0OWlYNkhwTmNlRTQrekZhdytnd0ozVmtEMw==
+
