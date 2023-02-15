@@ -1,13 +1,17 @@
 # Greenfield SP K8S
 
 * Git URL: https://git.toolsfdg.net/nodereal/greenfield-sp-k8s
+* TF URL (DEV and QA): https://git.toolsfdg.net/nodereal/terraform-nodereal-qa/tree/main/__modules/projects/greenfield/sp
 
+## Requirements
+
+* `kubectl` Client Version: version.Info{Major:"1", Minor:"25", GitVersion:"v1.25.6", GitCommit:"ff2c119726cc1f8926fb0585c74b25921e866a28", GitTreeState:"archive", BuildDate:"2023-02-06T17:45:37Z", GoVersion:"go1.20", Compiler:"gc", Platform:"darwin/arm64"}
+* Kustomize Version: v4.5.7
 
 ## Environments
 
 ### DEV
 
-* TF repo path: https://git.toolsfdg.net/nodereal/terraform-nodereal-qa
 * TF workspace: https://tfe.toolsfdg.net/app/nodereal/workspaces/nodereal-dev
 * AWS Account: nodereal-qa
 * AWS Country: ap-northeast-1
@@ -16,7 +20,6 @@
 
 ### QA
 
-* TF repo path: https://git.toolsfdg.net/nodereal/terraform-nodereal-qa
 * TF workspace: https://tfe.toolsfdg.net/app/nodereal/workspaces/nodereal-qa
 * AWS Account: nodereal-qa
 * AWS Country: us-east-1
@@ -25,7 +28,7 @@
 
 ### Prod
 
-* TF repo path: https://git.toolsfdg.net/nodereal/terraform-nodereal
+* TF path: https://git.toolsfdg.net/nodereal/terraform-nodereal/...
 * TF workspace: https://tfe.toolsfdg.net/app/nodereal/workspaces/nodereal
 * K8S cluster: tf-nodereal-prod-noderealus
 * AWS Account: nodereal
