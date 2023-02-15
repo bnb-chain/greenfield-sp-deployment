@@ -39,9 +39,9 @@ Service = [
     [ChallengeCfg.MetaSqlDBConfig]
         Address = "greenfield-sp-dev-a-instance-1.cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
         Database = "meta_db"
-    [ChallengeCfg.PieceStoreConfig]
+    [ChallengeCfg.PieceConfig]
         Shards = 0
-        [ChallengeCfg.PieceStoreConfig.Store]
+        [ChallengeCfg.PieceConfig.Store]
             Storage = "s3"
             BucketURL = "https://s3.ap-northeast-1.amazonaws.com/tf-nodereal-dev-greenfield-sp-a"
             MaxRetries = 5
