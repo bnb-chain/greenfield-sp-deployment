@@ -1,7 +1,7 @@
 # Greenfield SP K8S
 
 * Git URL: https://git.toolsfdg.net/nodereal/greenfield-sp-k8s
-
+* TF URL (DEV and QA): https://git.toolsfdg.net/nodereal/terraform-nodereal-qa/tree/main/\_\_modules/projects/greenfield/sp
 
 ## Requirements
 
@@ -12,7 +12,6 @@
 
 ### DEV
 
-* TF repo path: https://git.toolsfdg.net/nodereal/terraform-nodereal-qa
 * TF workspace: https://tfe.toolsfdg.net/app/nodereal/workspaces/nodereal-dev
 * AWS Account: nodereal-qa
 * AWS Country: ap-northeast-1
@@ -21,7 +20,6 @@
 
 ### QA
 
-* TF repo path: https://git.toolsfdg.net/nodereal/terraform-nodereal-qa
 * TF workspace: https://tfe.toolsfdg.net/app/nodereal/workspaces/nodereal-qa
 * AWS Account: nodereal-qa
 * AWS Country: us-east-1
@@ -30,7 +28,7 @@
 
 ### Prod
 
-* TF repo path: https://git.toolsfdg.net/nodereal/terraform-nodereal
+* TF path: https://git.toolsfdg.net/nodereal/terraform-nodereal/...
 * TF workspace: https://tfe.toolsfdg.net/app/nodereal/workspaces/nodereal
 * K8S cluster: tf-nodereal-prod-noderealus
 * AWS Account: nodereal
