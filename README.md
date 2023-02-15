@@ -3,6 +3,11 @@
 * Git URL: https://git.toolsfdg.net/nodereal/greenfield-sp-k8s
 
 
+## Requirements
+
+* `kubectl` Client Version: version.Info{Major:"1", Minor:"25", GitVersion:"v1.25.6", GitCommit:"ff2c119726cc1f8926fb0585c74b25921e866a28", GitTreeState:"archive", BuildDate:"2023-02-06T17:45:37Z", GoVersion:"go1.20", Compiler:"gc", Platform:"darwin/arm64"}
+* Kustomize Version: v4.5.7
+
 ## Environments
 
 ### DEV
