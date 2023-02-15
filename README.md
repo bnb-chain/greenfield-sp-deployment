@@ -1,7 +1,7 @@
 # Greenfield SP K8S
 
 * Git URL: https://git.toolsfdg.net/nodereal/greenfield-sp-k8s
-* TF URL (DEV and QA): https://git.toolsfdg.net/nodereal/terraform-nodereal-qa/tree/main/\_\_modules/projects/greenfield/sp
+* TF URL (DEV and QA): https://git.toolsfdg.net/nodereal/terraform-nodereal-qa/tree/main/__modules/projects/greenfield/sp
 
 ## Requirements
 
