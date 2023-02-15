@@ -8,6 +8,7 @@
 ### DEV
 
 * TF repo path: https://git.toolsfdg.net/nodereal/terraform-nodereal-qa
+* TF workspace: https://tfe.toolsfdg.net/app/nodereal/workspaces/nodereal-dev
 * AWS Account: nodereal-qa
 * AWS Country: ap-northeast-1
 * K8S cluster: tf-nodereal-dev-dev-ap
@@ -16,6 +17,7 @@
 ### QA
 
 * TF repo path: https://git.toolsfdg.net/nodereal/terraform-nodereal-qa
+* TF workspace: https://tfe.toolsfdg.net/app/nodereal/workspaces/nodereal-qa
 * AWS Account: nodereal-qa
 * AWS Country: us-east-1
 * K8S cluster: tf-nodereal-qa-qa-us
@@ -24,6 +26,7 @@
 ### Prod
 
 * TF repo path: https://git.toolsfdg.net/nodereal/terraform-nodereal
+* TF workspace: https://tfe.toolsfdg.net/app/nodereal/workspaces/nodereal
 * K8S cluster: tf-nodereal-prod-noderealus
 * AWS Account: nodereal
 * AWS Country: us-east-1
