@@ -38,19 +38,19 @@
 
 - To generate using `kustomize`:
 
-    $ kustomize build overlays/{env}
+      $ kustomize build overlays/{env}
 
 - To apply it:
 
-    $ tsh login --proxy=tele-nodereal-qa.iac.toolsfdg.net:8024 --auth=okta
-    $ tsh kube login tf-nodereal-dev-dev-ap
-    $ # For QA: tsh kube login tf-nodereal-qa-qa-us
-    $ kustomize build overlays/{env} > {env}.yaml
-    $ kustomize apply -f ./{env}.yaml
+      $ tsh login --proxy=tele-nodereal-qa.iac.toolsfdg.net:8024 --auth=okta
+      $ tsh kube login tf-nodereal-dev-dev-ap
+      $ # For QA: tsh kube login tf-nodereal-qa-qa-us
+      $ kustomize build overlays/{env} > {env}.yaml
+      $ kustomize apply -f ./{env}.yaml
 
 - To verify deployment:
 
-    $ <TODO>
+      $ <TODO>
 
 
 ### For PROD env
