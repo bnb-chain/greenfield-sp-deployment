@@ -56,7 +56,11 @@
 
 - To verify deployment:
 
-      $ <TODO>
+      $ k -n gf-sp-a get pods
+      $ k -n gf-sp-a exec -it gateway-bb945b478-8sfd4 bash
+      gateway-bb945b478-8sfd4:/app$ ./test-gnfd-sp
+      $ k -n gf-sp-a logs -f ${each_service_pod_name} // to check whether any error logs from other services
+
 
 
 ### For PROD env
