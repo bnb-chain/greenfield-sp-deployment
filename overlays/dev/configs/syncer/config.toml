@@ -4,7 +4,7 @@ Service = [
 
 [SyncerCfg]
     StorageProvider = "bnb-sp"
-    Address = "127.0.0.1:9533"
+    Address = "0.0.0.0:9533"
     MetaDBType = "mysql"
     [SyncerCfg.PieceConfig.Store]
         Storage = "s3"
