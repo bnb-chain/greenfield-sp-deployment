@@ -11,13 +11,13 @@ Service = [
         Shards = 0
         [UploaderCfg.PieceStoreConfig.Store]
             Storage = "S3"
-            BucketURL = "https://s3.ap-northeast-1.amazonaws.com/tf-nodereal-qa-greenfield-sp-d"
+            BucketURL = "https://s3.us-east-1.amazonaws.com/tf-nodereal-qa-greenfield-sp-d"
             MaxRetries = 5
             TestMode = true
             NoSignRequest = false
             TlsInsecureSkipVerify = false
     [UploaderCfg.MetaSqlDBConfig]
-        Address = "greenfield-sp-qa-d-instance-1.cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
+        Address = "greenfield-sp-qa-d-cluster.cluster-ro-cb6vaj1ctcqk.us-east-1.rds.amazonaws.com:3306"
         Database = "meta_db"
 
 [DownloaderCfg]
@@ -26,7 +26,7 @@ Service = [
         Shards = 0
         [DownloaderCfg.PieceStoreConfig.Store]
             Storage = "S3"
-            BucketURL = "https://s3.ap-northeast-1.amazonaws.com/tf-nodereal-qa-greenfield-sp-d"
+            BucketURL = "https://s3.us-east-1.amazonaws.com/tf-nodereal-qa-greenfield-sp-d"
             MaxRetries = 5
             TestMode = true
             NoSignRequest = false
@@ -37,13 +37,13 @@ Service = [
     StorageProvider = "bnb-sp"
     MetaDBType = "mysql"
     [ChallengeCfg.MetaSqlDBConfig]
-        Address = "greenfield-sp-qa-d-instance-1.cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
+        Address = "greenfield-sp-qa-d-cluster.cluster-ro-cb6vaj1ctcqk.us-east-1.rds.amazonaws.com:3306"
         Database = "job_db"
     [ChallengeCfg.PieceStoreConfig]
         Shards = 0
         [ChallengeCfg.PieceStoreConfig.Store]
             Storage = "s3"
-            BucketURL = "https://s3.ap-northeast-1.amazonaws.com/tf-nodereal-qa-greenfield-sp-d"
+            BucketURL = "https://s3.us-east-1.amazonaws.com/tf-nodereal-qa-greenfield-sp-d"
             MaxRetries = 5
             TestMode = true
             NoSignRequest = false
