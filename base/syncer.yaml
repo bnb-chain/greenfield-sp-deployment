@@ -65,6 +65,9 @@ spec:
           requests:
             cpu: "2"
             memory: 4Gi
+        ports:
+          - containerPort: 9533
+            name: syncer
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         volumeMounts:
@@ -83,7 +86,7 @@ metadata:
   name: syncer
 spec:
   ports:
-  - port: 9433
+  - port: 9533
     targetPort: 9533
     name: syncer
   selector:
