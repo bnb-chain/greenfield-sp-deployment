@@ -6,7 +6,9 @@ Service = [
     StorageProvider = "bnb-sp"
     Address = "0.0.0.0:9433"
     StoneHubServiceAddress = "stonehub:9333"
-    SyncerServiceAddress = ["syncer:9533"]
+    SyncerServiceAddress = ["syncer.gf-sp-a.svc.cluster.local:9533","syncer.gf-sp-b.svc.cluster.local:9533",
+                            "syncer.gf-sp-c.svc.cluster.local:9533","syncer.gf-sp-e.svc.cluster.local:9533",
+                            "syncer.gf-sp-f.svc.cluster.local:9533","syncer.gf-sp-g.svc.cluster.local:9533",]
     StoneJobLimit = 64
     [StoneNodeCfg.PieceConfig]
         Shards = 0
