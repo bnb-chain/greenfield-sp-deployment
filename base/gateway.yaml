@@ -46,3 +46,24 @@ spec:
     name: gateway
   selector:
     app: gateway
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    external-dns.alpha.kubernetes.io/ingress-hostname-source: "annotation-only"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+  name: gateway
+spec:
+  rules:
+    - host: patch-me.bk.nodereal.cc
+      http:
+        paths:
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 9033
+            path: /
+            pathType: ImplementationSpecific
+
