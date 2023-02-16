@@ -6,6 +6,7 @@ namespace: gf-sp-d
 commonLabels:
     team: greenfield
     biz: storage-provider
+    cluster_id: d
 
 configMapGenerator:
 - name: config-syncer
@@ -23,6 +24,15 @@ configMapGenerator:
 - name: config-stonenode
   files:
   - configs/stonenode/config.toml
+
+patches:
+- target:
+    kind: Ingress
+    name: gateway
+  patch: |-
+    - op: replace
+      path: /spec/rules/0/host
+      value: gf-sp-d.bk.nodereal.cc
 
 patchesJson6902:
 - target:
