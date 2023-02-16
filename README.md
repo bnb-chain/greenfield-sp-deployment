@@ -1,7 +1,7 @@
 # Greenfield SP K8S
 
 * Git URL: https://git.toolsfdg.net/nodereal/greenfield-sp-k8s
-* TF URL (DEV and QA): https://git.toolsfdg.net/nodereal/terraform-nodereal-qa/tree/main/__modules/projects/greenfield/sp
+* TF URL (DEV and QA): https://git.toolsfdg.net/nodereal/terraform-nodereal-qa/tree/main/\__modules/projects/greenfield/sp
 
 ## Requirements
 
@@ -56,12 +56,14 @@
 
 - To verify deployment:
 
-      $ k -n gf-sp-a get pods
-      $ k -n gf-sp-a exec -it gateway-bb945b478-8sfd4 bash
-      gateway-bb945b478-8sfd4:/app$ ./test-gnfd-sp
-      $ k -n gf-sp-a logs -f ${each_service_pod_name} // to check whether any error logs from other services
+  * Run test tool:
 
+        $ kubectl -n {namespace} exec -it pod/{gateway-pod} -- ./test-gnfd-sp
 
+  * See logs:
+
+        $ kubectl -n {namespace} get pods
+        $ kubectl -n {namespace} logs -f ${each_service_pod_name} // to check whether any error logs from other services
 
 ### For PROD env
 
