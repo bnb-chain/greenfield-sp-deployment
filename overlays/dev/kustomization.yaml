@@ -31,7 +31,7 @@ patches:
   patch: |-
     - op: replace
       path: /spec/rules/0/host
-      value: gf-sp-a.bk.dev.nodereal.cc
+      value: gf-sp-a-bk.dev.nodereal.cc
 
 patchesJson6902:
 - target:
