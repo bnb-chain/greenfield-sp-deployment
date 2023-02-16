@@ -58,12 +58,12 @@
 
   * Run test tool:
 
-      $ kubectl -n {namespace} exec -it pod/{gateway-pod} -- ./test-gnfd-sp
+        $ kubectl -n {namespace} exec -it pod/{gateway-pod} -- ./test-gnfd-sp
 
   * See logs:
 
-      $ kubectl -n {namespace} get pods
-      $ kubectl -n {namespace} logs -f ${each_service_pod_name} // to check whether any error logs from other services
+        $ kubectl -n {namespace} get pods
+        $ kubectl -n {namespace} logs -f ${each_service_pod_name} // to check whether any error logs from other services
 
 ### For PROD env
 
