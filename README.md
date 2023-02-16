@@ -16,7 +16,8 @@
 * AWS Account: nodereal-qa
 * AWS Country: ap-northeast-1
 * K8S cluster: tf-nodereal-dev-dev-ap
-* Monitoring: <TBA>
+* Teleport cluster: tele-nodereal-qa.iac.toolsfdg.net:8024
+* Monitoring: {TBA}
 
 ### QA
 
@@ -24,16 +25,18 @@
 * AWS Account: nodereal-qa
 * AWS Country: us-east-1
 * K8S cluster: tf-nodereal-qa-qa-us
+* Teleport cluster: teleport.nodereal.link
 * Monitoring: https://monitor.infra.nodereal.cc/d/6aGk1hM4z/qa-sp?orgId=1
 
 ### Prod
 
-* TF path: https://git.toolsfdg.net/nodereal/terraform-nodereal/...
 * TF workspace: https://tfe.toolsfdg.net/app/nodereal/workspaces/nodereal
+* TF path: https://git.toolsfdg.net/nodereal/terraform-nodereal
 * K8S cluster: tf-nodereal-prod-noderealus
+* Teleport cluster: teleport.nodereal.link
 * AWS Account: nodereal
 * AWS Country: us-east-1
-* Monitoring: <TBA>
+* Monitoring: {TBA}
 
 
 ## How to deploy?
@@ -48,9 +51,8 @@
 
 - To apply it:
 
-      $ tsh login --proxy=tele-nodereal-qa.iac.toolsfdg.net:8024 --auth=okta
-      $ tsh kube login tf-nodereal-dev-dev-ap
-      $ # For QA: tsh kube login tf-nodereal-qa-qa-us
+      $ tsh login --proxy={teleport-cluster} --auth=okta
+      $ tsh kube login {k8s-cluster}
       $ kustomize build overlays/{env} > {env}.yaml
       $ kustomize apply -f ./{env}.yaml
 
@@ -65,8 +67,13 @@
         $ kubectl -n {namespace} get pods
         $ kubectl -n {namespace} logs -f ${each_service_pod_name} // to check whether any error logs from other services
 
+  * Check publicly exposed URL:
+
+        $ # TODO: what is the command to check the gateway service running with "curl" please?
+
+  * Confirm changes with rosy.r@nodereal.io / will.w@nodereal.io / joey@nodereal.io / dylan.y@nodereal.io / richard@nodereal.io
+
 ### For PROD env
 
-- <TBA>
-
+- TODO:
 
