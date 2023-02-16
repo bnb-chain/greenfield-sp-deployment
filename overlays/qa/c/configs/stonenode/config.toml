@@ -8,7 +8,7 @@ Service = [
     StoneHubServiceAddress = "stonehub:9333"
     SyncerServiceAddress = ["syncer.gf-sp-a.svc.cluster.local:9533","syncer.gf-sp-b.svc.cluster.local:9533",
                             "syncer.gf-sp-d.svc.cluster.local:9533","syncer.gf-sp-e.svc.cluster.local:9533",
-                            "syncer.gf-sp-f.svc.cluster.local:9533:,"syncer.gf-sp-g.svc.cluster.local:9533",]
+                            "syncer.gf-sp-f.svc.cluster.local:9533","syncer.gf-sp-g.svc.cluster.local:9533",]
     StoneJobLimit = 64
     [StoneNodeCfg.PieceConfig]
         Shards = 0
