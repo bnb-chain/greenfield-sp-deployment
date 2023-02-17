@@ -33,6 +33,9 @@ patches:
     - op: replace
       path: /spec/rules/0/host
       value: gf-sp-g.bk.nodereal.cc
+    - op: replace
+      path: /spec/rules/1/host
+      value: "*.gf-sp-g.bk.nodereal.cc"
 
 patchesJson6902:
 - target:
