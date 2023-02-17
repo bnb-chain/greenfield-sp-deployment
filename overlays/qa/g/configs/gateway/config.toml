@@ -4,6 +4,6 @@ Service = [
 
 [GatewayCfg]
     Address = "0.0.0.0:9033"
-    Domain = "gnfd.nodereal.com"
+    Domain = "gf-sp-g.bk.nodereal.cc"
     UploaderServiceAddress = "uploader:9133"
     DownloaderServiceAddress = "downloader:9233"
