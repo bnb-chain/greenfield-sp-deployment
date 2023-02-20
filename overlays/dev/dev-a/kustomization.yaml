@@ -1,7 +1,7 @@
 bases:
-  - ../../base
+  - ../../../base
 
-namespace: gf-sp-a
+namespace: gf-sp-dev-a
 
 commonLabels:
     team: greenfield
