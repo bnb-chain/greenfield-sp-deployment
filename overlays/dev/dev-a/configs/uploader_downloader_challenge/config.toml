@@ -17,7 +17,7 @@ Service = [
             NoSignRequest = false
             TlsInsecureSkipVerify = false
     [UploaderCfg.MetaSqlDBConfig]
-        Address = "greenfield-sp-dev-a-instance-1.cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
+        Address = "greenfield-sp-dev-dev-a-cluster.cluster-cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
         Database = "meta_db"
 
 [DownloaderCfg]
@@ -37,7 +37,7 @@ Service = [
     StorageProvider = "bnb-sp"
     MetaDBType = "mysql"
     [ChallengeCfg.MetaSqlDBConfig]
-        Address = "greenfield-sp-dev-a-instance-1.cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
+        Address = "greenfield-sp-dev-dev-a-cluster.cluster-cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
         Database = "meta_db"
     [ChallengeCfg.PieceConfig]
         Shards = 0
