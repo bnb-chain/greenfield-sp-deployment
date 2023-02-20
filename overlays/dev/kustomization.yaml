@@ -52,7 +52,7 @@ patchesJson6902:
   patch: |-
     - op: replace
       path: /data/MDP
-      value: X1NvenNpUmhET05Xc3NPcg==
+      value: MDJhTVU0bWlHY2RHWlJmYg==
 - target:
     version: v1
     kind: Secret
@@ -68,7 +68,7 @@ patchesJson6902:
   patch: |-
     - op: replace
       path: /data/JDP
-      value: X1NvenNpUmhET05Xc3NPcg==
+      value: MDJhTVU0bWlHY2RHWlJmYg==
 - target:
     version: v1
     kind: Secret
