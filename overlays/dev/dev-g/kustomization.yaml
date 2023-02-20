@@ -76,7 +76,7 @@ patchesJson6902:
   patch: |-
     - op: replace
       path: /data/AK
-      value: QUtJQVZCTE1XN0FVRjdFM1FLNzI=
+      value: QUtJQVZCTE1XN0FVTk5NN0xEVlU=
 - target:
     version: v1
     kind: Secret
@@ -84,5 +84,5 @@ patchesJson6902:
   patch: |-
     - op: replace
       path: /data/SK
-      value: dXB1S2tSa3ozQjhsL1JlU1BETTR3NmRVejBwY0lBOXAydUJWbDZjTQ==
+      value: K1cweGV6c1JzbzY1NFcrS1NOZGhHVmFSajBVQk9xQUpKTGkvTTNuRA==
 

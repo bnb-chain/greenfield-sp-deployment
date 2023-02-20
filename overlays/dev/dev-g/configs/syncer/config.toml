@@ -8,11 +8,11 @@ Service = [
     MetaDBType = "mysql"
     [SyncerCfg.PieceConfig.Store]
         Storage = "s3"
-        BucketURL = "https://s3.ap-northeast-1.amazonaws.com/tf-nodereal-dev-greenfield-sp-dev-a"
+        BucketURL = "https://s3.ap-northeast-1.amazonaws.com/tf-nodereal-dev-greenfield-sp-dev-g"
         MaxRetries = 5
         TestMode = true
         NoSignRequest = false
         TlsInsecureSkipVerify = false
     [SyncerCfg.MetaSqlDBConfig]
-        Address = "greenfield-sp-dev-dev-a-cluster.cluster-cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
+        Address = "greenfield-sp-dev-dev-g-cluster.cluster-cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
         Database = "meta_db"

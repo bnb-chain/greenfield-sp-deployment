@@ -44,7 +44,7 @@ patchesJson6902:
   patch: |-
     - op: replace
       path: /data/MDU
-      value: d2llYmpkd3Y=
+      value: Z3JlZW5maWVsZA==
 - target:
     version: v1
     kind: Secret
@@ -60,7 +60,7 @@ patchesJson6902:
   patch: |-
     - op: replace
       path: /data/JDU
-      value: d2llYmpkd3Y=
+      value: Z3JlZW5maWVsZA==
 - target:
     version: v1
     kind: Secret
