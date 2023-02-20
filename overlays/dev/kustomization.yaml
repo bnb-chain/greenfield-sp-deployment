@@ -1,10 +1,10 @@
 resources:
   - ./a
-  # - ./dev-a
-  # - ./dev-b
-  # - ./dev-c
-  # - ./dev-d
-  # - ./dev-e
-  # - ./dev-f
-  # - ./dev-g
+  - ./dev-a
+  - ./dev-b
+  - ./dev-c
+  - ./dev-d
+  - ./dev-e
+  - ./dev-f
+  - ./dev-g
 
