@@ -45,7 +45,7 @@ patchesJson6902:
   patch: |-
     - op: replace
       path: /data/MDU
-      value: cHl1aHFqc3c=
+      value: Z3JlZW5maWVsZA==
 - target:
     version: v1
     kind: Secret
@@ -53,7 +53,7 @@ patchesJson6902:
   patch: |-
     - op: replace
       path: /data/MDP
-      value: bVRxbWNFUllFTm1fUkVJSA==
+      value: MDJhTVU0bWlHY2RHWlJmYg==
 - target:
     version: v1
     kind: Secret
@@ -61,7 +61,7 @@ patchesJson6902:
   patch: |-
     - op: replace
       path: /data/JDU
-      value: cHl1aHFqc3c=
+      value: Z3JlZW5maWVsZA==
 - target:
     version: v1
     kind: Secret
@@ -69,7 +69,7 @@ patchesJson6902:
   patch: |-
     - op: replace
       path: /data/JDP
-      value: bVRxbWNFUllFTm1fUkVJSA==
+      value: MDJhTVU0bWlHY2RHWlJmYg==
 - target:
     version: v1
     kind: Secret
