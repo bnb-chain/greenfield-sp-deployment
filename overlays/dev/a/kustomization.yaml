@@ -1,12 +1,11 @@
 bases:
-  - ../../../base
+  - ../../base
 
 namespace: gf-sp-a
 
 commonLabels:
     team: greenfield
     biz: storage-provider
-    cluster_id: a
 
 configMapGenerator:
 - name: config-syncer
@@ -32,10 +31,10 @@ patches:
   patch: |-
     - op: replace
       path: /spec/rules/0/host
-      value: gf-sp-a.bk.nodereal.cc
+      value: gf-sp-a-bk.dev.nodereal.cc
     - op: replace
       path: /spec/rules/1/host
-      value: "*.gf-sp-a.bk.nodereal.cc"
+      value: "*.gf-sp-a-bk.dev.nodereal.cc"
 
 patchesJson6902:
 - target:
@@ -45,7 +44,7 @@ patchesJson6902:
   patch: |-
     - op: replace
       path: /data/MDU
-      value: a2J0ZW90dnY=
+      value: d2llYmpkd3Y=
 - target:
     version: v1
     kind: Secret
@@ -53,7 +52,7 @@ patchesJson6902:
   patch: |-
     - op: replace
       path: /data/MDP
-      value: U1VNUVQ2NWpGVFJKWlJZaA==
+      value: MDJhTVU0bWlHY2RHWlJmYg==
 - target:
     version: v1
     kind: Secret
@@ -61,7 +60,7 @@ patchesJson6902:
   patch: |-
     - op: replace
       path: /data/JDU
-      value: a2J0ZW90dnY=
+      value: d2llYmpkd3Y=
 - target:
     version: v1
     kind: Secret
@@ -69,7 +68,7 @@ patchesJson6902:
   patch: |-
     - op: replace
       path: /data/JDP
-      value: U1VNUVQ2NWpGVFJKWlJZaA==
+      value: MDJhTVU0bWlHY2RHWlJmYg==
 - target:
     version: v1
     kind: Secret
@@ -77,7 +76,7 @@ patchesJson6902:
   patch: |-
     - op: replace
       path: /data/AK
-      value: QUtJQVZCTE1XN0FVTkRGNTNFSzc=
+      value: QUtJQVZCTE1XN0FVQU5BS1FHM0c=
 - target:
     version: v1
     kind: Secret
@@ -85,5 +84,5 @@ patchesJson6902:
   patch: |-
     - op: replace
       path: /data/SK
-      value: ckVrSlYya0lRNDNaV3lVRnM5K0FzRHZtR0N1MDFpR0tlNjdidWNJVQ==
+      value: U1MzVHQ1WGNKdUhuY0s0OWlYNkhwTmNlRTQrekZhdytnd0ozVmtEMw==
 
