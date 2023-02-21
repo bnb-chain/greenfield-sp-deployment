@@ -1,10 +1,10 @@
 resources:
+  - ./devops
   - ./a
-  - ./dev-a
-  - ./dev-b
-  - ./dev-c
-  - ./dev-d
-  - ./dev-e
-  - ./dev-f
-  - ./dev-g
+  - ./b
+  - ./c
+  - ./d
+  - ./e
+  - ./f
+  - ./g
 

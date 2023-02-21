@@ -1,7 +1,7 @@
 bases:
   - ../../../base
 
-namespace: gf-sp-a
+namespace: gf-sp-g
 
 commonLabels:
     team: greenfield
@@ -31,10 +31,10 @@ patches:
   patch: |-
     - op: replace
       path: /spec/rules/0/host
-      value: gf-sp-dev-a-bk.dev.nodereal.cc
+      value: gf-sp-dev-g-bk.dev.nodereal.cc
     - op: replace
       path: /spec/rules/1/host
-      value: "*.gf-sp-dev-a-bk.dev.nodereal.cc"
+      value: "*.gf-sp-dev-g-bk.dev.nodereal.cc"
 
 patchesJson6902:
 - target:
@@ -76,7 +76,7 @@ patchesJson6902:
   patch: |-
     - op: replace
       path: /data/AK
-      value: QUtJQVZCTE1XN0FVQU5BS1FHM0c=
+      value: QUtJQVZCTE1XN0FVTk9FTTVaRVo=
 - target:
     version: v1
     kind: Secret
@@ -84,5 +84,5 @@ patchesJson6902:
   patch: |-
     - op: replace
       path: /data/SK
-      value: U1MzVHQ1WGNKdUhuY0s0OWlYNkhwTmNlRTQrekZhdytnd0ozVmtEMw==
+      value: WThYL3JkVWxWT0RaNXdzc1RLWkRvS0xjVFc5dXliMXpVcjdVc2Ftaw==
 
