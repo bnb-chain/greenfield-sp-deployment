@@ -1,0 +1,17 @@
+Service = [
+    "Signer"
+]
+
+[SignerCfg]
+    Address = "0.0.0.0:9633"
+    WhitelistCIDR = ["0.0.0.0/0"]
+    APIKey = ""
+    [SignerCfg.GreenfieldChainConfig]
+        GRPCAddr = "k8s-gnfd-gnfdvali-05c593a3c7-c5502bc443c42322.elb.ap-northeast-1.amazonaws.com:9090"
+        ChainID = "greenfield_9000-1741"
+        GasLimit = 210000
+        OperatorPrivateKey = "dd70005ac00b86bed8d543c32c3a1cbae98a6725ea2208cdda9184add78633c8"
+        FundingPrivateKey  = "6de8f034fc2c7c2685f88c13ac7d19752c3c09fb4202231c8a7e71747d3225da"
+        SealPrivateKey     = "72d0c0515ce4faa1a9e8165c3fb7411d2513dc7737737c308a5644630e959595"
+        ApprovalPrivateKey = "bc7189d7a0da8a1e69d573c9a40bc30d2fd0e676399e96f3e88aaa8cc74cf1ef"
+

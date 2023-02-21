@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: signer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: signer
+  template:
+    metadata:
+      labels:
+        app: signer
+    spec:
+      containers:
+      - name: signer
+        image: ghcr.io/bnb-chain/greenfield-storage-provider:v0.0.1-signer
+        resources:
+          limits:
+            cpu: "2"
+            memory: 4Gi
+          requests:
+            cpu: "2"
+            memory: 4Gi
+        ports:
+          - containerPort: 9633
+            name: signer
+        volumeMounts:
+        - mountPath: /config
+          name: config
+      imagePullSecrets:
+        - name: image-pull
+      volumes:
+        - name: config
+          configMap:
+            name: config-signer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: signer
+spec:
+  ports:
+  - port: 9633
+    targetPort: 9633
+    name: signer
+  selector:
+    app: signer
+---

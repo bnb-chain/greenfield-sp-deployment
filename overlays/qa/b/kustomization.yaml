@@ -24,7 +24,10 @@ configMapGenerator:
 - name: config-stonenode
   files:
   - configs/stonenode/config.toml
-
+- name: config-signer
+  files:
+  - configs/signer/config.toml
+  
 patches:
 - target:
     kind: Ingress
