@@ -1,0 +1,11 @@
+Service = [
+    "Metadata", 
+]
+
+[MetadataCfg]
+Address = "0.0.0.0:9733"
+MetaDBType = "mysqldb"
+[MetadataCfg.DBConfig]
+    Driver = "mysql"
+    ConnectionString = ""
+    EnableLog = true
