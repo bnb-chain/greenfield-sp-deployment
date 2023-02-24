@@ -6,7 +6,7 @@ Service = [
     Address = "0.0.0.1:9833"
     MetaDBType = "sqldb"
     [MetadataCfg.MetaSqlDBConfig]
-        User = "" #TBD
-        Passwd = "" #TBD
-        Address = "" #TBD
+        User = ""
+        Passwd = ""
+        Address = ""
         Database = "meta_db"

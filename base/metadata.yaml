@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: metadata
-        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.1-meta-alpha
+        image: ghcr.io/bnb-chain/greenfield-storage-provider:metadata-1
         resources:
           limits:
             cpu: "1"
