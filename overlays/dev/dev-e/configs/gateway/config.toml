@@ -1,9 +1,0 @@
-Service = [
-  "Gateway",
-]
-
-[GatewayCfg]
-    Address = "0.0.0.0:9033"
-    Domain = "gf-sp-dev-e-bk.dev.nodereal.cc"
-    UploaderServiceAddress = "uploader:9133"
-    DownloaderServiceAddress = "downloader:9233"

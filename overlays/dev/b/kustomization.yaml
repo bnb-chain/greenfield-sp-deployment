@@ -1,7 +1,7 @@
 bases:
   - ../../../base
 
-namespace: gf-sp-a
+namespace: gf-sp-b
 
 commonLabels:
     team: greenfield
@@ -23,9 +23,6 @@ configMapGenerator:
 - name: config-stonenode
   files:
   - configs/stonenode/config.toml
-- name: config-metadata
-  files:
-  - configs/metadata/config.toml
 
 patches:
 - target:
@@ -34,10 +31,10 @@ patches:
   patch: |-
     - op: replace
       path: /spec/rules/0/host
-      value: gf-sp-a-bk.dev.nodereal.cc
+      value: gf-sp-b-bk.dev.nodereal.cc
     - op: replace
       path: /spec/rules/1/host
-      value: "*.gf-sp-a-bk.dev.nodereal.cc"
+      value: "*.gf-sp-b-bk.dev.nodereal.cc"
 
 patchesJson6902:
 - target:
@@ -79,7 +76,7 @@ patchesJson6902:
   patch: |-
     - op: replace
       path: /data/AK
-      value: QUtJQVZCTE1XN0FVQU5BS1FHM0c=
+      value: QUtJQVZCTE1XN0FVTVNYRzZBSEY=
 - target:
     version: v1
     kind: Secret
@@ -87,5 +84,5 @@ patchesJson6902:
   patch: |-
     - op: replace
       path: /data/SK
-      value: U1MzVHQ1WGNKdUhuY0s0OWlYNkhwTmNlRTQrekZhdytnd0ozVmtEMw==
+      value: aXlXeHdGb1pPMzUwMUFHaUYrZXgydlBlMHVDakpaS1R3UFZ4K3RsTw==
 

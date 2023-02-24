@@ -9,4 +9,5 @@ resources:
   - uploader_downloader_challenge.yaml
   - sp_db.yaml
   - sp_s3.yaml
+  - metadata.yaml
 
