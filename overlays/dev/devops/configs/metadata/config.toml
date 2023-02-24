@@ -3,7 +3,7 @@ Service = [
 ]
 
 [MetadataCfg]
-    Address = "0.0.0.1:9833"
+    Address = "0.0.0.0:9833"
     MetaDBType = "sqldb"
     [MetadataCfg.MetaSqlDBConfig]
         User = ""
