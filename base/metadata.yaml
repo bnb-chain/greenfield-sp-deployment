@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: metadata
-        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.1-meta-alpha
+        image: ghcr.io/bnb-chain/greenfield-storage-provider:metadata-1
         resources:
           limits:
             cpu: "1"
@@ -23,7 +23,7 @@ spec:
             cpu: "1"
             memory: 2Gi
         ports:
-          - containerPort: 9733
+          - containerPort: 9833
             name: metadata
         volumeMounts:
         - mountPath: /config
@@ -41,8 +41,8 @@ metadata:
   name: metadata
 spec:
   ports:
-  - port: 9733
-    targetPort: 9733
+  - port: 9833
+    targetPort: 9833
     name: metadata
   selector:
     app: metadata
