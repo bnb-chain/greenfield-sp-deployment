@@ -23,6 +23,9 @@ configMapGenerator:
 - name: config-stonenode
   files:
   - configs/stonenode/config.toml
+- name: config-metadata
+  files:
+  - configs/metadata/config.toml
 
 patches:
 - target:
