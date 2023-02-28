@@ -5,7 +5,7 @@ Service = [
 [StoneNodeCfg]
     StorageProvider = "0xa35eD99A0b4D26Bf7F74DC9D81FbfAB6A7f103Df"
     Address = "0.0.0.0:9433"
-    GatewayAddress = ["gf-sp-b.bk.nodereal.cc", "gf-sp-c.bk.nodereal.cc", "gf-sp-d.bk.nodereal.cc", "gf-sp-e.bk.nodereal.cc", "gf-sp-f.bk.nodereal.cc", "gf-sp-g.bk.nodereal.cc"]
+    GatewayAddress = ["gateway.gf-sp-b.svc.cluster.local:9033", "gateway.gf-sp-c.svc.cluster.local:9033", "gateway.gf-sp-d.svc.cluster.local:9033", "gateway.gf-sp-e.svc.cluster.local:9033", "gateway.gf-sp-f.svc.cluster.local:9033", "gateway.gf-sp-g.svc.cluster.local:9033"]
     StoneHubServiceAddress = "stonehub:9333"
     StoneJobLimit = 64
     [StoneNodeCfg.PieceStoreConfig]
