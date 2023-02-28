@@ -3,12 +3,12 @@ Service = [
 ]
 
 [SyncerCfg]
-    StorageProvider = "bnb-sp"
+    StorageProvider = "0x70d1983A9A76C8d5d80c4cC13A801dc570890819"
     Address = "0.0.0.0:9533"
+    SignerServiceAddress = "signer:9633"
     MetaDBType = "mysql"
-    [SyncerCfg.PieceConfig.Store]
+    [SyncerCfg.PieceStoreConfig.Store]
         Storage = "s3"
-        BucketURL = "https://s3.us-east-1.amazonaws.com/tf-nodereal-qa-greenfield-sp-g"
         MaxRetries = 5
         TestMode = true
         NoSignRequest = false

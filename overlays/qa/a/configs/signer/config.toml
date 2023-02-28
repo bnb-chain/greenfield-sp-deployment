@@ -7,11 +7,10 @@ Service = [
     WhitelistCIDR = ["0.0.0.0/0"]
     APIKey = ""
     [SignerCfg.GreenfieldChainConfig]
-        GRPCAddr = "k8s-gnfd-gnfdvali-05c593a3c7-c5502bc443c42322.elb.ap-northeast-1.amazonaws.com:9090"
+        GRPCAddr = "gnfd-grpc-plaintext.qa.bnbchain.world:9090"
         ChainID = "greenfield_9000-1741"
         GasLimit = 210000
-        OperatorPrivateKey = "724658713c75b94aef5f5bb136f797734b428a58473c58d610228555ae3233c1"
-        FundingPrivateKey  = "f33160fc845f500956b1b932df2dbe65e9a312d18e64544eb994d59843a25247"
-        SealPrivateKey     = "5611b918567ab75138b5945f651bdf2bb1e07cebf6bb1165f20a4ea4a9362d70"
-        ApprovalPrivateKey = "83a2d2da8df839eca69be560b3cd9fb3918c4827c84ef9dc5bf589771db338dd"
-
+        OperatorPrivateKey = "de8132229e64759aeaf587636990e9832840db7eae85741919eb70f45558d214"
+        FundingPrivateKey  = "628b04ed3ccaea6ed3565ef73c1e05a8d97ef12234a8f86ada93c9d0d8c5e577"
+        SealPrivateKey     = "f040ed7fea80f51b5d5ae9d7c25412db98ce6590867210b93452342948daf6af"
+        ApprovalPrivateKey = "d1c59d6a639bea645fd555f1365c72a021de090cdd27ff6027052176e6ca5fd0"

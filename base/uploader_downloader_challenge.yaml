@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: uploader-downloader-challenge
-        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.1
+        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.2
         env:
           - name: AWS_ACCESS_KEY
             valueFrom:
@@ -43,6 +43,11 @@ spec:
               secretKeyRef:
                 key: MDP
                 name: sp-db
+          - name: BUCKET_URL
+            valueFrom:
+              secretKeyRef:
+                key: BUCKET_URL
+                name: sp-s3
         resources:
           limits:
             cpu: "3"
@@ -55,7 +60,7 @@ spec:
             name: uploader
           - containerPort: 9233
             name: downloader
-          - containerPort: 9033
+          - containerPort: 9733
             name: challenge
         volumeMounts:
         - mountPath: /config
@@ -97,8 +102,8 @@ metadata:
   name: challenge
 spec:
   ports:
-  - port: 9033
-    targetPort: 9033
+  - port: 9733
+    targetPort: 9733
     name: challenge
   selector:
     app: uploader-downloader-challenge

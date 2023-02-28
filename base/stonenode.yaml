@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: stonenode
-        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.1
+        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.2
         env:
           - name: AWS_ACCESS_KEY
             valueFrom:
@@ -30,6 +30,11 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: ST
+                name: sp-s3
+          - name: BUCKET_URL
+            valueFrom:
+              secretKeyRef:
+                key: BUCKET_URL
                 name: sp-s3
         resources:
           limits:

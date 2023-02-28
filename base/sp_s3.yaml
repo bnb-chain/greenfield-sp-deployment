@@ -3,6 +3,7 @@ data:
   AK: base64-encoded-string
   SK: base64-encoded-string
   ST: ""
+  BUCKET_URL: base64-encoded-string
 kind: Secret
 metadata:
   name: sp-s3

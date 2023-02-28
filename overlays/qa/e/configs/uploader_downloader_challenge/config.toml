@@ -3,22 +3,23 @@ Service = [
 ]
 
 [UploaderCfg]
-    StorageProvider = "bnb-sp"
+    StorageProvider = "0xC117E319CE0C54C1C5F0e3E59B6647c5a5F0c3a8"
     Address = "0.0.0.0:9133"
     StoneHubServiceAddress = "stonehub:9333"
-    MetaDBType = "mysql"
     [UploaderCfg.PieceStoreConfig]
         Shards = 0
         [UploaderCfg.PieceStoreConfig.Store]
             Storage = "S3"
-            BucketURL = "https://s3.us-east-1.amazonaws.com/tf-nodereal-qa-greenfield-sp-e"
             MaxRetries = 5
             TestMode = true
             NoSignRequest = false
             TlsInsecureSkipVerify = false
-    [UploaderCfg.MetaSqlDBConfig]
-        Address = "greenfield-sp-qa-e-cluster.cluster-cb6vaj1ctcqk.us-east-1.rds.amazonaws.com:3306"
-        Database = "meta_db"
+    [UploaderCfg.ChainConfig]
+        ChainID = "greenfield_9000-1741"
+        [[UploaderCfg.ChainConfig.NodeAddr]]
+            GreenfieldAddrs = ["gnfd-grpc-plaintext.qa.bnbchain.world:9090"]
+            TendermintAddrs = ["https://gnfd.qa.bnbchain.world:443"]
+
 
 [DownloaderCfg]
     Address = "0.0.0.0:9233"
@@ -26,25 +27,29 @@ Service = [
         Shards = 0
         [DownloaderCfg.PieceStoreConfig.Store]
             Storage = "S3"
-            BucketURL = "https://s3.us-east-1.amazonaws.com/tf-nodereal-qa-greenfield-sp-e"
             MaxRetries = 5
             TestMode = true
             NoSignRequest = false
             TlsInsecureSkipVerify = false
+    [DownloaderCfg.ChainConfig]
+        ChainID = "greenfield_9000-1741"
+        [[DownloaderCfg.ChainConfig.NodeAddr]]
+            GreenfieldAddrs = ["gnfd-grpc-plaintext.qa.bnbchain.world:9090"]
+            TendermintAddrs = ["https://gnfd.qa.bnbchain.world:443"]
+
 
 [ChallengeCfg]
-    Address = "0.0.0.0:9033"
-    StorageProvider = "bnb-sp"
+    StorageProvider = "0xC117E319CE0C54C1C5F0e3E59B6647c5a5F0c3a8"
+    Address = "0.0.0.0:9733"
     MetaDBType = "mysql"
-    [ChallengeCfg.MetaSqlDBConfig]
-        Address = "greenfield-sp-qa-e-cluster.cluster-cb6vaj1ctcqk.us-east-1.rds.amazonaws.com:3306"
-        Database = "job_db"
-    [ChallengeCfg.PieceConfig]
+    [ChallengeCfg.PieceStoreConfig]
         Shards = 0
-        [ChallengeCfg.PieceConfig.Store]
+        [ChallengeCfg.PieceStoreConfig.Store]
             Storage = "s3"
-            BucketURL = "https://s3.us-east-1.amazonaws.com/tf-nodereal-qa-greenfield-sp-e"
             MaxRetries = 5
             TestMode = true
             NoSignRequest = false
             TlsInsecureSkipVerify = false
+    [ChallengeCfg.MetaSqlDBConfig]
+        Address = "greenfield-sp-qa-e-cluster.cluster-cb6vaj1ctcqk.us-east-1.rds.amazonaws.com:3306"
+        Database = "meta_db"
