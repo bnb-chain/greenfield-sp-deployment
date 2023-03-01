@@ -3,7 +3,16 @@ Service = [
 ]
 
 [GatewayCfg]
+    StorageProvider = "0x5f35A1c1366A1c9e17B71C772C4D73fb688463c7"
     Address = "0.0.0.0:9033"
     Domain = "gf-sp-d-bk.dev.nodereal.cc"
     UploaderServiceAddress = "uploader:9133"
     DownloaderServiceAddress = "downloader:9233"
+    SyncerServiceAddress = "syncer:9533"
+    SignerServiceAddress = "signer:9633"
+    ChallengeServiceAddress = "challenge:9733"
+    [GatewayCfg.ChainConfig]
+        ChainID = "greenfield_9000-1741"
+        [[GatewayCfg.ChainConfig.NodeAddr]]
+            GreenfieldAddrs = ["gnfd-grpc-plaintext-dev.bnbchain.world:9090"]
+            TendermintAddrs = ["https://gnfd-dev.bnbchain.world:443"]

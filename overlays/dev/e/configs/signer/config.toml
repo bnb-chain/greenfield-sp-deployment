@@ -1,0 +1,17 @@
+Service = [
+    "Signer"
+]
+
+[SignerCfg]
+    Address = "0.0.0.0:9633"
+    WhitelistCIDR = ["0.0.0.0/0"]
+    APIKey = ""
+    [SignerCfg.GreenfieldChainConfig]
+        GRPCAddr = "gnfd-grpc-plaintext-dev.bnbchain.world:9090"
+        ChainID = "greenfield_9000-1741"
+        GasLimit = 210000
+
+        OperatorPrivateKey = "253f22f8c1d8c00a890f3c850e6816bc8c8f74f3c0125b638b5b2351e1ae7318"
+        FundingPrivateKey  = "d89f6e282201e22278cb40af96aadade60603972037149cc9f21823c4c817a90"
+        SealPrivateKey     = "d0537c39d3bb25281938662c9c19398b8e02c642e38f2d45ba709a78f8d58654"
+        ApprovalPrivateKey = "f79c2789fcdfaff309c0c5a85d647686babfef002ebba72088b544e7883e3f06"

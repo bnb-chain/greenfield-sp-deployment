@@ -88,4 +88,11 @@ patchesJson6902:
     - op: replace
       path: /data/SK
       value: NE9GcVFBWW9ZUWVYQ2ppOVpMR0JHWU9RVTFyeVBwa3QrQ3BUa0REaw==
-
+- target:
+    version: v1
+    kind: Secret
+    name: sp-s3
+  patch: |-
+    - op: replace
+      path: /data/BUCKET_URL
+      value: aHR0cHM6Ly9zMy5hcC1ub3J0aGVhc3QtMS5hbWF6b25hd3MuY29tL3RmLW5vZGVyZWFsLWRldi1ncmVlbmZpZWxkLXNwLWM=
