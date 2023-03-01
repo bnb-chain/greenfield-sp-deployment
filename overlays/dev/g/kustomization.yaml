@@ -26,6 +26,9 @@ configMapGenerator:
 - name: config-metadata
   files:
   - configs/metadata/config.toml
+- name: config-signer
+  files:
+  - configs/signer/config.toml
 
 patches:
 - target:
