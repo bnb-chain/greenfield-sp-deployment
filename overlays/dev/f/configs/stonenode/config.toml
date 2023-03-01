@@ -3,16 +3,14 @@ Service = [
 ]
 
 [StoneNodeCfg]
-    StorageProvider = "bnb-sp"
+    StorageProvider = "0xFa0818380f257cd0D25B0FB25f726D80a6B547e2"
     Address = "0.0.0.0:9433"
+    GatewayAddress = ["gateway.gf-sp-a.svc.cluster.local:9033", "gateway.gf-sp-b.svc.cluster.local:9033", "gateway.gf-sp-c.svc.cluster.local:9033", "gateway.gf-sp-d.svc.cluster.local:9033", "gateway.gf-sp-e.svc.cluster.local:9033", "gateway.gf-sp-g.svc.cluster.local:9033"]
     StoneHubServiceAddress = "stonehub:9333"
-    SyncerServiceAddress = ["syncer.gf-sp-a.svc.cluster.local:9533","syncer.gf-sp-b.svc.cluster.local:9533",
-                            "syncer.gf-sp-c.svc.cluster.local:9533","syncer.gf-sp-d.svc.cluster.local:9533",
-                            "syncer.gf-sp-e.svc.cluster.local:9533","syncer.gf-sp-g.svc.cluster.local:9533",]
     StoneJobLimit = 64
-    [StoneNodeCfg.PieceConfig]
+    [StoneNodeCfg.PieceStoreConfig]
         Shards = 0
-        [StoneNodeCfg.PieceConfig.Store]
+        [StoneNodeCfg.PieceStoreConfig.Store]
             Storage = "s3"
             BucketURL = "https://s3.ap-northeast-1.amazonaws.com/tf-nodereal-dev-greenfield-sp-f"
             MaxRetries = 5
