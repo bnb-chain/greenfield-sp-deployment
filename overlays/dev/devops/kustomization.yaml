@@ -52,13 +52,6 @@ patches:
       path: /metadata/annotations/eks.amazonaws.com~1role-arn
       value: arn:aws:iam::346509735976:role/tf-nodereal-dev-greenfield-sp-devops-role
 - target:
-    kind: RoleBinding
-    name: gf-sp-rolebinding
-  patch: |-
-    - op: replace
-      path: /subjects/0/name
-      value: gf-sp-devops-credential-sa
-- target:
     kind: SecretStore
     name: gf-sp-secret-store
   patch: |-
