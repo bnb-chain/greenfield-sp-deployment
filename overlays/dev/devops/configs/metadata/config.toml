@@ -4,3 +4,9 @@ Service = [
 
 [MetadataCfg]
     Address = "0.0.0.0:9833"
+    MetaDBType = "mysql"
+    [MetadataCfg.MetaSqlDBConfig]
+        User = ""
+        Passwd = ""
+        Address = "127.0.0.1:3306"
+        Database = "meta_db"
