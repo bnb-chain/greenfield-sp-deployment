@@ -27,10 +27,7 @@ spec:
                 key: SK
                 name: gf-sp-aws-secret
           - name: AWS_SESSION_TOKEN
-            valueFrom:
-              secretKeyRef:
-                key: ST
-                name: gf-sp-aws-secret
+            value: ""
           - name: BUCKET_URL
             valueFrom:
               secretKeyRef:
