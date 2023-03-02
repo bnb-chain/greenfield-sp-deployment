@@ -7,8 +7,6 @@ resources:
   - gateway.yaml
   - signer.yaml
   - uploader_downloader_challenge.yaml
-  - sp_db.yaml
-  - sp_s3.yaml
   - metadata.yaml
   - sp_service_account.yaml
   # - sp_role.yaml

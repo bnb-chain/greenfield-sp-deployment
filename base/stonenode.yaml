@@ -20,22 +20,22 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: AK
-                name: sp-s3
+                name: gf-sp-aws-secret
           - name: AWS_SECRET_KEY
             valueFrom:
               secretKeyRef:
                 key: SK
-                name: sp-s3
+                name: gf-sp-aws-secret
           - name: AWS_SESSION_TOKEN
             valueFrom:
               secretKeyRef:
                 key: ST
-                name: sp-s3
+                name: gf-sp-aws-secret
           - name: BUCKET_URL
             valueFrom:
               secretKeyRef:
                 key: BUCKET_URL
-                name: sp-s3
+                name: gf-sp-aws-secret
         resources:
           limits:
             cpu: "2"
