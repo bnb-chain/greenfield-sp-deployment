@@ -42,61 +42,51 @@ patches:
     - op: replace
       path: /spec/rules/1/host
       value: "*.gf-sp-d.bk.nodereal.cc"
-
-patchesJson6902:
 - target:
-    version: v1
-    kind: Secret
-    name: sp-db
+    kind: ServiceAccount
+    name: patch-me-sa
   patch: |-
     - op: replace
-      path: /data/MDU
-      value: Z3JlZW5maWVsZA==
+      path: /metadata/name
+      value: gf-sp-d-credential-sa
+    - op: replace
+      path: /metadata/annotations/eks.amazonaws.com~1role-arn
+      value: arn:aws:iam::346509735976:role/tf-nodereal-qa-greenfield-sp-d-role
 - target:
-    version: v1
-    kind: Secret
-    name: sp-db
+    kind: SecretStore
+    name: gf-sp-secret-store
   patch: |-
     - op: replace
-      path: /data/MDP
-      value: MDJhTVU0bWlHY2RHWlJmYg==
+      path: /spec/provider/aws/region
+      value: us-east-1
+    - op: replace
+      path: /spec/provider/aws/auth/jwt/serviceAccountRef/name
+      value: gf-sp-d-credential-sa
 - target:
-    version: v1
-    kind: Secret
-    name: sp-db
+    kind: ExternalSecret
+    name: gf-sp-es
   patch: |-
     - op: replace
-      path: /data/JDU
-      value: Z3JlZW5maWVsZA==
-- target:
-    version: v1
-    kind: Secret
-    name: sp-db
-  patch: |-
+      path: /spec/data/0/remoteRef/key
+      value: /qa/greenfield/sp/RDS_USER
     - op: replace
-      path: /data/JDP
-      value: MDJhTVU0bWlHY2RHWlJmYg==
-- target:
-    version: v1
-    kind: Secret
-    name: sp-s3
-  patch: |-
+      path: /spec/data/1/remoteRef/key
+      value: /qa/greenfield/sp/RDS_PASSWORD
     - op: replace
-      path: /data/AK
-      value: QUtJQVZCTE1XN0FVTklYTk5CSVI=
-- target:
-    version: v1
-    kind: Secret
-    name: sp-s3
-  patch: |-
+      path: /spec/data/2/remoteRef/key
+      value: /qa/greenfield/sp/RDS_USER
     - op: replace
-      path: /data/SK
-      value: bko2TGNRclRqQU5QNzJvSVc3djhzUGVpUlJOMVFjZWNjL1BZMVk0Wg==
-- target:
-    version: v1
-    kind: Secret
-    name: sp-s3
-  patch: |-
+      path: /spec/data/3/remoteRef/key
+      value: /qa/greenfield/sp/RDS_PASSWORD
     - op: replace
-      path: /data/BUCKET_URL
-      value: aHR0cHM6Ly9zMy51cy1lYXN0LTEuYW1hem9uYXdzLmNvbS90Zi1ub2RlcmVhbC1xYS1ncmVlbmZpZWxkLXNwLWQ=
+      path: /spec/data/4/remoteRef/key
+      value: /qa/greenfield/gf-sp-d/AWS_ACCESS_KEY
+    - op: replace
+      path: /spec/data/5/remoteRef/key
+      value: /qa/greenfield/gf-sp-d/AWS_SECRET_KEY
+    - op: replace
+      path: /spec/data/6/remoteRef/key
+      value: /qa/greenfield/gf-sp-d/AWS_BUCKET_URL
+    - op: replace
+      path: /spec/data/7/remoteRef/key
+      value: /qa/greenfield/gf-sp-d/BLOCK_SYNCER_DSN
