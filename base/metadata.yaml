@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: metadata
-        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.2
+        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.2-fix
         imagePullPolicy: Always
         env:
           - name: Metadata_Service_DSN

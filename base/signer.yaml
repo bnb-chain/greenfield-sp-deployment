@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: signer
-        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.2
+        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.2-fix
         resources:
           limits:
             cpu: "2"

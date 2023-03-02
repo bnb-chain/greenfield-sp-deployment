@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: syncer
-        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.2
+        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.2-fix
         env:
           - name: AWS_ACCESS_KEY
             valueFrom:
