@@ -46,6 +46,14 @@ patchesJson6902:
 - target:
     version: v1
     kind: Secret
+    name: sp-db-block-syncer
+  patch: |-
+    - op: replace
+      path: /data/sp-db-block-syncer
+      value: Z3JlZW5maWVsZDowMmFNVTRtaUdjZEdaUmZiQGdyZWVuZmllbGQtc3AtZGV2LWctY2x1c3Rlci5jbHVzdGVyLWNudmh3eWR3czZ3Yy5hcC1ub3J0aGVhc3QtMS5yZHMuYW1hem9uYXdzLmNvbS9ibG9jay1zeW5jZXI/cGFyc2VUaW1lPXRydWUmbXVsdGlTdGF0ZW1lbnRzPXRydWUmbG9jPUxvY2Fs
+- target:
+    version: v1
+    kind: Secret
     name: sp-db
   patch: |-
     - op: replace
