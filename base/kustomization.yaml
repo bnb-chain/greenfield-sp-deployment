@@ -10,4 +10,6 @@ resources:
   - sp_db.yaml
   - sp_s3.yaml
   - metadata.yaml
-
+  - sp_service_account.yaml
+  # - sp_role.yaml
+  - sp_external_secret.yaml
