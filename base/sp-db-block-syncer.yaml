@@ -1,8 +1,0 @@
-apiVersion: v1
-data:
-  BLOCK_SYNCER_DSN: base64-encoded-string
-kind: Secret
-metadata:
-  name: sp-db-block-syncer
-  namespace: greenfield-sp
-type: Opaque
