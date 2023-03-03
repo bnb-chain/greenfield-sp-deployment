@@ -7,7 +7,72 @@ resources:
   - ./e
   - ./f
   - ./g
-images:
-- name: ghcr.io/bnb-chain/greenfield-storage-provider
-  # newName: my.image.registry/nginx
-  newTag: 0.0.2-fix
+# images:
+# - name: ghcr.io/bnb-chain/greenfield-storage-provider
+#   # newName: my.image.registry/nginx
+#   newTag: 0.0.2-fix
+patchesJson6902:
+- target:
+    version: v1
+    kind: Deployment
+    name: block-syncer
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: ghcr.io/bnb-chain/greenfield-storage-provider:block-syncer-dev-env-2023-03-02
+- target:
+    version: v1
+    kind: Deployment
+    name: gateway
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.2-fix
+- target:
+    version: v1
+    kind: Deployment
+    name: metadata
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.2-fix
+- target:
+    version: v1
+    kind: Deployment
+    name: signer
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.2-fix
+- target:
+    version: v1
+    kind: StatefulSet
+    name: stonehub
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.2-fix
+- target:
+    version: v1
+    kind: Deployment
+    name: stonenode
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.2-fix
+- target:
+    version: v1
+    kind: Deployment
+    name: syncer
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.2-fix
+- target:
+    version: v1
+    kind: Deployment
+    name: uploader-downloader-challenge
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.2-fix

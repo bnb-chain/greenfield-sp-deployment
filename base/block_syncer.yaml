@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: block-syncer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: block-syncer
+  template:
+    metadata:
+      labels:
+        app: block-syncer
+    spec:
+      containers:
+      - name: block-syncer
+        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.2
+        # imagePullPolicy: Always
+        env:
+          - name: Metadata_Service_DSN
+            valueFrom:
+              secretKeyRef:
+                key: BLOCK_SYNCER_DSN
+                name: gf-sp-aws-secret
+        resources:
+          limits:
+            cpu: "1"
+            memory: 2Gi
+          requests:
+            cpu: "1"
+            memory: 2Gi
+        ports:
+          - containerPort: 9833
+            name: block-syncer
+        volumeMounts:
+        - mountPath: /config
+          name: config
+      imagePullSecrets:
+        - name: image-pull
+      volumes:
+        - name: config
+          configMap:
+            name: config-block-syncer
+
