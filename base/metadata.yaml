@@ -21,7 +21,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: BLOCK_SYNCER_DSN
-                name: sp-db-block-syncer
+                name: gf-sp-aws-secret
         resources:
           limits:
             cpu: "1"

@@ -41,69 +41,51 @@ patches:
     - op: replace
       path: /spec/rules/1/host
       value: "*.gf-sp-e-bk.dev.nodereal.cc"
-
-patchesJson6902:
 - target:
-    version: v1
-    kind: Secret
-    name: sp-db-block-syncer
+    kind: ServiceAccount
+    name: patch-me-sa
   patch: |-
     - op: replace
-      path: /data/sp-db-block-syncer
-      value: Z3JlZW5maWVsZDowMmFNVTRtaUdjZEdaUmZiQGdyZWVuZmllbGQtc3AtZGV2LWUtY2x1c3Rlci5jbHVzdGVyLWNudmh3eWR3czZ3Yy5hcC1ub3J0aGVhc3QtMS5yZHMuYW1hem9uYXdzLmNvbS9ibG9jay1zeW5jZXI/cGFyc2VUaW1lPXRydWUmbXVsdGlTdGF0ZW1lbnRzPXRydWUmbG9jPUxvY2Fs
+      path: /metadata/name
+      value: gf-sp-e-credential-sa
+    - op: replace
+      path: /metadata/annotations/eks.amazonaws.com~1role-arn
+      value: arn:aws:iam::346509735976:role/tf-nodereal-dev-greenfield-sp-e-role
 - target:
-    version: v1
-    kind: Secret
-    name: sp-db
+    kind: SecretStore
+    name: gf-sp-secret-store
   patch: |-
     - op: replace
-      path: /data/MDU
-      value: Z3JlZW5maWVsZA==
+      path: /spec/provider/aws/region
+      value: ap-northeast-1
+    - op: replace
+      path: /spec/provider/aws/auth/jwt/serviceAccountRef/name
+      value: gf-sp-e-credential-sa
 - target:
-    version: v1
-    kind: Secret
-    name: sp-db
+    kind: ExternalSecret
+    name: gf-sp-es
   patch: |-
     - op: replace
-      path: /data/MDP
-      value: MDJhTVU0bWlHY2RHWlJmYg==
-- target:
-    version: v1
-    kind: Secret
-    name: sp-db
-  patch: |-
+      path: /spec/data/0/remoteRef/key
+      value: /dev/greenfield/sp/RDS_USER
     - op: replace
-      path: /data/JDU
-      value: Z3JlZW5maWVsZA==
-- target:
-    version: v1
-    kind: Secret
-    name: sp-db
-  patch: |-
+      path: /spec/data/1/remoteRef/key
+      value: /dev/greenfield/sp/RDS_PASSWORD
     - op: replace
-      path: /data/JDP
-      value: MDJhTVU0bWlHY2RHWlJmYg==
-- target:
-    version: v1
-    kind: Secret
-    name: sp-s3
-  patch: |-
+      path: /spec/data/2/remoteRef/key
+      value: /dev/greenfield/sp/RDS_USER
     - op: replace
-      path: /data/AK
-      value: QUtJQVZCTE1XN0FVT1UzTE5ONlI=
-- target:
-    version: v1
-    kind: Secret
-    name: sp-s3
-  patch: |-
+      path: /spec/data/3/remoteRef/key
+      value: /dev/greenfield/sp/RDS_PASSWORD
     - op: replace
-      path: /data/SK
-      value: WHRsamx3a0RCejRiSlFpUVYyT1pQYjhXcTIyMElCcjV5REpKSlZySg==
-- target:
-    version: v1
-    kind: Secret
-    name: sp-s3
-  patch: |-
+      path: /spec/data/4/remoteRef/key
+      value: /dev/greenfield/gf-sp-e/AWS_ACCESS_KEY
     - op: replace
-      path: /data/BUCKET_URL
-      value: aHR0cHM6Ly9zMy5hcC1ub3J0aGVhc3QtMS5hbWF6b25hd3MuY29tL3RmLW5vZGVyZWFsLWRldi1ncmVlbmZpZWxkLXNwLWU=
+      path: /spec/data/5/remoteRef/key
+      value: /dev/greenfield/gf-sp-e/AWS_SECRET_KEY
+    - op: replace
+      path: /spec/data/6/remoteRef/key
+      value: /dev/greenfield/gf-sp-e/AWS_BUCKET_URL
+    - op: replace
+      path: /spec/data/7/remoteRef/key
+      value: /dev/greenfield/gf-sp-e/BLOCK_SYNCER_DSN
