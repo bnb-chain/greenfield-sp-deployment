@@ -1,0 +1,32 @@
+[BlockSyncerCfg]
+    [BlockSyncerCfg.Chain]
+    Bech32Prefix = "cosmos"
+    Modules = [ "block", "bucket", "object", ]
+
+[BlockSyncerCfg.Node]
+    Type = "remote"
+    [BlockSyncerCfg.Node.RPC]
+        ClientName = "juno"
+        Address = "https://gnfd-dev.bnbchain.world:443"
+        MaxConnections = 20
+    [BlockSyncerCfg.Node.GRPC]
+        Insecure = true
+        Address = "gnfd-grpc-plaintext-dev.bnbchain.world:9090"
+
+    [BlockSyncerCfg.Parser]
+        FastSync = false
+        ParseGenesis = true
+        ParseOldBlocks = true
+        ParseNewBlocks = true
+        StartHeight = 1
+        Workers = 1
+        WorkerType = "blocksyncer"
+
+    [BlockSyncerCfg.Database]
+        Type = "mysql"
+        PartitionSize = 10_000
+        MaxIdleConnections = 1
+        MaxOpenConnections = 1
+
+    [BlockSyncerCfg.Logging]
+        Level = "debug"

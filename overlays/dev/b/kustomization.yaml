@@ -29,6 +29,9 @@ configMapGenerator:
 - name: config-signer
   files:
   - configs/signer/config.toml
+- name: config-block-syncer
+  files:
+  - configs/block_syncer/config.toml
 
 patches:
 - target:

@@ -8,5 +8,6 @@ resources:
   - signer.yaml
   - uploader_downloader_challenge.yaml
   - metadata.yaml
+  - block_syncer.yaml
   - sp_service_account.yaml
   - sp_external_secret.yaml
