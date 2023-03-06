@@ -77,3 +77,21 @@
 
 - TODO:
 
+## Credential maintainance
+greenfield SP is using external secret to read credentials from aws secret manager for security
+
+- create aws secret manager with terraform
+refer to https://git.toolsfdg.net/nodereal/terraform-nodereal-qa/tree/main/__modules/projects/greenfield#how-to-update-usernamepassword-for-rds
+
+- create aws iam role to read secret from aws secret manager
+refer to https://git.toolsfdg.net/nodereal/terraform-nodereal-qa/blob/main/__modules/projects/greenfield/sp/iam.tf#L58
+
+- create service account
+refer to sp_service_account.yaml
+
+- create external secret and secret store to read credential from aws with service account
+refer to sp_external_secret.yaml 
+
+ExternalSecret:
+* read secret from aws with service account by secret key name: https://git.toolsfdg.net/nodereal/greenfield-sp-k8s/blob/main/overlays/dev/a/kustomization.yaml#L94
+* create k8s secret automatically
