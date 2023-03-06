@@ -59,6 +59,9 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-read-timeout: "10"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "10"
     nginx.ingress.kubernetes.io/proxy-body-size: "2048m"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "X-Gnfd-Unsigned-Msg,X-Gnfd-Txn-Hash,Date,X-Gnfd-Object-ID,X-Gnfd-Piece-Index,X-Gnfd-Redundancy-Index"
+    nginx.ingress.kubernetes.io/cors-expose-headers: "*, X-Gnfd-Request-ID,,X-Gnfd-Signed-Msg,X-Gnfd-Object-ID,X-Gnfd-Integrity-Hash,X-Gnfd-Piece-Hash"
+    nginx.ingress.kubernetes.io/enable-cors: "true"
   name: gateway
 spec:
   rules:
