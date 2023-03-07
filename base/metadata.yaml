@@ -17,10 +17,20 @@ spec:
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.2
         imagePullPolicy: Always
         env:
-          - name: Metadata_Service_DSN
+          # - name: Metadata_Service_DSN
+          #   valueFrom:
+          #     secretKeyRef:
+          #       key: BLOCK_SYNCER_DSN
+          #       name: gf-sp-aws-secret
+          - name: BLOCK_SYNCER_DB_USER
             valueFrom:
               secretKeyRef:
-                key: BLOCK_SYNCER_DSN
+                key: MDU
+                name: gf-sp-aws-secret
+          - name: BLOCK_SYNCER_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: MDP
                 name: gf-sp-aws-secret
         resources:
           limits:

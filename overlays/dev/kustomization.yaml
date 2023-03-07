@@ -27,7 +27,7 @@ patchesJson6902:
   patch: |-
     - op: replace
       path: /spec/template/spec/containers/0/image
-      value: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.2-fix
+      value: ghcr.io/bnb-chain/greenfield-storage-provider:metadata-dev-env-2023-03-07
 - target:
     version: v1
     kind: Deployment
@@ -35,7 +35,7 @@ patchesJson6902:
   patch: |-
     - op: replace
       path: /spec/template/spec/containers/0/image
-      value: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.2-fix
+      value: ghcr.io/bnb-chain/greenfield-storage-provider:metadata-dev-env-2023-03-07
 - target:
     version: v1
     kind: Deployment
