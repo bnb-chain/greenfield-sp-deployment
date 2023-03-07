@@ -15,7 +15,7 @@ spec:
       containers:
       - name: block-syncer
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.2
-        # imagePullPolicy: Always
+        imagePullPolicy: Always
         env:
           - name: BLOCK_SYNCER_DSN
             valueFrom:
