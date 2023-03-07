@@ -19,7 +19,7 @@ patchesJson6902:
   patch: |-
     - op: replace
       path: /spec/template/spec/containers/0/image
-      value: ghcr.io/bnb-chain/greenfield-storage-provider:block-syncer-dev-env-2023-03-02
+      value: ghcr.io/bnb-chain/greenfield-storage-provider:block-syncer-dev-env-latest
 - target:
     version: v1
     kind: Deployment
