@@ -8,5 +8,5 @@ Service = [
     [MetadataCfg.MetaSqlDBConfig]
         User = ""
         Passwd = ""
-        Address = "127.0.0.1:3306"
-        Database = "meta_db"
+        Address = "greenfield-sp-dev-d-cluster.cluster-cnvhwydws6wc.ap-northeast-1.rds.amazonaws.com:3306"
+        Database = "block_syncer"
