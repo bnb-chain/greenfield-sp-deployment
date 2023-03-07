@@ -15,6 +15,7 @@ spec:
       containers:
       - name: gateway
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.2
+        imagePullPolicy: Always
         resources:
           limits:
             cpu: "2"
