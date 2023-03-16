@@ -2,7 +2,6 @@ resources:
   - namespace.yaml
   - imagepullsecret.yaml
   - syncer.yaml
-  - stonehub.yaml
   - stonenode.yaml
   - gateway.yaml
   - signer.yaml
@@ -11,3 +10,5 @@ resources:
   - block_syncer.yaml
   - sp_service_account.yaml
   - sp_external_secret.yaml
+  - manager.yaml
+  - ingress.yaml

@@ -14,15 +14,32 @@ spec:
     spec:
       containers:
       - name: gateway
-        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.2
+        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
+        args: ["--log.std", "-c", "/config/config.toml", "-server", "gateway"]
         imagePullPolicy: Always
+        env:
+          - name: SP_DB_USER
+            valueFrom:
+              secretKeyRef:
+                key: MDU
+                name: gf-sp-aws-secret
+          - name: SP_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: MDP
+                name: gf-sp-aws-secret
+          - name: SP_DB_ADDRESS
+            valueFrom:
+              secretKeyRef:
+                key: SP_DB_ADDRESS
+                name: gf-sp-aws-secret
         resources:
           limits:
             cpu: "2"
             memory: 4Gi
           requests:
-            cpu: "2"
-            memory: 4Gi
+            cpu: "1"
+            memory: 2Gi
         ports:
           - containerPort: 9033
             name: gateway
@@ -47,43 +64,3 @@ spec:
     name: gateway
   selector:
     app: gateway
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  annotations:
-    external-dns.alpha.kubernetes.io/ingress-hostname-source: "annotation-only"
-    nginx.ingress.kubernetes.io/use-regex: "true"
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/connection-proxy-header: ""
-    nginx.ingress.kubernetes.io/proxy-connect-timeout: "10"
-    nginx.ingress.kubernetes.io/proxy-read-timeout: "10"
-    nginx.ingress.kubernetes.io/proxy-send-timeout: "10"
-    nginx.ingress.kubernetes.io/proxy-body-size: "2048m"
-    nginx.ingress.kubernetes.io/cors-allow-headers: "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization,X-Gnfd-Unsigned-Msg,X-Gnfd-Txn-Hash,Date,X-Gnfd-Object-ID,X-Gnfd-Piece-Index,X-Gnfd-Redundancy-Index,Address"
-    nginx.ingress.kubernetes.io/cors-expose-headers: "*, X-Gnfd-Request-ID,X-Gnfd-Signed-Msg,X-Gnfd-Object-ID,X-Gnfd-Integrity-Hash,X-Gnfd-Piece-Hash"
-    nginx.ingress.kubernetes.io/enable-cors: "true"
-  name: gateway
-spec:
-  rules:
-    - host: patch-me.bk.nodereal.cc
-      http:
-        paths:
-          - backend:
-              service:
-                name: gateway
-                port:
-                  number: 9033
-            path: /
-            pathType: ImplementationSpecific
-    - host: "replaceme.*.bk.nodereal.cc"
-      http:
-        paths:
-        - backend:
-            service:
-              name: gateway
-              port:
-                number: 9033
-          path: /
-          pathType: ImplementationSpecific
-

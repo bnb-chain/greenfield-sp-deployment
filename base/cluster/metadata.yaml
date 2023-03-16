@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
       - name: metadata
-        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.2
+        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
+        args: ["--log.std", "-c", "/config/config.toml", "-server", "metadata"]
         imagePullPolicy: Always
         env:
           # - name: Metadata_Service_DSN
@@ -32,6 +33,23 @@ spec:
               secretKeyRef:
                 key: MDP
                 name: gf-sp-aws-secret
+          - name: SP_DB_USER
+            valueFrom:
+              secretKeyRef:
+                key: MDU
+                name: gf-sp-aws-secret
+          - name: SP_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: MDP
+                name: gf-sp-aws-secret
+          - name: SP_DB_ADDRESS
+            valueFrom:
+              secretKeyRef:
+                key: SP_DB_ADDRESS
+                name: gf-sp-aws-secret
+          - name: SP_DB_DATABASE
+            value: "block_syncer"
         resources:
           limits:
             cpu: "1"

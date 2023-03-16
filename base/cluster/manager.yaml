@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: manager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: manager
+  template:
+    metadata:
+      labels:
+        app: manager
+    spec:
+      initContainers:
+      - name: upload-config-to-db
+        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
+        # command: ['/bin/bash', '-c', "/app/gnfd-sp --log.std config.upload -c /config/config.toml"]
+        args: ["--log.std", "config.upload", "-c", "/config/config.toml"]
+        volumeMounts:
+        - mountPath: /config
+          name: config
+        env:
+          - name: SP_DB_USER
+            valueFrom:
+              secretKeyRef:
+                key: MDU
+                name: gf-sp-aws-secret
+          - name: SP_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: MDP
+                name: gf-sp-aws-secret
+          - name: SP_DB_ADDRESS
+            valueFrom:
+              secretKeyRef:
+                key: SP_DB_ADDRESS
+                name: gf-sp-aws-secret
+      containers:
+      - name: manager
+        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
+        # command: ['/bin/bash', '-c', "/app/gnfd-sp --log.std config.remote -server manager 2>&1 &"]
+        args: ["--log.std", "--configremote", "-server", "manager"]
+        env:
+          - name: SP_DB_USER
+            valueFrom:
+              secretKeyRef:
+                key: MDU
+                name: gf-sp-aws-secret
+          - name: SP_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: MDP
+                name: gf-sp-aws-secret
+          - name: SP_DB_ADDRESS
+            valueFrom:
+              secretKeyRef:
+                key: SP_DB_ADDRESS
+                name: gf-sp-aws-secret
+          # - name: JOB_DB_USER
+          #   valueFrom:
+          #     secretKeyRef:
+          #       key: JDU
+          #       name: gf-sp-aws-secret
+          # - name: JOB_DB_PASSWORD
+          #   valueFrom:
+          #     secretKeyRef:
+          #       key: JDP
+          #       name: gf-sp-aws-secret
+        resources:
+          limits:
+            cpu: "2"
+            memory: 4Gi
+          requests:
+            cpu: "1"
+            memory: 2Gi
+        volumeMounts:
+        - mountPath: /config
+          name: config
+      imagePullSecrets:
+      - name: image-pull
+      volumes:
+      - name: config
+        configMap:
+          name: config

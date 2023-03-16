@@ -16,7 +16,8 @@ spec:
     spec:
       containers:
       - name: uploader-downloader-challenge
-        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.2
+        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
+        args: ["--log.std", "-c", "/config/config.toml", "-server", "uploader,downloader,challenge"]
         env:
           - name: AWS_ACCESS_KEY
             valueFrom:
@@ -30,15 +31,20 @@ spec:
                 name: gf-sp-aws-secret
           - name: AWS_SESSION_TOKEN
             value: ""
-          - name: META_DB_USER
+          - name: SP_DB_USER
             valueFrom:
               secretKeyRef:
                 key: MDU
                 name: gf-sp-aws-secret
-          - name: META_DB_PASSWORD
+          - name: SP_DB_PASSWORD
             valueFrom:
               secretKeyRef:
                 key: MDP
+                name: gf-sp-aws-secret
+          - name: SP_DB_ADDRESS
+            valueFrom:
+              secretKeyRef:
+                key: SP_DB_ADDRESS
                 name: gf-sp-aws-secret
           - name: BUCKET_URL
             valueFrom:

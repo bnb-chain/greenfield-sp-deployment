@@ -21,7 +21,8 @@ spec:
     spec:
       containers:
       - name: syncer
-        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.2
+        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
+        args: ["--log.std", "-c", "/config/config.toml", "-server", "syncer"]
         env:
           - name: AWS_ACCESS_KEY
             valueFrom:
@@ -35,25 +36,20 @@ spec:
                 name: gf-sp-aws-secret
           - name: AWS_SESSION_TOKEN
             value: ""
-          - name: META_DB_USER
+          - name: SP_DB_USER
             valueFrom:
               secretKeyRef:
                 key: MDU
                 name: gf-sp-aws-secret
-          - name: META_DB_PASSWORD
+          - name: SP_DB_PASSWORD
             valueFrom:
               secretKeyRef:
                 key: MDP
                 name: gf-sp-aws-secret
-          - name: JOB_DB_USER
+          - name: SP_DB_ADDRESS
             valueFrom:
               secretKeyRef:
-                key: JDU
-                name: gf-sp-aws-secret
-          - name: JOB_DB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                key: JDP
+                key: SP_DB_ADDRESS
                 name: gf-sp-aws-secret
           - name: BUCKET_URL
             valueFrom:
@@ -65,8 +61,8 @@ spec:
             cpu: "2"
             memory: 4Gi
           requests:
-            cpu: "2"
-            memory: 4Gi
+            cpu: "1"
+            memory: 2Gi
         ports:
           - containerPort: 9533
             name: syncer
