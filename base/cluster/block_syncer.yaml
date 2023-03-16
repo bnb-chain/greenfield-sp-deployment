@@ -15,7 +15,7 @@ spec:
       containers:
       - name: block-syncer
         image: ghcr.io/bnb-chain/greenfield-storage-provider:block-syncer-dev-env-latest
-        args: ["--log.std", "-c", "/config/config.toml", "-server", "block_syncer"]
+        args: ["--log.std", "-c", "/config/config.toml", "-server", "blocksyncer"]
         imagePullPolicy: Always
         env:
           - name: BLOCK_SYNCER_DSN
