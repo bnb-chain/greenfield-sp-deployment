@@ -15,6 +15,7 @@ spec:
       containers:
       - name: stonehub
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.2
+        imagePullPolicy: Always
         env:
           - name: META_DB_USER
             valueFrom:

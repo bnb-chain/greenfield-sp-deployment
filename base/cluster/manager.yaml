@@ -15,6 +15,7 @@ spec:
       initContainers:
       - name: upload-config-to-db
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
+        imagePullPolicy: Always
         # command: ['/bin/bash', '-c', "/app/gnfd-sp --log.std config.upload -c /config/config.toml"]
         args: ["--log.std", "config.upload", "-c", "/config/config.toml"]
         volumeMounts:

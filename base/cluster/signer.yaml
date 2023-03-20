@@ -15,6 +15,7 @@ spec:
       containers:
       - name: signer
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
+        imagePullPolicy: Always
         args: ["--log.std", "-c", "/config/config.toml", "-server", "signer"]
         env:
           - name: SP_DB_USER
