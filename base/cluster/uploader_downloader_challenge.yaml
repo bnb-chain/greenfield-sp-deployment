@@ -23,24 +23,24 @@ spec:
           - name: AWS_ACCESS_KEY
             valueFrom:
               secretKeyRef:
-                key: AK
+                key: AWS_ACCESS_KEY
                 name: gf-sp-aws-secret
           - name: AWS_SECRET_KEY
             valueFrom:
               secretKeyRef:
-                key: SK
+                key: AWS_SECRET_KEY
                 name: gf-sp-aws-secret
           - name: AWS_SESSION_TOKEN
             value: ""
           - name: SP_DB_USER
             valueFrom:
               secretKeyRef:
-                key: MDU
+                key: SP_DB_USER
                 name: gf-sp-aws-secret
           - name: SP_DB_PASSWORD
             valueFrom:
               secretKeyRef:
-                key: MDP
+                key: SP_DB_PASSWORD
                 name: gf-sp-aws-secret
           - name: SP_DB_ADDRESS
             valueFrom:
