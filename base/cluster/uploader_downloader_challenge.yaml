@@ -17,6 +17,7 @@ spec:
       containers:
       - name: uploader-downloader-challenge
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
+        imagePullPolicy: Always
         args: ["--log.std", "-c", "/config/config.toml", "-server", "uploader,downloader,challenge"]
         env:
           - name: AWS_ACCESS_KEY

@@ -15,7 +15,8 @@ spec:
       containers:
       - name: stonenode
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
-        args: ["--log.std", "-c", "/config/config.toml", "-server", "stonenode"]
+        imagePullPolicy: Always
+        args: ["--log.std", "-c", "/config/config.toml", "-server", "tasknode"]
         env:
           - name: AWS_ACCESS_KEY
             valueFrom:
