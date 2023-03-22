@@ -18,11 +18,6 @@ spec:
         args: ["--log.std", "-c", "/config/config.toml", "-server", "metadata"]
         imagePullPolicy: Always
         env:
-          # - name: Metadata_Service_DSN
-          #   valueFrom:
-          #     secretKeyRef:
-          #       key: BLOCK_SYNCER_DSN
-          #       name: gf-sp-aws-secret
           - name: BLOCK_SYNCER_DB_USER
             valueFrom:
               secretKeyRef:
@@ -91,7 +86,7 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: config-metadata
+            name: config
 ---
 apiVersion: v1
 kind: Service

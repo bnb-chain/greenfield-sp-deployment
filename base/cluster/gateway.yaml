@@ -51,7 +51,7 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: config-gateway
+            name: config
 ---
 apiVersion: v1
 kind: Service

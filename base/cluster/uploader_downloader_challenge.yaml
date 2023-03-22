@@ -74,7 +74,7 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: config-uploader-downloader-challenge
+            name: config
 ---
 apiVersion: v1
 kind: Service

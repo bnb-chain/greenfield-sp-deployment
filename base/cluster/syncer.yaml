@@ -77,7 +77,7 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: config-syncer
+            name: config
 ---
 apiVersion: v1
 kind: Service
