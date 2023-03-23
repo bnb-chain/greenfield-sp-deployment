@@ -12,3 +12,4 @@ resources:
   - sp_external_secret.yaml
   - manager.yaml
   - ingress.yaml
+  - p2pnode.yaml
