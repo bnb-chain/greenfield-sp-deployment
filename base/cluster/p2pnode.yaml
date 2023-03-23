@@ -15,7 +15,7 @@ spec:
       containers:
       - name: p2pnode
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.4-p2p
-        args: ["--log.std", "-c", "/config/config.toml", "-server", "p2pnode"]
+        args: ["--log.std", "-c", "/config/config.toml", "-server", "p2p"]
         imagePullPolicy: Always
         env:
           - name: P2P_PRIVATE_KEY
