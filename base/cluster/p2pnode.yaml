@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: p2pnode
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: p2pnode
+  template:
+    metadata:
+      labels:
+        app: p2pnode
+    spec:
+      containers:
+      - name: p2pnode
+        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.4-p2p
+        args: ["--log.std", "-c", "/config/config.toml", "-server", "p2pnode"]
+        imagePullPolicy: Always
+        env:
+          - name: P2P_PRIVATE_KEY
+            valueFrom:
+              secretKeyRef:
+                key: P2P_PRIVATE_KEY
+                name: gf-sp-aws-secret
+        resources:
+          limits:
+            cpu: "2"
+            memory: 4Gi
+          requests:
+            cpu: "1"
+            memory: 2Gi
+        ports:
+          - containerPort: 9933
+            name: p2p
+          - containerPort: 9833
+            name: p2pservice
+        volumeMounts:
+        - mountPath: /config
+          name: config
+      imagePullSecrets:
+        - name: image-pull
+      volumes:
+        - name: config
+          configMap:
+            name: config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: p2p-service
+spec:
+  ports:
+  - port: 9833
+    targetPort: 9833
+    name: p2p-service
+  selector:
+    app: p2pnode
