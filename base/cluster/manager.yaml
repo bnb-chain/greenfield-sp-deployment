@@ -41,7 +41,7 @@ spec:
       - name: manager
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
         # command: ['/bin/bash', '-c', "/app/gnfd-sp --log.std config.remote -server manager 2>&1 &"]
-        args: ["--log.std", "--configremote", "-server", "manager"]
+        args: ["--log.std", "-c", "/config/config.toml", "-server", "manager"]
         env:
           - name: SP_DB_USER
             valueFrom:
