@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: block-explorer-service-bas-dex-app
+spec:
+  endpoints:
+  - interval: 30s
+    path: /metrics
+    port: metrics
+    scheme: http
+  namespaceSelector:
+    matchNames:
+    - gf-sp-patch-me
+  selector:
+    matchLabels:
+      team: greenfield
+      biz: storage-provider
