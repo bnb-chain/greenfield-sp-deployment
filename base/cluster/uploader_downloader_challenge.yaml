@@ -66,6 +66,8 @@ spec:
             name: downloader
           - containerPort: 9333
             name: challenge
+          - containerPort: 24036
+            name: metrics
         volumeMounts:
         - mountPath: /config
           name: config
@@ -85,6 +87,9 @@ spec:
   - port: 9133
     targetPort: 9133
     name: uploader
+  - port: 24036
+    targetPort: 24036
+    name: metrics
   selector:
     app: uploader-downloader-challenge
 ---
