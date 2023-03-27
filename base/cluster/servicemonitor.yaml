@@ -1,7 +1,7 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: block-explorer-service-bas-dex-app
+  name: greenfield-storage-provider-sm
 spec:
   endpoints:
   - interval: 30s

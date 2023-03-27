@@ -43,7 +43,7 @@ spec:
         ports:
           - containerPort: 9033
             name: gateway
-          - port: 24036
+          - containerPort: 24036
             name: metrics
         volumeMounts:
         - mountPath: /config
