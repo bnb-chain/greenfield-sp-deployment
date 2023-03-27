@@ -13,3 +13,4 @@ resources:
   - manager.yaml
   - ingress.yaml
   - p2pnode.yaml
+  - servicemonitor.yaml
