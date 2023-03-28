@@ -12,6 +12,7 @@ spec:
       labels:
         app: stonenode
     spec:
+      serviceAccountName: default
       containers:
       - name: stonenode
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3

@@ -19,6 +19,7 @@ spec:
       labels:
         app: syncer
     spec:
+      serviceAccountName: default
       containers:
       - name: syncer
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
