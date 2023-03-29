@@ -1,6 +1,5 @@
 resources:
-  - namespace.yaml
-  - imagepullsecret.yaml
+  - infra.yaml
   - syncer.yaml
   - stonenode.yaml
   - gateway.yaml
@@ -8,9 +7,6 @@ resources:
   - uploader_downloader_challenge.yaml
   - metadata.yaml
   - block_syncer.yaml
-  - sp_service_account.yaml
-  - sp_external_secret.yaml
   - manager.yaml
   - ingress.yaml
   - p2pnode.yaml
-  - servicemonitor.yaml

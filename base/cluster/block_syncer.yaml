@@ -22,7 +22,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: BLOCK_SYNCER_DSN
-                name: gf-sp-aws-secret
+                name: default
         resources:
           limits:
             cpu: "1"

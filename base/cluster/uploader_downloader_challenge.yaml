@@ -25,34 +25,34 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: AWS_ACCESS_KEY
-                name: gf-sp-aws-secret
+                name: default
           - name: AWS_SECRET_KEY
             valueFrom:
               secretKeyRef:
                 key: AWS_SECRET_KEY
-                name: gf-sp-aws-secret
+                name: default
           - name: AWS_SESSION_TOKEN
             value: ""
           - name: SP_DB_USER
             valueFrom:
               secretKeyRef:
                 key: SP_DB_USER
-                name: gf-sp-aws-secret
+                name: default
           - name: SP_DB_PASSWORD
             valueFrom:
               secretKeyRef:
                 key: SP_DB_PASSWORD
-                name: gf-sp-aws-secret
+                name: default
           - name: SP_DB_ADDRESS
             valueFrom:
               secretKeyRef:
                 key: SP_DB_ADDRESS
-                name: gf-sp-aws-secret
+                name: default
           - name: BUCKET_URL
             valueFrom:
               secretKeyRef:
                 key: BUCKET_URL
-                name: gf-sp-aws-secret
+                name: default
         resources:
           limits:
             cpu: "3"

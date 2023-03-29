@@ -22,52 +22,52 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: BLOCK_SYNCER_DB_USER
-                name: gf-sp-aws-secret
+                name: default
           - name: BLOCK_SYNCER_DB_PASSWORD
             valueFrom:
               secretKeyRef:
                 key: BLOCK_SYNCER_DB_PASSWORD
-                name: gf-sp-aws-secret
+                name: default
           - name: SP_DB_USER
             valueFrom:
               secretKeyRef:
                 key: SP_DB_USER
-                name: gf-sp-aws-secret
+                name: default
           - name: SP_DB_PASSWORD
             valueFrom:
               secretKeyRef:
                 key: SP_DB_PASSWORD
-                name: gf-sp-aws-secret
+                name: default
           - name: SP_DB_ADDRESS
             valueFrom:
               secretKeyRef:
                 key: SP_DB_ADDRESS
-                name: gf-sp-aws-secret
+                name: default
           - name: SP_DB_DATABASE
             valueFrom:
               secretKeyRef:
                 key: SP_DB_DATABASE
-                name: gf-sp-aws-secret
+                name: default
           - name: BS_DB_USER
             valueFrom:
               secretKeyRef:
                 key: BS_DB_USER
-                name: gf-sp-aws-secret
+                name: default
           - name: BS_DB_PASSWORD
             valueFrom:
               secretKeyRef:
                 key: BS_DB_PASSWORD
-                name: gf-sp-aws-secret
+                name: default
           - name: BS_DB_ADDRESS
             valueFrom:
               secretKeyRef:
                 key: SP_DB_ADDRESS
-                name: gf-sp-aws-secret
+                name: default
           - name: BS_DB_DATABASE
             valueFrom:
               secretKeyRef:
                 key: BS_DB_DATABASE
-                name: gf-sp-aws-secret
+                name: default
         resources:
           limits:
             cpu: "1"

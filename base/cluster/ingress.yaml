@@ -16,7 +16,7 @@ metadata:
   name: gateway
 spec:
   rules:
-    - host: patch-me.bk.nodereal.cc
+    - host: null
       http:
         paths:
           - backend:
@@ -26,7 +26,7 @@ spec:
                   number: 9033
             path: /
             pathType: ImplementationSpecific
-    - host: "replaceme.*.bk.nodereal.cc"
+    - host: null
       http:
         paths:
         - backend:
@@ -36,3 +36,4 @@ spec:
                 number: 9033
           path: /
           pathType: ImplementationSpecific
+
