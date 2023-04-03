@@ -14,7 +14,7 @@ spec:
       labels:
         app: uploader-downloader-challenge
     spec:
-      serviceAccountName: default
+      serviceAccountName: nodereal-default
       containers:
       - name: uploader-downloader-challenge
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3

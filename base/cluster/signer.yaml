@@ -12,6 +12,7 @@ spec:
       labels:
         app: signer
     spec:
+      serviceAccountName: nodereal-default
       containers:
       - name: signer
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3

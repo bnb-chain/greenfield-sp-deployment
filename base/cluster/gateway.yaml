@@ -12,6 +12,7 @@ spec:
       labels:
         app: gateway
     spec:
+      serviceAccountName: nodereal-default
       containers:
       - name: gateway
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3

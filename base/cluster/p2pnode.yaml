@@ -12,6 +12,7 @@ spec:
       labels:
         app: p2pnode
     spec:
+      serviceAccountName: nodereal-default
       containers:
       - name: p2pnode
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.4-p2p

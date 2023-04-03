@@ -12,6 +12,7 @@ spec:
       labels:
         app: manager
     spec:
+      serviceAccountName: nodereal-default
       initContainers:
       - name: upload-config-to-db
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
