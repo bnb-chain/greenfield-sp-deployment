@@ -53,11 +53,11 @@ spec:
                 name: default
         resources:
           limits:
-            cpu: "2"
+            cpu: "4"
             memory: 8Gi
           requests:
-            cpu: "1"
-            memory: 4Gi
+            cpu: "4"
+            memory: 8Gi
         ports:
           - containerPort: 9433
             name: tasknode
