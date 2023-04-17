@@ -1,23 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: stonenode
+  name: uploader
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: stonenode
+      app: uploader
+  strategy:
+    type: RollingUpdate
   template:
     metadata:
       labels:
-        app: stonenode
+        app: uploader
     spec:
       serviceAccountName: nodereal-default
       containers:
-      - name: stonenode
+      - name: uploader
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
         imagePullPolicy: Always
-        args: ["--log.std", "-c", "/config/config.toml", "-server", "tasknode"]
+        args: ["--log.std", "-c", "/config/config.toml", "-server", "uploader"]
         env:
           - name: AWS_ACCESS_KEY
             valueFrom:
@@ -31,11 +33,6 @@ spec:
                 name: default
           - name: AWS_SESSION_TOKEN
             value: ""
-          - name: BUCKET_URL
-            valueFrom:
-              secretKeyRef:
-                key: BUCKET_URL
-                name: default
           - name: SP_DB_USER
             valueFrom:
               secretKeyRef:
@@ -51,16 +48,23 @@ spec:
               secretKeyRef:
                 key: SP_DB_ADDRESS
                 name: default
+          - name: BUCKET_URL
+            valueFrom:
+              secretKeyRef:
+                key: BUCKET_URL
+                name: default
         resources:
           limits:
+            cpu: "3"
+            memory: 12Gi
+          requests:
             cpu: "2"
             memory: 8Gi
-          requests:
-            cpu: "1"
-            memory: 4Gi
         ports:
-          - containerPort: 9433
-            name: stonenode
+          - containerPort: 9133
+            name: uploader
+          - containerPort: 24036
+            name: metrics
         volumeMounts:
         - mountPath: /config
           name: config
@@ -74,11 +78,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: stonenode
+  name: uploader
 spec:
   ports:
-  - port: 9433
-    targetPort: 9433
-    name: stonenode
+  - port: 9133
+    targetPort: 9133
+    name: uploader
+  - port: 24036
+    targetPort: 24036
+    name: metrics
   selector:
-    app: stonenode
+    app: uploader
+

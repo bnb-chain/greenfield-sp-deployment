@@ -1,0 +1,18 @@
+resources:
+  - ../../components/shared
+  - ../../components/single/receiver
+  - ../../components/single/tasknode
+  - ../../components/single/gateway
+  - ../../components/single/signer
+  - ../../components/single/metadata
+  - ../../components/single/block_syncer
+  - ../../components/single/manager
+  - ../../components/single/p2pnode
+  - ../../components/single/uploader
+  - ../../components/combo/downloader+challenge
+
+patches:
+- target:
+    kind: Deployment
+  path: ./patches/set_deployment_revision_history.yaml
+

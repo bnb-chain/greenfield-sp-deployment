@@ -1,0 +1,84 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tasknode
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tasknode
+  template:
+    metadata:
+      labels:
+        app: tasknode
+    spec:
+      serviceAccountName: nodereal-default
+      containers:
+      - name: tasknode
+        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
+        imagePullPolicy: Always
+        args: ["--log.std", "-c", "/config/config.toml", "-server", "tasknode"]
+        env:
+          - name: AWS_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                key: AWS_ACCESS_KEY
+                name: default
+          - name: AWS_SECRET_KEY
+            valueFrom:
+              secretKeyRef:
+                key: AWS_SECRET_KEY
+                name: default
+          - name: AWS_SESSION_TOKEN
+            value: ""
+          - name: BUCKET_URL
+            valueFrom:
+              secretKeyRef:
+                key: BUCKET_URL
+                name: default
+          - name: SP_DB_USER
+            valueFrom:
+              secretKeyRef:
+                key: SP_DB_USER
+                name: default
+          - name: SP_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: SP_DB_PASSWORD
+                name: default
+          - name: SP_DB_ADDRESS
+            valueFrom:
+              secretKeyRef:
+                key: SP_DB_ADDRESS
+                name: default
+        resources:
+          limits:
+            cpu: "2"
+            memory: 8Gi
+          requests:
+            cpu: "1"
+            memory: 4Gi
+        ports:
+          - containerPort: 9433
+            name: tasknode
+        volumeMounts:
+        - mountPath: /config
+          name: config
+      imagePullSecrets:
+        - name: image-pull
+      volumes:
+        - name: config
+          configMap:
+            name: config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tasknode
+spec:
+  ports:
+  - port: 9433
+    targetPort: 9433
+    name: tasknode
+  selector:
+    app: tasknode

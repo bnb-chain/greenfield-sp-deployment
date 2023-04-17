@@ -1,30 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: syncer
+  name: uploader-manager-receiver
 spec:
-  progressDeadlineSeconds: 600
   replicas: 1
-  revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: syncer
+      app: uploader-manager-receiver
   strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
     type: RollingUpdate
   template:
     metadata:
       labels:
-        app: syncer
+        app: uploader-manager-receiver
     spec:
       serviceAccountName: nodereal-default
       containers:
-      - name: syncer
+      - name: uploader-manager-receiver
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
         imagePullPolicy: Always
-        args: ["--log.std", "-c", "/config/config.toml", "-server", "receiver"]
+        args: ["--log.std", "-c", "/config/config.toml", "-server", "uploader,manager,receiver"]
         env:
           - name: AWS_ACCESS_KEY
             valueFrom:
@@ -60,16 +55,18 @@ spec:
                 name: default
         resources:
           limits:
-            cpu: "2"
-            memory: 4Gi
+            cpu: "3"
+            memory: 12Gi
           requests:
-            cpu: "1"
-            memory: 2Gi
+            cpu: "2"
+            memory: 8Gi
         ports:
+          - containerPort: 9133
+            name: uploader
+          - containerPort: 24036
+            name: metrics
           - containerPort: 9533
-            name: syncer
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
+            name: receiver
         volumeMounts:
         - mountPath: /config
           name: config
@@ -79,15 +76,30 @@ spec:
         - name: config
           configMap:
             name: config
+--
+apiVersion: v1
+kind: Service
+metadata:
+  name: uploader
+spec:
+  ports:
+  - port: 9133
+    targetPort: 9133
+    name: uploader
+  - port: 24036
+    targetPort: 24036
+    name: metrics
+  selector:
+    app: uploader-manager-receiver
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: syncer
+  name: receiver
 spec:
   ports:
   - port: 9533
     targetPort: 9533
-    name: syncer
+    name: receiver
   selector:
-    app: syncer
+    app: receiver
