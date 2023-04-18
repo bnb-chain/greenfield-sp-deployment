@@ -7,7 +7,7 @@ resources:
   - ../../components/single/metadata
   - ../../components/single/block_syncer
   - ../../components/single/manager
-  - ../../components/single/p2pnode
+  - ../../components/single/p2p
   - ../../components/combo/uploader+downloader+challenge
 
 patches:

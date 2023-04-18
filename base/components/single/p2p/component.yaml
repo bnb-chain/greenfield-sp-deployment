@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: p2pnode
+  name: p2p
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: p2pnode
+      app: p2p
   template:
     metadata:
       labels:
-        app: p2pnode
+        app: p2p
     spec:
       serviceAccountName: nodereal-default
       containers:
-      - name: p2pnode
+      - name: p2p
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.4-p2p
         args: ["--log.std", "-c", "/config/config.toml", "-server", "p2p"]
         imagePullPolicy: Always
@@ -47,10 +47,10 @@ spec:
             cpu: "4"
             memory: 8Gi
         ports:
-          - containerPort: 9933
-            name: p2p
           - containerPort: 9833
-            name: p2pservice
+            name: p2p
+          - containerPort: 9933
+            name: p2p-external
         volumeMounts:
         - mountPath: /config
           name: config
@@ -69,14 +69,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: p2p-service
+  name: p2p
 spec:
   ports:
   - port: 9833
     targetPort: 9833
-    name: p2p-service
+    name: p2p
   selector:
-    app: p2pnode
+    app: p2p
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -89,3 +89,21 @@ spec:
   resources:
     requests:
       storage: 10Gi
+---
+kind: Service
+metadata:
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-subnets: null
+    service.beta.kubernetes.io/aws-load-balancer-type: external
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+  name: p2p-external
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 9933
+    targetPort: 9933
+    name: p2p-external
+  selector:
+    app: p2p
+
