@@ -54,12 +54,17 @@ spec:
         volumeMounts:
         - mountPath: /config
           name: config
+        - name: data
+          mountPath: /app/data
       imagePullSecrets:
         - name: image-pull
       volumes:
         - name: config
           configMap:
             name: config
+        - name: data
+          persistentVolumeClaim:
+            claimName: p2p-data
 ---
 apiVersion: v1
 kind: Service
@@ -72,3 +77,15 @@ spec:
     name: p2p-service
   selector:
     app: p2pnode
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: p2p-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ebs-sc # Patch this accordingly or remove it to use default SC in the cluster.
+  resources:
+    requests:
+      storage: 10Gi
