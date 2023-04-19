@@ -64,6 +64,8 @@ spec:
         ports:
           - containerPort: 9633
             name: signer
+          - containerPort: 24036
+            name: metrics
         volumeMounts:
         - mountPath: /config
           name: config
@@ -83,6 +85,9 @@ spec:
   - port: 9633
     targetPort: 9633
     name: signer
+  - port: 24036
+    targetPort: 24036
+    name: metrics
   selector:
     app: signer
 ---

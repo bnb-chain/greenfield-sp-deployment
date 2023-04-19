@@ -68,6 +68,8 @@ spec:
         ports:
           - containerPort: 9533
             name: receiver
+          - containerPort: 24036
+            name: metrics
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         volumeMounts:
@@ -89,5 +91,8 @@ spec:
   - port: 9533
     targetPort: 9533
     name: receiver
+  - port: 24036
+    targetPort: 24036
+    name: metrics
   selector:
     app: receiver
