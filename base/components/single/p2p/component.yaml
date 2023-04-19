@@ -53,6 +53,8 @@ spec:
             name: p2p
           - containerPort: 9933
             name: p2p-external
+          - containerPort: 24036
+            name: metrics
         volumeMounts:
         - mountPath: /config
           name: config
@@ -79,6 +81,9 @@ spec:
   - port: 9833
     targetPort: 9833
     name: p2p
+  - port: 24036
+    targetPort: 24036
+    name: metrics
   selector:
     app: p2p
 ---
