@@ -61,6 +61,8 @@ spec:
         ports:
           - containerPort: 9433
             name: tasknode
+          - containerPort: 24036
+            name: metrics
         volumeMounts:
         - mountPath: /config
           name: config
@@ -80,6 +82,9 @@ spec:
   - port: 9433
     targetPort: 9433
     name: tasknode
+  - port: 24036
+    targetPort: 24036
+    name: metrics
   selector:
     app: tasknode
 ---
