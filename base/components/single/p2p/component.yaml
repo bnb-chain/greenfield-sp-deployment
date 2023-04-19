@@ -65,6 +65,8 @@ spec:
         - name: data
           persistentVolumeClaim:
             claimName: p2p-data
+      securityContext:
+        fsGroup: 1000 # uid=1000(sp) gid=1000(sp) groups=5(tty),1000(sp) 
 ---
 apiVersion: v1
 kind: Service
