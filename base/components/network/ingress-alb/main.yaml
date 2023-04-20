@@ -2,6 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  name: gndf-sp-alb
   annotations:
     ingressClassName: alb
     alb.ingress.kubernetes.io/security-groups: null
