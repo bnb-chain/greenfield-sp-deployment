@@ -2,7 +2,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    external-dns.alpha.kubernetes.io/ingress-hostname-source: "annotation-only"
     nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/connection-proxy-header: ""
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "600"
