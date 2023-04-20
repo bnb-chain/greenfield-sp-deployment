@@ -4,7 +4,6 @@ kind: Ingress
 metadata:
   name: gnfd-sp-alb
   annotations:
-    kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/security-groups: null
     alb.ingress.kubernetes.io/subnets: null
     alb.ingress.kubernetes.io/certificate-arn: null
@@ -24,6 +23,7 @@ metadata:
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/unhealthy-threshold-count: "2"
 spec:
+  ingressClassName: alb
   rules:
   - host: null
     http:
