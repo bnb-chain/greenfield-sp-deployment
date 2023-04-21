@@ -1,0 +1,286 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sp-all-in-one # without p2p as p2pnode service and metadata service are both using 9833 port
+spec:
+  replicas: 1 # because of singleton components, replicas has always to be 1
+  selector:
+    matchLabels:
+      app: sp-all-in-one
+  strategy:
+    type: Recreate # if PV and pod are always in the same avaliability zone, change to RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: sp-all-in-one
+    spec:
+      serviceAccountName: nodereal-default
+      containers:
+      - name: sp-all-in-one
+        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
+        imagePullPolicy: Always
+        args: ["--log.std", "-c", "/config/config.toml", "-server", "blocksyncer,challenge,downloader,gateway,manager,metadata,p2p,receiver,signer,tasknode,uploader"]
+        env:
+          - name: AWS_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                key: AWS_ACCESS_KEY
+                name: default
+          - name: AWS_SECRET_KEY
+            valueFrom:
+              secretKeyRef:
+                key: AWS_SECRET_KEY
+                name: default
+          - name: AWS_SESSION_TOKEN
+            value: ""
+          - name: BLOCK_SYNCER_DSN # only used by block-syncer
+            valueFrom:
+              secretKeyRef:
+                key: BLOCK_SYNCER_DSN
+                name: default
+          - name: BLOCK_SYNCER_DB_USER # only used by metadata
+            valueFrom:
+              secretKeyRef:
+                key: BLOCK_SYNCER_DB_USER
+                name: default
+          - name: BLOCK_SYNCER_DB_PASSWORD # only used by metadata
+            valueFrom:
+              secretKeyRef:
+                key: BLOCK_SYNCER_DB_PASSWORD # only used by metadata
+                name: default
+          - name: SP_DB_USER
+            valueFrom:
+              secretKeyRef:
+                key: SP_DB_USER
+                name: default
+          - name: SP_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: SP_DB_PASSWORD
+                name: default
+          - name: SP_DB_ADDRESS
+            valueFrom:
+              secretKeyRef:
+                key: SP_DB_ADDRESS
+                name: default
+          - name: BUCKET_URL
+            valueFrom:
+              secretKeyRef:
+                key: BUCKET_URL
+                name: default
+          - name: SIGNER_OPERATOR_PRIV_KEY
+            valueFrom:
+              secretKeyRef:
+                key: SIGNER_OPERATOR_PRIV_KEY
+                name: default
+          - name: SIGNER_FUNDING_PRIV_KEY
+            valueFrom:
+              secretKeyRef:
+                key: SIGNER_FUNDING_PRIV_KEY
+                name: default
+          - name: SIGNER_APPROVAL_PRIV_KEY
+            valueFrom:
+              secretKeyRef:
+                key: SIGNER_APPROVAL_PRIV_KEY
+                name: default
+          - name: SIGNER_SEAL_PRIV_KEY
+            valueFrom:
+              secretKeyRef:
+                key: SIGNER_SEAL_PRIV_KEY
+                name: default
+        resources:
+          limits:
+            cpu: "4"
+            memory: 8Gi
+          requests:
+            cpu: "4"
+            memory: 8Gi
+        ports:
+          - containerPort: 9033
+            name: gateway
+          - containerPort: 9133
+            name: uploader
+          - containerPort: 9233
+            name: downloader
+          - containerPort: 9333
+            name: challenge
+          - containerPort: 9433
+            name: tasknode
+          - containerPort: 9533
+            name: receiver
+          - containerPort: 9633
+            name: signer
+          - containerPort: 9733
+            name: metadata
+          - containerPort: 9833
+            name: p2p
+          - containerPort: 9933
+            name: p2p-external
+          - containerPort: 24036
+            name: metrics
+        volumeMounts:
+        - mountPath: /config
+          name: config
+        - name: data
+          mountPath: /app/data
+      imagePullSecrets:
+        - name: image-pull
+      volumes:
+        - name: config
+          configMap:
+            name: config
+        - name: data
+          persistentVolumeClaim:
+            claimName: p2p-data
+      securityContext:
+        fsGroup: 1000 # uid=1000(sp) gid=1000(sp) groups=5(tty),1000(sp)
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway
+spec:
+  ports:
+  - port: 9033
+    targetPort: 9033
+    name: gateway
+  selector:
+    app: sp-all-in-one
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: uploader
+spec:
+  ports:
+  - port: 9133
+    targetPort: 9133
+    name: uploader
+  selector:
+    app: sp-all-in-one
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: downloader
+spec:
+  ports:
+  - port: 9233
+    targetPort: 9233
+    name: downloader
+  selector:
+    app: sp-all-in-one
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: challenge
+spec:
+  ports:
+  - port: 9333
+    targetPort: 9333
+    name: challenge
+  selector:
+    app: sp-all-in-one
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tasknode
+spec:
+  ports:
+  - port: 9433
+    targetPort: 9433
+    name: tasknode
+  selector:
+    app: sp-all-in-one
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: receiver
+spec:
+  ports:
+  - port: 9533
+    targetPort: 9533
+    name: receiver
+  selector:
+    app: sp-all-in-one
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: signer
+spec:
+  ports:
+  - port: 9633
+    targetPort: 9633
+    name: signer
+  selector:
+    app: sp-all-in-one
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: metadata
+spec:
+  ports:
+  - port: 9833
+    targetPort: 9833
+    name: metadata
+  selector:
+    app: sp-all-in-one
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: metrics
+spec:
+  ports:
+  - port: 24036
+    targetPort: 24036
+    name: metrics
+  selector:
+    app: sp-all-in-one
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: p2p
+spec:
+  ports:
+  - port: 9833
+    targetPort: 9833
+    name: p2p
+  selector:
+    app: sp-all-in-one
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: p2p-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ebs-sc # Patch this accordingly or remove it to use default SC in the cluster.
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-subnets: null # this service needs to public for other p2p node to reach, so better to put the nlb under public subnet
+    service.beta.kubernetes.io/aws-load-balancer-type: external
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+  name: p2p-external
+spec:
+  type: LoadBalancer # p2p requries the loadblancer can reach to pod ip directly, so use nlb instead of alb.
+  ports:
+  - port: 9933
+    targetPort: 9933
+    name: p2p-external
+  selector:
+    app: sp-all-in-one
