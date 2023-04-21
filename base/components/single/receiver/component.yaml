@@ -70,6 +70,8 @@ spec:
             name: receiver
           - containerPort: 24036
             name: metrics
+          - containerPort: 25341
+            name: pprof
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         volumeMounts:
@@ -94,5 +96,8 @@ spec:
   - port: 24036
     targetPort: 24036
     name: metrics
+  - port: 25341
+    targetPort: 25341
+    name: pprof
   selector:
     app: receiver
