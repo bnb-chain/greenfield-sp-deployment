@@ -19,7 +19,7 @@ spec:
       - name: sp-all-in-one
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
         imagePullPolicy: Always
-        args: ["--log.std", "-c", "/config/config.toml", "-server", "blocksyncer,challenge,downloader,gateway,manager,metadata,p2p,receiver,signer,tasknode,uploader"]
+        args: ["--log.std", "-c", "/config/config.toml", "-server", "auth,blocksyncer,challenge,downloader,gateway,manager,metadata,p2p,receiver,signer,tasknode,uploader"]
         env:
           - name: AWS_ACCESS_KEY
             valueFrom:
@@ -96,6 +96,8 @@ spec:
             cpu: "4"
             memory: 8Gi
         ports:
+          - containerPort: 8933
+            name: auth
           - containerPort: 9033
             name: gateway
           - containerPort: 9133
@@ -134,6 +136,18 @@ spec:
             claimName: p2p-data
       securityContext:
         fsGroup: 1000 # uid=1000(sp) gid=1000(sp) groups=5(tty),1000(sp)
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth
+spec:
+  ports:
+  - port: 8933
+    targetPort: 8933
+    name: auth
+  selector:
+    app: auth
 ---
 apiVersion: v1
 kind: Service
