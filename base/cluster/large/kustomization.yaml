@@ -9,6 +9,7 @@ resources:
   - ../../components/single/manager
   - ../../components/single/p2p
   - ../../components/single/uploader
+  - ../../components/single/auth
   - ../../components/combo/downloader+challenge
 
 patches:
