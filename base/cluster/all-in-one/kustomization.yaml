@@ -1,4 +1,5 @@
 resources:
+  - ../../components/shared
   - ../../components/combo/all-in-one
 
 patches:
