@@ -7,37 +7,38 @@ https://github.com/node-real/greenfield-sp-k8s.git.
 
 Directory structure
 -------------------
-.
-├── CODEOWNERS
-├── README.md
-├── base
-│   ├── cluster
-│   │   ├── README.md
-│   │   ├── all-in-one
-│   │   ├── default -> regular
-│   │   ├── large
-│   │   ├── regular
-│   ├── components
-│   │   ├── README.md
-│   │   ├── combo
-│   │   ├── job
-│   │   ├── network
-│   │   ├── shared
-│   │   └── single
-│   └── null
-│       ├── kustomization.yaml
-│       ├── namespace.yaml
-│       └── pod.yaml
-├── docs
-│   ├── README.md
-│   ├── aws
-│   ├── grafana
-│   │   ├── README.md
-│   │   ├── dashboards
-│   │   └── imgs
-│   └── k8s
-└── scripts
-    └── internal_service_connection.sh
+
+    .
+    ├── CODEOWNERS
+    ├── README.md
+    ├── base
+    │   ├── cluster
+    │   │   ├── README.md
+    │   │   ├── all-in-one
+    │   │   ├── default -> regular
+    │   │   ├── large
+    │   │   ├── regular
+    │   ├── components
+    │   │   ├── README.md
+    │   │   ├── combo
+    │   │   ├── job
+    │   │   ├── network
+    │   │   ├── shared
+    │   │   └── single
+    │   └── null
+    │       ├── kustomization.yaml
+    │       ├── namespace.yaml
+    │       └── pod.yaml
+    ├── docs
+    │   ├── README.md
+    │   ├── aws
+    │   ├── grafana
+    │   │   ├── README.md
+    │   │   ├── dashboards
+    │   │   └── imgs
+    │   └── k8s
+    └── scripts
+        └── internal_service_connection.sh
 
 * `base/`: Base kustomize manifest root folder
 * `base/cluster`: Provide different kind of clusters (based on amount of resources)
