@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sp-all-in-one # without p2p as p2pnode service and metadata service are both using 9833 port
+  name: sp-all-in-one
 spec:
   replicas: 1 # because of singleton components, replicas has always to be 1
   selector:
