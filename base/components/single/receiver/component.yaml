@@ -63,8 +63,8 @@ spec:
             cpu: "4"
             memory: 8Gi
           requests:
-            cpu: "4"
-            memory: 8Gi
+            cpu: "1"
+            memory: 2Gi
         ports:
           - containerPort: 9533
             name: receiver
