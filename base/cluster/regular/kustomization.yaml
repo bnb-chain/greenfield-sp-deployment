@@ -10,6 +10,7 @@ resources:
   - ../../components/single/p2p
   - ../../components/single/auth
   - ../../components/combo/uploader+downloader+challenge
+  - ../../components/single/stopserving
 
 patches:
 - target:

@@ -11,6 +11,7 @@ resources:
   - ../../components/single/uploader
   - ../../components/single/auth
   - ../../components/combo/downloader+challenge
+  - ../../components/single/stopserving
 
 patches:
 - target:
