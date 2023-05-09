@@ -38,15 +38,10 @@ spec:
               secretKeyRef:
                 key: BLOCK_SYNCER_DSN
                 name: default
-          - name: BLOCK_SYNCER_DB_USER # only used by metadata
+          - name: BLOCK_SYNCER_DSN_SWITCHED
             valueFrom:
               secretKeyRef:
-                key: BLOCK_SYNCER_DB_USER
-                name: default
-          - name: BLOCK_SYNCER_DB_PASSWORD # only used by metadata
-            valueFrom:
-              secretKeyRef:
-                key: BLOCK_SYNCER_DB_PASSWORD # only used by metadata
+                key: BLOCK_SYNCER_DSN_SWITCHED
                 name: default
           - name: SP_DB_USER
             valueFrom:
@@ -87,6 +82,51 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: SIGNER_SEAL_PRIV_KEY
+                name: default
+          - name: SIGNER_GC_PRIV_KEY
+            valueFrom:
+              secretKeyRef:
+                key: SIGNER_GC_PRIV_KEY
+                name: default
+          - name: BS_DB_USER
+            valueFrom:
+              secretKeyRef:
+                key: BS_DB_USER
+                name: default
+          - name: BS_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: BS_DB_PASSWORD
+                name: default
+          - name: BS_DB_ADDRESS
+            valueFrom:
+              secretKeyRef:
+                key: SP_DB_ADDRESS
+                name: default
+          - name: BS_DB_DATABASE
+            valueFrom:
+              secretKeyRef:
+                key: BS_DB_DATABASE
+                name: default
+          - name: BS_DB_SWITCHED_USER
+            valueFrom:
+              secretKeyRef:
+                key: BS_DB_SWITCHED_USER
+                name: default
+          - name: BS_DB_SWITCHED_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: BS_DB_SWITCHED_PASSWORD
+                name: default
+          - name: BS_DB_SWITCHED_ADDRESS
+            valueFrom:
+              secretKeyRef:
+                key: BS_DB_SWITCHED_ADDRESS
+                name: default
+          - name: BS_DB_SWITCHED_DATABASE
+            valueFrom:
+              secretKeyRef:
+                key: BS_DB_SWITCHED_DATABASE
                 name: default
         resources:
           limits:
