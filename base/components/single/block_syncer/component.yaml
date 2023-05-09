@@ -24,10 +24,10 @@ spec:
               secretKeyRef:
                 key: BLOCK_SYNCER_DSN
                 name: default
-          - name: BLOCK_SYNCER_DSN_BACKUP
+          - name: BLOCK_SYNCER_DSN_SWITCHED
             valueFrom:
               secretKeyRef:
-                key: BLOCK_SYNCER_DSN_BACKUP
+                key: BLOCK_SYNCER_DSN_SWITCHED
                 name: default
         resources:
           limits:
