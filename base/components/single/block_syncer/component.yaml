@@ -24,6 +24,11 @@ spec:
               secretKeyRef:
                 key: BLOCK_SYNCER_DSN
                 name: default
+          - name: BLOCK_SYNCER_DSN_BACKUP
+            valueFrom:
+              secretKeyRef:
+                key: BLOCK_SYNCER_DSN_BACKUP
+                name: default
         resources:
           limits:
             cpu: "4"

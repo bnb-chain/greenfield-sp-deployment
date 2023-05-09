@@ -19,16 +19,6 @@ spec:
         args: ["--log.std", "-c", "/config/config.toml", "-server", "metadata"]
         imagePullPolicy: Always
         env:
-          - name: BLOCK_SYNCER_DB_USER
-            valueFrom:
-              secretKeyRef:
-                key: BLOCK_SYNCER_DB_USER
-                name: default
-          - name: BLOCK_SYNCER_DB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                key: BLOCK_SYNCER_DB_PASSWORD
-                name: default
           - name: SP_DB_USER
             valueFrom:
               secretKeyRef:
@@ -68,6 +58,26 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: BS_DB_DATABASE
+                name: default
+          - name: BS_DB_SWITCHED_USER
+            valueFrom:
+              secretKeyRef:
+                key: BS_DB_SWITCHED_USER
+                name: default
+          - name: BS_DB_SWITCHED_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: BS_DB_SWITCHED_PASSWORD
+                name: default
+          - name: BS_DB_SWITCHED_ADDRESS
+            valueFrom:
+              secretKeyRef:
+                key: BS_DB_SWITCHED_ADDRESS
+                name: default
+          - name: BS_DB_SWITCHED_DATABASE
+            valueFrom:
+              secretKeyRef:
+                key: BS_DB_SWITCHED_DATABASE
                 name: default
         resources:
           limits:
