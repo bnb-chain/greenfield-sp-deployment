@@ -17,7 +17,6 @@ spec:
       - name: upload-config-to-db
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
         imagePullPolicy: Always
-        # command: ['/bin/bash', '-c', "/app/gnfd-sp --log.std config.upload -c /config/config.toml"]
         args: ["--log.std", "config.upload", "-c", "/config/config.toml"]
         volumeMounts:
         - mountPath: /config
@@ -41,7 +40,6 @@ spec:
       containers:
       - name: manager
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
-        # command: ['/bin/bash', '-c', "/app/gnfd-sp --log.std config.remote -server manager 2>&1 &"]
         args: ["--log.std", "-c", "/config/config.toml", "-server", "manager"]
         env:
           - name: SP_DB_USER
@@ -58,6 +56,11 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: SP_DB_ADDRESS
+                name: default
+          - name: BUCKET_URL
+            valueFrom:
+              secretKeyRef:
+                key: BUCKET_URL
                 name: default
         resources:
           limits:
