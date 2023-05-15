@@ -1,6 +1,6 @@
-To deploy storage provider on demand in forms of all-in-one, samll, default, regular, large.
+To deploy storage provider on demand in forms of all-in-one, regular (default) or large.
 
-## Prerequisites for deployment
+## Pre-requisites for deployment
 - MySql Database which is accessible from the k8s cluster where SP will be running in.
 - storage_provider_db is created in MySql DB. (DB name is configurable in config.toml of gnfd-sp)
 - block_syncer is created in Mysql DB. (can be in a different mysql to storage_provider_db one)
