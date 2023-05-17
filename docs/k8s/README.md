@@ -237,3 +237,8 @@ doc for creating the secret. The secret JSON content will be like the followings
     "BLOCK_SYNCER_DSN_SWITCHED":"user:pw@tcp(xxx.rds.amazonaws.com:3306)/block_syncer_backup?parseTime=true&multiStatements=true&loc=Local"
 }
 ```
+
+refer to [runbook](https://github.com/bnb-chain/greenfield-docs/blob/718b662489fd862f56c1a0b9748f357b71735bd0/src/guide/storage-provider/run-book/run-testnet-SP-node.md) to check how to get the keys.
+
+build command: `kustomize build . > sp.yaml`
+apply command: `kubectl apply -f ./sp.yaml`
