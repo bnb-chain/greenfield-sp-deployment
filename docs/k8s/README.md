@@ -54,7 +54,7 @@ patches:
   patch: |-
     - op: replace
       path: /metadata/annotations/eks.amazonaws.com~1role-arn
-      value: arn:aws:iam::111111111111:role/greenfield-devnet-sp-a-k8s
+      value: arn:aws:iam::111111111111:role/greenfield-sp-a
 - target:
     kind: SecretStore
     name: default
@@ -68,14 +68,14 @@ patches:
   patch: |-
     - op: replace
       path: /spec/dataFrom/0/extract/key
-      value: /projects/greenfield/devnet/sp/a
+      value: /projects/greenfield/sp/a
 - target:
     kind: ServiceMonitor
     name: default
   patch: |-
     - op: replace
       path: /spec/namespaceSelector/matchNames/0
-      value: gf-devnet-sp-a
+      value: gf-sp-a
 ```
 
 ### Config file
@@ -93,7 +93,7 @@ SpOperatorAddress = "0x000000000000000000000000000000000000000"
 # service name in k8s
 # notice: except gateway is SP Domain
 [Endpoint]
-gateway = "gf-devnet-sp-docverify-bk.dev.nodereal.cc"
+gateway = "sp-a.your-domain.com"
 challenge = "challenge:9333"
 downloader = "downloader:9233"
 receiver = "receiver:9533"
@@ -152,8 +152,8 @@ IAMType = "SA"
 ChainID = "greenfield_xxxx-x"
 
 [[ChainConfig.NodeAddr]]
-GreenfieldAddresses = ["k8s-gnfdvali-gnfdvali-7579b4ae5d-90e1768a7740c93a.elb.us-east-1.amazonaws.com:9090"]
-TendermintAddresses = ["https://gnfd-dev.qa.bnbchain.world:443"]
+GreenfieldAddresses = ["k8s-gnfdvali-gnfdvali-0000000000000000000000000.elb.us-east-1.amazonaws.com:9090"]
+TendermintAddresses = ["https://gnfd.chain.your-domain.com"]
 
 # signer service config
 [SignerCfg]
