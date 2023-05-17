@@ -14,7 +14,7 @@ We currently support a number of cluster modes, depending on the requirements of
 ## Setting up K8S via kustomize
 
 To set up a primary SP cluster, using `kustomize` we can deploy it with the following YAML. You can
-replace the `value`s with yours in the YAML file. 
+replace the `value`s in the YAML file. 
 
 ```
 resources:
@@ -216,12 +216,12 @@ doc for creating the secret. The secret JSON content will be like the followings
 {
     "SP_DB_USER":"xxx",
     "SP_DB_PASSWORD":"xxx",
-    "SP_DB_ADDRESS":"xxx.rds.amazonaws.com:3306",
+    "SP_DB_ADDRESS":"xxx:3306",
     "SP_DB_DATABASE":"storage_provider_db",
-    "BLOCK_SYNCER_DSN":"user:pw@tcp(xxx.rds.amazonaws.com:3306)/block_syncer?parseTime=true&multiStatements=true&loc=Local",
+    "BLOCK_SYNCER_DSN":"user:pw@tcp(xxx:3306)/block_syncer?parseTime=true&multiStatements=true&loc=Local",
     "BS_DB_USER":"xxx",
     "BS_DB_PASSWORD":"xxx",
-    "BS_DB_ADDRESS":"xxx.rds.amazonaws.com:3306",
+    "BS_DB_ADDRESS":"xxx:3306",
     "BS_DB_DATABASE":"block_syncer",
     "SIGNER_OPERATOR_PRIV_KEY":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
     "SIGNER_FUNDING_PRIV_KEY":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -232,9 +232,9 @@ doc for creating the secret. The secret JSON content will be like the followings
     "SIGNER_GC_PRIV_KEY":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
     "BS_DB_SWITCHED_USER":"xxx",
     "BS_DB_SWITCHED_PASSWORD":"xxx",
-    "BS_DB_SWITCHED_ADDRESS":"xxx.rds.amazonaws.com:3306",
+    "BS_DB_SWITCHED_ADDRESS":"xxx:3306",
     "BS_DB_SWITCHED_DATABASE":"block_syncer_backup",
-    "BLOCK_SYNCER_DSN_SWITCHED":"user:pw@tcp(xxx.rds.amazonaws.com:3306)/block_syncer_backup?parseTime=true&multiStatements=true&loc=Local"
+    "BLOCK_SYNCER_DSN_SWITCHED":"user:pw@tcp(xxx:3306)/block_syncer_backup?parseTime=true&multiStatements=true&loc=Local"
 }
 ```
 
