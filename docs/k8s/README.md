@@ -14,15 +14,16 @@ We currently support a number of cluster modes, depending on the requirements of
 ## Setting up K8S via kustomize
 
 To set up a primary SP cluster, using `kustomize` we can deploy it with the following YAML. You can
-replace the `value`s in the YAML file. 
+replace the `value`s with yours in the YAML file. 
 
 ```
 resources:
   - https://github.com/node-real/greenfield-sp-k8s/base/cluster/large?ref=v0.2.16
 
+
 images:
 - name: ghcr.io/bnb-chain/greenfield-storage-provider
-  newTag: 0.1.3
+  newTag: 0.2.0
 
 configMapGenerator:
 - name: config
@@ -53,7 +54,7 @@ patches:
   patch: |-
     - op: replace
       path: /metadata/annotations/eks.amazonaws.com~1role-arn
-      value: arn:aws:iam::111111111111:role/greenfield-sp-a
+      value: arn:aws:iam::111111111111:role/greenfield-devnet-sp-a-k8s
 - target:
     kind: SecretStore
     name: default
@@ -67,14 +68,14 @@ patches:
   patch: |-
     - op: replace
       path: /spec/dataFrom/0/extract/key
-      value: /projects/greenfield/sp/a
+      value: /projects/greenfield/devnet/sp/a
 - target:
     kind: ServiceMonitor
     name: default
   patch: |-
     - op: replace
       path: /spec/namespaceSelector/matchNames/0
-      value: gf-sp-a
+      value: gf-devnet-sp-a
 ```
 
 ### Config file
@@ -92,7 +93,7 @@ SpOperatorAddress = "0x000000000000000000000000000000000000000"
 # service name in k8s
 # notice: except gateway is SP Domain
 [Endpoint]
-gateway = "sp-a.your-domain.com"
+gateway = "gf-devnet-sp-docverify-bk.dev.nodereal.cc"
 challenge = "challenge:9333"
 downloader = "downloader:9233"
 receiver = "receiver:9533"
@@ -151,8 +152,8 @@ IAMType = "SA"
 ChainID = "greenfield_xxxx-x"
 
 [[ChainConfig.NodeAddr]]
-GreenfieldAddresses = ["k8s-gnfdvali-gnfdvali-0000000000000000000000000.elb.us-east-1.amazonaws.com:9090"]
-TendermintAddresses = ["https://gnfd.chain.your-domain.com"]
+GreenfieldAddresses = ["k8s-gnfdvali-gnfdvali-7579b4ae5d-90e1768a7740c93a.elb.us-east-1.amazonaws.com:9090"]
+TendermintAddresses = ["https://gnfd-dev.qa.bnbchain.world:443"]
 
 # signer service config
 [SignerCfg]
@@ -215,22 +216,24 @@ doc for creating the secret. The secret JSON content will be like the followings
 {
     "SP_DB_USER":"xxx",
     "SP_DB_PASSWORD":"xxx",
-    "SP_DB_ADDRESS":"xxx:3306",
+    "SP_DB_ADDRESS":"xxx.rds.amazonaws.com:3306",
     "SP_DB_DATABASE":"storage_provider_db",
-    "BLOCK_SYNCER_DSN":"xxx",
-    "BLOCK_SYNCER_DB_USER":"xxx",
-    "BLOCK_SYNCER_DB_PASSWORD":"xxx",
+    "BLOCK_SYNCER_DSN":"user:pw@tcp(xxx.rds.amazonaws.com:3306)/block_syncer?parseTime=true&multiStatements=true&loc=Local",
     "BS_DB_USER":"xxx",
     "BS_DB_PASSWORD":"xxx",
-    "BS_DB_ADDRESS":"xxx:3306",
+    "BS_DB_ADDRESS":"xxx.rds.amazonaws.com:3306",
     "BS_DB_DATABASE":"block_syncer",
     "SIGNER_OPERATOR_PRIV_KEY":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
     "SIGNER_FUNDING_PRIV_KEY":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
     "SIGNER_APPROVAL_PRIV_KEY":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
     "SIGNER_SEAL_PRIV_KEY":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-    "AWS_ACCESS_KEY":"xxx",
-    "AWS_SECRET_KEY":"xxx",
     "BUCKET_URL":"xxx",
-    "P2P_PRIVATE_KEY":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-    }
+    "P2P_PRIVATE_KEY":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "SIGNER_GC_PRIV_KEY":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "BS_DB_SWITCHED_USER":"xxx",
+    "BS_DB_SWITCHED_PASSWORD":"xxx",
+    "BS_DB_SWITCHED_ADDRESS":"xxx.rds.amazonaws.com:3306",
+    "BS_DB_SWITCHED_DATABASE":"block_syncer_backup",
+    "BLOCK_SYNCER_DSN_SWITCHED":"user:pw@tcp(xxx.rds.amazonaws.com:3306)/block_syncer_backup?parseTime=true&multiStatements=true&loc=Local"
+}
 ```
