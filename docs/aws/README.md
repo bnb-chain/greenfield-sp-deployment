@@ -22,7 +22,10 @@ Database (RDS)
 
 * Create RDS database and jot down the connection string, username and password.
 ![5](imgs/rds.png)
-
+after RDS created, need to init DB by creating databse:
+1. db storage_provider_db
+2. db block_syncer
+3. db block_syncer_backup
 
 S3 Bucket
 ---------
@@ -43,10 +46,8 @@ Secret Manager
     "SP_DB_USER":"xxx",
     "SP_DB_PASSWORD":"xxx",
     "SP_DB_ADDRESS":"xxx:3306",
-    "SP_DB_DATABASE":"xxx",
-    "BLOCK_SYNCER_DSN":"xxx",
-    "BLOCK_SYNCER_DB_USER":"xxx",
-    "BLOCK_SYNCER_DB_PASSWORD":"xxx",
+    "SP_DB_DATABASE":"storage_provider_db",
+    "BLOCK_SYNCER_DSN":"user:pw@tcp(xxx:3306)/block_syncer?parseTime=true&multiStatements=true&loc=Local",
     "BS_DB_USER":"xxx",
     "BS_DB_PASSWORD":"xxx",
     "BS_DB_ADDRESS":"xxx:3306",
@@ -55,10 +56,13 @@ Secret Manager
     "SIGNER_FUNDING_PRIV_KEY":"",
     "SIGNER_APPROVAL_PRIV_KEY":"",
     "SIGNER_SEAL_PRIV_KEY":"",
-    "AWS_ACCESS_KEY":"xxx",
-    "AWS_SECRET_KEY":"xxx",
     "BUCKET_URL":"xxx",
-    "P2P_PRIVATE_KEY":""
-    }
+    "P2P_PRIVATE_KEY":"xxx",
+    "SIGNER_GC_PRIV_KEY":"xxx",
+    "BS_DB_SWITCHED_USER":"xxx",
+    "BS_DB_SWITCHED_PASSWORD":"xxx",
+    "BS_DB_SWITCHED_ADDRESS":"xxx:3306",
+    "BS_DB_SWITCHED_DATABASE":"block_syncer_backup",
+    "BLOCK_SYNCER_DSN_SWITCHED":"user:pw@tcp(xxx:3306)/block_syncer_backup?parseTime=true&multiStatements=true&loc=Local"
+}
 ``` 
-

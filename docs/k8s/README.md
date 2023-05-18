@@ -20,9 +20,10 @@ replace the `value`s in the YAML file.
 resources:
   - https://github.com/node-real/greenfield-sp-k8s/base/cluster/large?ref=v0.2.16
 
+
 images:
 - name: ghcr.io/bnb-chain/greenfield-storage-provider
-  newTag: 0.1.3
+  newTag: 0.2.0
 
 configMapGenerator:
 - name: config
@@ -217,9 +218,7 @@ doc for creating the secret. The secret JSON content will be like the followings
     "SP_DB_PASSWORD":"xxx",
     "SP_DB_ADDRESS":"xxx:3306",
     "SP_DB_DATABASE":"storage_provider_db",
-    "BLOCK_SYNCER_DSN":"xxx",
-    "BLOCK_SYNCER_DB_USER":"xxx",
-    "BLOCK_SYNCER_DB_PASSWORD":"xxx",
+    "BLOCK_SYNCER_DSN":"user:pw@tcp(xxx:3306)/block_syncer?parseTime=true&multiStatements=true&loc=Local",
     "BS_DB_USER":"xxx",
     "BS_DB_PASSWORD":"xxx",
     "BS_DB_ADDRESS":"xxx:3306",
@@ -228,9 +227,18 @@ doc for creating the secret. The secret JSON content will be like the followings
     "SIGNER_FUNDING_PRIV_KEY":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
     "SIGNER_APPROVAL_PRIV_KEY":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
     "SIGNER_SEAL_PRIV_KEY":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-    "AWS_ACCESS_KEY":"xxx",
-    "AWS_SECRET_KEY":"xxx",
     "BUCKET_URL":"xxx",
-    "P2P_PRIVATE_KEY":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-    }
+    "P2P_PRIVATE_KEY":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "SIGNER_GC_PRIV_KEY":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "BS_DB_SWITCHED_USER":"xxx",
+    "BS_DB_SWITCHED_PASSWORD":"xxx",
+    "BS_DB_SWITCHED_ADDRESS":"xxx:3306",
+    "BS_DB_SWITCHED_DATABASE":"block_syncer_backup",
+    "BLOCK_SYNCER_DSN_SWITCHED":"user:pw@tcp(xxx:3306)/block_syncer_backup?parseTime=true&multiStatements=true&loc=Local"
+}
 ```
+
+refer to [runbook](https://github.com/bnb-chain/greenfield-docs/blob/718b662489fd862f56c1a0b9748f357b71735bd0/src/guide/storage-provider/run-book/run-testnet-SP-node.md) to check how to get the keys.
+
+build command: `kustomize build . > sp.yaml`
+apply command: `kubectl apply -f ./sp.yaml`
