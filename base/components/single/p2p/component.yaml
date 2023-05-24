@@ -19,7 +19,6 @@ spec:
       - name: p2p
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.4-p2p
         args: ["--log.std", "-c", "/config/config.toml", "-server", "p2p"]
-        imagePullPolicy: Always
         env:
           - name: P2P_PRIVATE_KEY
             valueFrom:
@@ -49,13 +48,13 @@ spec:
             cpu: "1"
             memory: 2Gi
         ports:
-          - containerPort: 9833
+          - containerPort: 9333
             name: p2p
           - containerPort: 9933
             name: p2p-external
-          - containerPort: 24036
+          - containerPort: 24367
             name: metrics
-          - containerPort: 25341
+          - containerPort: 24368
             name: pprof
         volumeMounts:
         - mountPath: /config
@@ -80,14 +79,14 @@ metadata:
   name: p2p
 spec:
   ports:
-  - port: 9833
-    targetPort: 9833
+  - port: 9333
+    targetPort: 9333
     name: p2p
-  - port: 24036
-    targetPort: 24036
+  - port: 24367
+    targetPort: 24367
     name: metrics
-  - port: 25341
-    targetPort: 25341
+  - port: 24368
+    targetPort: 24368
     name: pprof
   selector:
     app: p2p

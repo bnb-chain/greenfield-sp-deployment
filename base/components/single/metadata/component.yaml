@@ -17,7 +17,6 @@ spec:
       - name: metadata
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
         args: ["--log.std", "-c", "/config/config.toml", "-server", "metadata"]
-        imagePullPolicy: Always
         env:
           - name: SP_DB_USER
             valueFrom:
@@ -87,7 +86,7 @@ spec:
             cpu: "1"
             memory: 2Gi
         ports:
-          - containerPort: 9833
+          - containerPort: 9333
             name: metadata
         volumeMounts:
         - mountPath: /config
@@ -105,8 +104,8 @@ metadata:
   name: metadata
 spec:
   ports:
-  - port: 9833
-    targetPort: 9833
+  - port: 9333
+    targetPort: 9333
     name: metadata
   selector:
     app: metadata

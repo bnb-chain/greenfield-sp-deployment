@@ -18,7 +18,6 @@ spec:
       containers:
       - name: uploader
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
-        imagePullPolicy: Always
         args: ["--log.std", "-c", "/config/config.toml", "-server", "uploader"]
         env:
           - name: AWS_ACCESS_KEY
@@ -61,11 +60,11 @@ spec:
             cpu: "1"
             memory: 2Gi
         ports:
-          - containerPort: 9133
+          - containerPort: 9333
             name: uploader
-          - containerPort: 24036
+          - containerPort: 24367
             name: metrics
-          - containerPort: 25341
+          - containerPort: 24368
             name: pprof
         volumeMounts:
         - mountPath: /config
@@ -83,14 +82,14 @@ metadata:
   name: uploader
 spec:
   ports:
-  - port: 9133
-    targetPort: 9133
+  - port: 9333
+    targetPort: 9333
     name: uploader
-  - port: 24036
-    targetPort: 24036
+  - port: 24367
+    targetPort: 24367
     name: metrics
-  - port: 25341
-    targetPort: 25341
+  - port: 24368
+    targetPort: 24368
     name: pprof
   selector:
     app: uploader

@@ -61,14 +61,11 @@ spec:
             cpu: "1"
             memory: 2Gi
         ports:
-          - containerPort: 9133
-            name: uploader
-          - containerPort: 24036
+          - containerPort: 9333
+            name: uploader-manager-receiver
+          - containerPort: 24367
             name: metrics
-          - containerPort: 9533
-            name: receiver
-          - containerPort: 25341
-            name: pprof
+          - containerPort: 24368
         volumeMounts:
         - mountPath: /config
           name: config
@@ -82,32 +79,17 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: uploader
+  name: uploader-manager-receiver
 spec:
   ports:
-  - port: 9133
-    targetPort: 9133
-    name: uploader
-  - port: 24036
-    targetPort: 24036
+  - port: 9333
+    targetPort: 9333
+    name: uploader-manager-receiver
+  - port: 24367
+    targetPort: 24367
     name: metrics
-  - port: 25341
-    targetPort: 25341
+  - port: 24368
+    targetPort: 24368
     name: pprof
   selector:
     app: uploader-manager-receiver
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: receiver
-spec:
-  ports:
-  - port: 9533
-    targetPort: 9533
-    name: receiver
-  - port: 25341
-    targetPort: 25341
-    name: pprof
-  selector:
-    app: receiver

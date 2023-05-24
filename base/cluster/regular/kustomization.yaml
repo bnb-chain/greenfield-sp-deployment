@@ -1,7 +1,7 @@
 resources:
   - ../../components/shared
   - ../../components/single/receiver
-  - ../../components/single/tasknode
+  - ../../components/single/taskexecutor
   - ../../components/single/gateway
   - ../../components/single/signer
   - ../../components/single/metadata
@@ -9,7 +9,7 @@ resources:
   - ../../components/single/manager
   - ../../components/single/p2p
   - ../../components/single/auth
-  - ../../components/combo/uploader+downloader+challenge
+  - ../../components/combo/uploader+downloader
   - ../../components/single/stopserving
 
 patches:

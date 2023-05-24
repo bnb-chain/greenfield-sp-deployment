@@ -1,23 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tasknode
+  name: taskexecutor
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: tasknode
+      app: taskexecutor
   template:
     metadata:
       labels:
-        app: tasknode
+        app: taskexecutor
     spec:
       serviceAccountName: nodereal-default
       containers:
-      - name: tasknode
+      - name: taskexecutor
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
-        imagePullPolicy: Always
-        args: ["--log.std", "-c", "/config/config.toml", "-server", "tasknode"]
+        args: ["--log.std", "-c", "/config/config.toml", "-server", "taskexecutor"]
         env:
           - name: AWS_ACCESS_KEY
             valueFrom:
@@ -59,11 +58,11 @@ spec:
             cpu: "1"
             memory: 2Gi
         ports:
-          - containerPort: 9433
-            name: tasknode
-          - containerPort: 24036
+          - containerPort: 9333
+            name: taskexecutor
+          - containerPort: 24367
             name: metrics
-          - containerPort: 25341
+          - containerPort: 24368
             name: pprof
         volumeMounts:
         - mountPath: /config
@@ -78,18 +77,18 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: tasknode
+  name: taskexecutor
 spec:
   ports:
-  - port: 9433
-    targetPort: 9433
-    name: tasknode
-  - port: 24036
-    targetPort: 24036
+  - port: 9333
+    targetPort: 9333
+    name: taskexecutor
+  - port: 24367
+    targetPort: 24367
     name: metrics
-  - port: 25341
-    targetPort: 25341
+  - port: 24368
+    targetPort: 24368
     name: pprof
   selector:
-    app: tasknode
+    app: taskexecutor
 ---

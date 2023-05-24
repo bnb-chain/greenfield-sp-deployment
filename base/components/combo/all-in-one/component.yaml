@@ -18,8 +18,7 @@ spec:
       containers:
       - name: sp-all-in-one
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
-        imagePullPolicy: Always
-        args: ["--log.std", "-c", "/config/config.toml", "-server", "auth,blocksyncer,challenge,downloader,gateway,manager,metadata,p2p,receiver,signer,tasknode,uploader"]
+        args: ["--log.std", "-c", "/config/config.toml", "-server", "approval,authorizer,downloader,taskexecutor,gateway,manager,p2p,receiver,signer,uploader"]
         env:
           - name: AWS_ACCESS_KEY
             valueFrom:
@@ -136,30 +135,16 @@ spec:
             cpu: "2"
             memory: 4Gi
         ports:
-          - containerPort: 8933
-            name: auth
+          - containerPort: 9333
+            name: grpc
           - containerPort: 9033
             name: gateway
-          - containerPort: 9133
-            name: uploader
-          - containerPort: 9233
-            name: downloader
-          - containerPort: 9333
-            name: challenge
-          - containerPort: 9433
-            name: tasknode
-          - containerPort: 9533
-            name: receiver
-          - containerPort: 9633
-            name: signer
-          - containerPort: 9733
-            name: metadata
-          - containerPort: 9833
-            name: p2p
           - containerPort: 9933
             name: p2p-external
-          - containerPort: 24036
+          - containerPort: 24367
             name: metrics
+          - containerPort: 24368
+            name: pprof
         volumeMounts:
         - mountPath: /config
           name: config
@@ -180,18 +165,6 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: auth
-spec:
-  ports:
-  - port: 8933
-    targetPort: 8933
-    name: auth
-  selector:
-    app: auth
----
-apiVersion: v1
-kind: Service
-metadata:
   name: gateway
 spec:
   ports:
@@ -204,84 +177,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: uploader
-spec:
-  ports:
-  - port: 9133
-    targetPort: 9133
-    name: uploader
-  selector:
-    app: sp-all-in-one
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: downloader
-spec:
-  ports:
-  - port: 9233
-    targetPort: 9233
-    name: downloader
-  selector:
-    app: sp-all-in-one
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: challenge
+  name: grpc
 spec:
   ports:
   - port: 9333
     targetPort: 9333
-    name: challenge
-  selector:
-    app: sp-all-in-one
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: tasknode
-spec:
-  ports:
-  - port: 9433
-    targetPort: 9433
-    name: tasknode
-  selector:
-    app: sp-all-in-one
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: receiver
-spec:
-  ports:
-  - port: 9533
-    targetPort: 9533
-    name: receiver
-  selector:
-    app: sp-all-in-one
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: signer
-spec:
-  ports:
-  - port: 9633
-    targetPort: 9633
-    name: signer
-  selector:
-    app: sp-all-in-one
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: metadata
-spec:
-  ports:
-  - port: 9833
-    targetPort: 9833
-    name: metadata
+    name: grpc
   selector:
     app: sp-all-in-one
 ---
@@ -291,21 +192,9 @@ metadata:
   name: metrics
 spec:
   ports:
-  - port: 24036
-    targetPort: 24036
+  - port: 24367
+    targetPort: 24367
     name: metrics
-  selector:
-    app: sp-all-in-one
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: p2p
-spec:
-  ports:
-  - port: 9833
-    targetPort: 9833
-    name: p2p
   selector:
     app: sp-all-in-one
 ---

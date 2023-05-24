@@ -16,8 +16,7 @@ spec:
       containers:
       - name: gateway
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
-        args: ["--log.std", "-c", "/config/config.toml", "-server", "gateway"]
-        imagePullPolicy: Always
+        args: ["--log.std", "-c", "/config/config.toml", "-server", "gateway,authorizer"]
         env:
           - name: SP_DB_USER
             valueFrom:
@@ -44,9 +43,9 @@ spec:
         ports:
           - containerPort: 9033
             name: gateway
-          - containerPort: 24036
+          - containerPort: 24367
             name: metrics
-          - containerPort: 25341
+          - containerPort: 24368
             name: pprof
         volumeMounts:
         - mountPath: /config
@@ -67,11 +66,11 @@ spec:
   - port: 9033
     targetPort: 9033
     name: gateway
-  - port: 24036
-    targetPort: 24036
+  - port: 24367
+    targetPort: 24367
     name: metrics
-  - port: 25341
-    targetPort: 25341
+  - port: 24368
+    targetPort: 24368
     name: pprof
   selector:
     app: gateway

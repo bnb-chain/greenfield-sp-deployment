@@ -16,7 +16,6 @@ spec:
       containers:
       - name: signer
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
-        imagePullPolicy: Always
         args: ["--log.std", "-c", "/config/config.toml", "-server", "signer"]
         env:
           - name: SP_DB_USER
@@ -67,11 +66,11 @@ spec:
             cpu: "1"
             memory: 2Gi
         ports:
-          - containerPort: 9633
+          - containerPort: 9333
             name: signer
-          - containerPort: 24036
+          - containerPort: 24367
             name: metrics
-          - containerPort: 25341
+          - containerPort: 24368
             name: pprof
         volumeMounts:
         - mountPath: /config
@@ -89,14 +88,14 @@ metadata:
   name: signer
 spec:
   ports:
-  - port: 9633
-    targetPort: 9633
+  - port: 9333
+    targetPort: 9333
     name: signer
-  - port: 24036
-    targetPort: 24036
+  - port: 24367
+    targetPort: 24367
     name: metrics
-  - port: 25341
-    targetPort: 25341
+  - port: 24368
+    targetPort: 24368
     name: pprof
   selector:
     app: signer

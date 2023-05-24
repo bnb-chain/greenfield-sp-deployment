@@ -13,34 +13,10 @@ spec:
         app: manager
     spec:
       serviceAccountName: nodereal-default
-      initContainers:
-      - name: upload-config-to-db
-        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
-        imagePullPolicy: Always
-        args: ["--log.std", "config.upload", "-c", "/config/config.toml"]
-        volumeMounts:
-        - mountPath: /config
-          name: config
-        env:
-          - name: SP_DB_USER
-            valueFrom:
-              secretKeyRef:
-                key: SP_DB_USER
-                name: default
-          - name: SP_DB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                key: SP_DB_PASSWORD
-                name: default
-          - name: SP_DB_ADDRESS
-            valueFrom:
-              secretKeyRef:
-                key: SP_DB_ADDRESS
-                name: default
       containers:
       - name: manager
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
-        args: ["--log.std", "-c", "/config/config.toml", "-server", "manager"]
+        args: ["--log.std", "-c", "/config/config.toml", "-server", "manager,approval"]
         env:
           - name: SP_DB_USER
             valueFrom:
@@ -69,6 +45,13 @@ spec:
           requests:
             cpu: "1"
             memory: 2Gi
+        ports:
+          - containerPort: 9333
+            name: manager
+          - containerPort: 24367
+            name: metrics
+          - containerPort: 24368
+            name: pprof
         volumeMounts:
         - mountPath: /config
           name: config
@@ -78,3 +61,21 @@ spec:
       - name: config
         configMap:
           name: config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: manager
+spec:
+  ports:
+  - port: 9333
+    targetPort: 9333
+    name: manager
+  - port: 24367
+    targetPort: 24367
+    name: metrics
+  - port: 24368
+    targetPort: 24368
+    name: pprof
+  selector:
+    app: manager
