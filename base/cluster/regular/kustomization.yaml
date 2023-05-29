@@ -9,6 +9,7 @@ resources:
   - ../../components/single/manager
   - ../../components/single/p2p
   - ../../components/combo/uploader+downloader
+  - ../../components/single/approver
 
 patches:
 - target:

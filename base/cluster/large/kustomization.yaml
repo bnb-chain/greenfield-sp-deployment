@@ -10,6 +10,7 @@ resources:
   - ../../components/single/p2p
   - ../../components/single/uploader
   - ../../components/single/downloader
+  - ../../components/single/approver
 
 patches:
 - target:
