@@ -8,9 +8,8 @@ resources:
   - ../../components/single/block_syncer
   - ../../components/single/manager
   - ../../components/single/p2p
-  - ../../components/single/auth
   - ../../components/combo/uploader+downloader
-  - ../../components/single/stopserving
+  - ../../components/single/approver
 
 patches:
 - target:
