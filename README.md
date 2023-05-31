@@ -14,8 +14,7 @@ Directory structure
     ├── base
     │   ├── cluster
     │   │   ├── README.md
-    │   │   ├── all-in-one
-    │   │   ├── default -> regular
+    │   │   ├── small
     │   │   ├── large
     │   │   ├── regular
     │   ├── components
