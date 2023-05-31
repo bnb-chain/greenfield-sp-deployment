@@ -1,4 +1,4 @@
-To deploy storage provider on demand in forms of all-in-one, regular (default) or large.
+To deploy storage provider on demand in forms of small, regular or large.
 
 ## Pre-requisites for deployment
 - MySql Database which is accessible from the k8s cluster where SP will be running in.
