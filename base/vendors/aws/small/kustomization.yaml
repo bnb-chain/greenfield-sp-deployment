@@ -1,6 +1,6 @@
 resources:
-  - ../../components/shared
-  - ../../components/combo/all-in-one
+  - ../../../components/shared
+  - ../../../components/combo/all-in-one
 
 patches:
 - target:
