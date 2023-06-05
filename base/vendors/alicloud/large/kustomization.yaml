@@ -1,5 +1,5 @@
 resources:
-  - ../../../components/shared
+  - ../../../components/shared/alicloud
   - ../../../components/single/gateway
   # - ../../../components/single/receiver
   # - ../../../components/single/taskexecutor
