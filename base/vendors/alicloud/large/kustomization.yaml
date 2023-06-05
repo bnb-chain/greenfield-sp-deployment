@@ -1,8 +1,8 @@
 resources:
-  # - ../../../components/shared
+  - ../../../components/shared
+  - ../../../components/single/gateway
   # - ../../../components/single/receiver
   # - ../../../components/single/taskexecutor
-  - ../../../components/single/gateway
   # - ../../../components/single/signer
   # - ../../../components/single/metadata
   # - ../../../components/single/block_syncer
