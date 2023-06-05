@@ -1,5 +1,5 @@
 resources:
-  - ../../../components/shared
+  - ../../../components/shared/aws
   - ../../../components/single/receiver
   - ../../../components/single/taskexecutor
   - ../../../components/single/gateway

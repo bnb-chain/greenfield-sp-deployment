@@ -1,5 +1,5 @@
 resources:
-  - ../../../components/shared
+  - ../../../components/shared/aws
   - ../../../components/combo/all-in-one
 
 patches:
