@@ -59,19 +59,14 @@ spec:
         volumeMounts:
         - mountPath: /config
           name: config
-        - name: data
-          mountPath: /app/data
       imagePullSecrets:
         - name: image-pull
       volumes:
         - name: config
           configMap:
             name: config
-        - name: data
-          persistentVolumeClaim:
-            claimName: p2p-data
       securityContext:
-        fsGroup: 1000 # uid=1000(sp) gid=1000(sp) groups=5(tty),1000(sp) 
+        fsGroup: 1000 # uid=1000(sp) gid=1000(sp) groups=5(tty),1000(sp)
 ---
 apiVersion: v1
 kind: Service
@@ -90,18 +85,6 @@ spec:
     name: pprof
   selector:
     app: p2p
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: p2p-data
-spec:
-  accessModes:
-    - ReadWriteOnce
-  storageClassName: ebs-sc # Patch this accordingly or remove it to use default SC in the cluster.
-  resources:
-    requests:
-      storage: 10Gi
 ---
 apiVersion: v1
 kind: Service
