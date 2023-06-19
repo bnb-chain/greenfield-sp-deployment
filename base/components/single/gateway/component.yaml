@@ -16,7 +16,7 @@ spec:
       containers:
       - name: gateway
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
-        args: ["--log.std", "-c", "/config/config.toml", "-server", "gateway,authorizer"]
+        args: ["--log.std", "-c", "/config/config.toml", "-server", "gateway,authenticator"]
         env:
           - name: SP_DB_USER
             valueFrom:
@@ -74,4 +74,3 @@ spec:
     name: pprof
   selector:
     app: gateway
-
