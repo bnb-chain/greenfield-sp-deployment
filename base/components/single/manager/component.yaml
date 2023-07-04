@@ -16,7 +16,7 @@ spec:
       containers:
       - name: manager
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
-        args: ["--log.std", "-c", "/config/config.toml", "-server", "manager,approver"]
+        args: ["--log.std", "-c", "/config/config.toml", "-server", "manager"]
         env:
           - name: SP_DB_USER
             valueFrom:
