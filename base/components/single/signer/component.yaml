@@ -58,6 +58,11 @@ spec:
               secretKeyRef:
                 key: SIGNER_GC_PRIV_KEY
                 name: default
+          - name: SIGNER_SEAL_BLS_PRIV_KEY
+            valueFrom:
+              secretKeyRef:
+                key: SIGNER_SEAL_BLS_PRIV_KEY
+                name: default
         resources:
           limits:
             cpu: "4"
