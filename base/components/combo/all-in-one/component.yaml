@@ -4,6 +4,7 @@ metadata:
   name: sp-all-in-one
 spec:
   replicas: 1 # because of singleton components, replicas has always to be 1
+  revisionHistoryLimit: 3
   selector:
     matchLabels:
       app: sp-all-in-one

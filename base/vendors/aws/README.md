@@ -1,5 +1,3 @@
-To deploy storage provider on demand in forms of small, regular or large.
-
 ## Pre-requisites for deployment
 - MySql Database which is accessible from the k8s cluster where SP will be running in.
 - storage_provider_db is created in MySql DB. (DB name is configurable in config.toml of gnfd-sp)

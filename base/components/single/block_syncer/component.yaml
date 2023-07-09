@@ -4,6 +4,7 @@ metadata:
   name: block-syncer
 spec:
   replicas: 1
+  revisionHistoryLimit: 3
   selector:
     matchLabels:
       app: block-syncer
@@ -41,8 +42,6 @@ spec:
         volumeMounts:
         - mountPath: /config
           name: config
-      imagePullSecrets:
-        - name: image-pull
       volumes:
         - name: config
           configMap:

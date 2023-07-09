@@ -5,7 +5,7 @@ metadata:
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
-  revisionHistoryLimit: 10
+  revisionHistoryLimit: 3
   selector:
     matchLabels:
       app: receiver
@@ -76,8 +76,6 @@ spec:
         volumeMounts:
         - mountPath: /config
           name: config
-      imagePullSecrets:
-        - name: image-pull
       volumes:
         - name: config
           configMap:

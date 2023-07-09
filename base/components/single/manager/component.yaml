@@ -4,6 +4,7 @@ metadata:
   name: manager
 spec:
   replicas: 1
+  revisionHistoryLimit: 3
   selector:
     matchLabels:
       app: manager
@@ -55,8 +56,6 @@ spec:
         volumeMounts:
         - mountPath: /config
           name: config
-      imagePullSecrets:
-      - name: image-pull
       volumes:
       - name: config
         configMap:

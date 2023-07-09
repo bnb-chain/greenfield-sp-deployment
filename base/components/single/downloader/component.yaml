@@ -4,6 +4,7 @@ metadata:
   name: downloader
 spec:
   replicas: 1
+  revisionHistoryLimit: 3
   selector:
     matchLabels:
       app: downloader
@@ -69,8 +70,6 @@ spec:
         volumeMounts:
         - mountPath: /config
           name: config
-      imagePullSecrets:
-        - name: image-pull
       volumes:
         - name: config
           configMap:

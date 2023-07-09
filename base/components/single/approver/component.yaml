@@ -4,6 +4,7 @@ metadata:
   name: approver
 spec:
   replicas: 1
+  revisionHistoryLimit: 3
   selector:
     matchLabels:
       app: approver
@@ -50,8 +51,6 @@ spec:
         volumeMounts:
         - mountPath: /config
           name: config
-      imagePullSecrets:
-      - name: image-pull
       volumes:
       - name: config
         configMap:

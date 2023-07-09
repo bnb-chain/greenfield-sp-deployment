@@ -4,6 +4,7 @@ metadata:
   name: p2p
 spec:
   replicas: 1
+  revisionHistoryLimit: 3
   selector:
     matchLabels:
       app: p2p
@@ -59,8 +60,6 @@ spec:
         volumeMounts:
         - mountPath: /config
           name: config
-      imagePullSecrets:
-        - name: image-pull
       volumes:
         - name: config
           configMap:

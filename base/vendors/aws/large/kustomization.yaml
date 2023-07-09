@@ -12,8 +12,3 @@ resources:
   - ../../../components/single/downloader
   - ../../../components/single/approver
 
-patches:
-- target:
-    kind: Deployment
-  path: ./patches/set_deployment_revision_history.yaml
-

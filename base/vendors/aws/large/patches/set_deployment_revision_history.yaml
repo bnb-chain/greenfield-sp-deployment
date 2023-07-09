@@ -1,4 +1,0 @@
-- op: replace
-  path: /spec/revisionHistoryLimit
-  value: 3
-
