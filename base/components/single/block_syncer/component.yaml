@@ -39,6 +39,8 @@ spec:
         ports:
           - containerPort: 9833
             name: block-syncer
+          - containerPort: 24367
+            name: metrics
         volumeMounts:
         - mountPath: /config
           name: config
@@ -46,3 +48,15 @@ spec:
         - name: config
           configMap:
             name: config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: block-syncer
+spec:
+  ports:
+  - port: 24367
+    targetPort: 24367
+    name: metrics
+  selector:
+    app: block-syncer
