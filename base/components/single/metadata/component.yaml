@@ -89,6 +89,9 @@ spec:
         ports:
           - containerPort: 9333
             name: metadata
+          - containerPort: 24367
+            name: metrics
+          - containerPort: 24368
         volumeMounts:
         - mountPath: /config
           name: config
@@ -106,5 +109,11 @@ spec:
   - port: 9333
     targetPort: 9333
     name: metadata
+  - port: 24367
+    targetPort: 24367
+    name: metrics
+  - port: 24368
+    targetPort: 24368
+    name: pprof
   selector:
     app: metadata
