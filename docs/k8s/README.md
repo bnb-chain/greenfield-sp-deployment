@@ -14,16 +14,16 @@ We currently support a number of cluster modes, depending on the requirements of
 ## Setting up K8S via kustomize
 
 To set up a primary SP cluster, using `kustomize` we can deploy it with the following YAML. You can
-replace the `value`s in the YAML file. 
+replace the `value`s in the YAML file.
 
 ```
 resources:
-  - https://github.com/node-real/greenfield-sp-k8s/base/cluster/large?ref=v0.2.16
+  - https://github.com/bnb-chain/greenfield-storage-provider/deployment/kustomize/base/vendors/aws/large?ref=develop
 
 
 images:
 - name: ghcr.io/bnb-chain/greenfield-storage-provider
-  newTag: 0.2.0
+  newTag: 0.2.3-alpha.2
 
 configMapGenerator:
 - name: config
@@ -80,130 +80,123 @@ patches:
 
 ### Config file
 
-Here is the config file used in the above `configMapGenerator`. You will need to obtain and 
+Here is the config file used in the above `configMapGenerator`. You will need to obtain and
 replace `SpOperatorAddress`, `ChainID`, `GreenfieldAddresses` and `TendermintAddresses` from your env.
 
 ```
 # services list are to be started
-Service = ["gateway", "uploader", "downloader", "challenge", "tasknode", "receiver", "manager", "p2p", "auth", "stopserving"]
+Server = []
+GRPCAddress = '0.0.0.0:9333'
 
-# sp operator address generate from sp's 'OperatorPublicKey'
-SpOperatorAddress = "0x000000000000000000000000000000000000000"
+[SpDB]
+User = ''
+Passwd = ''
+Address = ''
+Database = 'storage_provider_db'
 
-# service name in k8s
-# notice: except gateway is SP Domain
-[Endpoint]
-gateway = "sp-a.your-domain.com"
-challenge = "challenge:9333"
-downloader = "downloader:9233"
-receiver = "receiver:9533"
-signer = "signer:9633"
-tasknode = "tasknode:9433"
-uploader = "uploader:9133"
-metadata = "metadata:9833"
-p2p = "p2p:9833"
-auth = "auth:8933"
+[BsDB]
+User = ''
+Passwd = ''
+Address = ''
+Database = 'block_syncer'
 
-# pod listen addr
-[ListenAddress]
-challenge = "0.0.0.0:9333"
-downloader = "0.0.0.0:9233"
-gateway = "0.0.0.0:9033"
-receiver = "0.0.0.0:9533"
-signer = "0.0.0.0:9633"
-tasknode = "0.0.0.0:9433"
-uploader = "0.0.0.0:9133"
-metadata = "0.0.0.0:9833"
-p2p = "0.0.0.0:9833"
-auth = "0.0.0.0:8933"
+[BsDBBackup]
+User = ''
+Passwd = ''
+Address = ''
+Database = 'block_syncer_backup'
 
-# SQL DB configuration
-# User, Passwd, Address support ENV vars
-[SpDBConfig]
-User = ""
-Passwd = ""
-Address = ""
-Database = "storage_provider_db"
-
-[BsDBConfig]
-User = ""
-Passwd = ""
-Address = ""
-Database = "block_syncer"
-
-[BsDBSwitchedConfig]
-User = ""
-Passwd = ""
-Address = ""
-Database = "block_syncer_backup"
-
-# piece store configuration
-# BucketURL, AWSAccessKey, AWSSecretKey, AWSSessionToken support ENV vars
-[PieceStoreConfig]
+[PieceStore]
 Shards = 0
 
-[PieceStoreConfig.Store]
-Storage = "s3"
+[PieceStore.Store]
+Storage = 's3'
+# BucketURL = ''
 MaxRetries = 5
-IAMType = "SA"
+MinRetryDelay = 0
+TLSInsecureSkipVerify = false
+IAMType = 'SA'
 
-# According to dev/qa greeenfield chain to replace
-[ChainConfig]
-ChainID = "greenfield_xxxx-x"
+[Chain]
+ChainID = 'REPLACE_ME'
+ChainAddress = ['https://gnfd.qa.bnbchain.world:443']
 
-[[ChainConfig.NodeAddr]]
-GreenfieldAddresses = ["k8s-gnfdvali-gnfdvali-0000000000000000000000000.elb.us-east-1.amazonaws.com:9090"]
-TendermintAddresses = ["https://gnfd.chain.your-domain.com"]
+[SpAccount]
+SpOperatorAddress = 'REPLACE_ME'
+# OperatorPrivateKey = ''
+# FundingPrivateKey = ''
+# SealPrivateKey = ''
+# ApprovalPrivateKey = ''
+# GcPrivateKey = ''
 
-# signer service config
-[SignerCfg]
-WhitelistCIDR = ["0.0.0.0/0"]
-GasLimit = 210000
+[Endpoint]
+ApproverEndpoint = 'approver:9333'
+ManagerEndpoint = 'manager:9333'
+DownloaderEndpoint = 'downloader:9333'
+ReceiverEndpoint = 'receiver:9333'
+MetadataEndpoint = 'metadata:9333'
+UploaderEndpoint = 'uploader:9333'
+P2PEndpoint = 'p2p:9333'
+SignerEndpoint = 'signer:9333'
+AuthenticatorEndpoint = 'localhost:9333'
 
-[BlockSyncerCfg]
-Modules = ["epoch", "bucket", "object", "payment", "group", "permission","storage_provider"]
-Dsn = ""
-DsnBackup = ""
-RecreateTables = true
-Backup = false
-Workers = 50
+[Gateway]
+DomainName = 'replace-me.domain.com'
+HTTPAddress = '0.0.0.0:9033'
 
-# p2p node configuration
-[P2PCfg]
-ListenAddress = "0.0.0.0:9933"
-# p2p node msg Secp256k1 encryption key, it is different from other SP's addresses
-# generate by ./gnfd-sp p2p.create.key -n 14, ref to dev_p2p_list and qa_p2p_list.
-# P2PPrivateKey = ""
-# p2p node's bootstrap node, format: [node_id1@ip1:port1, node_id2@ip1:port2]
-# ip need be the pod real ip
-Bootstrap = []
+[P2P]
+#P2PPrivateKey = ''
+P2PAddress = '0.0.0.0:9933'
+P2PAntAddress = ''
+P2PBootstrap = ['']
+# P2PPingPeriod = 0
 
-# metrics config
-[MetricsCfg]
-Enabled = true
-HTTPAddress = "0.0.0.0:24036"
+[Parallel]
+DiscontinueBucketEnabled = false
+DiscontinueBucketKeepAliveDays = 2
+UploadObjectParallelPerNode = 10240
+ReceivePieceParallelPerNode = 10240
+DownloadObjectParallelPerNode = 10240
+ChallengePieceParallelPerNode = 10240
+AskReplicateApprovalParallelPerNode = 10240
+GlobalCreateBucketApprovalParallel = 10240
+GlobalCreateObjectApprovalParallel = 10240
+GlobalMaxUploadingParallel = 10240
+GlobalUploadObjectParallel = 10240
+GlobalReplicatePieceParallel = 10240
+GlobalSealObjectParallel = 10240
+GlobalReceiveObjectParallel = 10240
 
-# pprof config
-[PProfCfg]
-Enabled = true
-HTTPAddress = "0.0.0.0:25341"
+[Monitor]
+DisableMetrics = false
+DisablePProf = false
+MetricsHTTPAddress = '0.0.0.0:24367'
+PProfHTTPAddress = '0.0.0.0:24368'
 
-[DiscontinueCfg]
-BucketKeepAliveDays = 1
+[Rcmgr]
+DisableRcmgr = false
 
-[MetadataCfg]
+[Metadata]
 IsMasterDB = true
-BsDBSwitchCheckIntervalSec = 3600
+BsDBSwitchCheckIntervalSec = 30
 
-[RateLimiter]
-APILimits = []
-HostPattern = []
-PathPattern = []
+[BlockSyncer]
+Modules = ['epoch','bucket','object','payment','group','permission','storage_provider','prefix_tree', 'virtual_group','sp_exit_events','object_id_map']
+Dsn = ""
+DsnSwitched = ''
+Workers = 50
+EnableDualDB = false
 
-[RateLimiter.HTTPLimitCfg]
-On = false
-RateLimit = 1
-RatePeriod = "S"
+[APIRateLimiter]
+PathPattern = [{Key = ".*request_nonc.*", RateLimit = 10, RatePeriod = 'S'},{Key = ".*1l65v.*", RateLimit = 20, RatePeriod = 'S'}]
+HostPattern = [{Key = ".*vfdxy.*", RateLimit = 15, RatePeriod = 'S'}]
+[APIRateLimiter.IPLimitCfg]
+On = true
+RateLimit = 5000
+RatePeriod = 'S'
+
+[Manager]
+EnableLoadTask = true
 ```
 
 
@@ -214,27 +207,32 @@ doc for creating the secret. The secret JSON content will be like the followings
 
 ```json
 {
-    "SP_DB_USER":"xxx",
-    "SP_DB_PASSWORD":"xxx",
-    "SP_DB_ADDRESS":"xxx:3306",
-    "SP_DB_DATABASE":"storage_provider_db",
-    "BLOCK_SYNCER_DSN":"user:pw@tcp(xxx:3306)/block_syncer?parseTime=true&multiStatements=true&loc=Local",
-    "BS_DB_USER":"xxx",
-    "BS_DB_PASSWORD":"xxx",
-    "BS_DB_ADDRESS":"xxx:3306",
-    "BS_DB_DATABASE":"block_syncer",
-    "SIGNER_OPERATOR_PRIV_KEY":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-    "SIGNER_FUNDING_PRIV_KEY":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-    "SIGNER_APPROVAL_PRIV_KEY":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-    "SIGNER_SEAL_PRIV_KEY":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-    "BUCKET_URL":"xxx",
-    "P2P_PRIVATE_KEY":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-    "SIGNER_GC_PRIV_KEY":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-    "BS_DB_SWITCHED_USER":"xxx",
-    "BS_DB_SWITCHED_PASSWORD":"xxx",
-    "BS_DB_SWITCHED_ADDRESS":"xxx:3306",
-    "BS_DB_SWITCHED_DATABASE":"block_syncer_backup",
-    "BLOCK_SYNCER_DSN_SWITCHED":"user:pw@tcp(xxx:3306)/block_syncer_backup?parseTime=true&multiStatements=true&loc=Local"
+    "SP_DB_USER": "greenfield",
+    "SP_DB_PASSWORD": "pwd",
+    "SP_DB_ADDRESS": "rm-0ixxxxx.mysql.japan.rds.company.com",
+    "SP_DB_DATABASE": "storage_provider_db",
+    "BLOCK_SYNCER_DSN": "greenfield:pwd@tcp(rm-0ixxxxx.mysql.japan.rds.company.com)/block_syncer?parseTime=true&multiStatements=true&loc=Local",
+    "BLOCK_SYNCER_DB_USER": "greenfield",
+    "BLOCK_SYNCER_DB_PASSWORD": "pwd",
+    "BS_DB_USER": "greenfield",
+    "BS_DB_PASSWORD": "pwd",
+    "BS_DB_ADDRESS": "rm-0ixxxxx.mysql.japan.rds.company.com",
+    "BS_DB_DATABASE": "block_syncer",
+    "SIGNER_OPERATOR_PRIV_KEY": "",
+    "SIGNER_FUNDING_PRIV_KEY": "",
+    "SIGNER_APPROVAL_PRIV_KEY": "",
+    "SIGNER_SEAL_PRIV_KEY": "",
+    "SIGNER_BLS_PRIV_KEY": "",
+    "SIGNER_GC_PRIV_KEY": "",
+    "AWS_ACCESS_KEY": "",
+    "AWS_SECRET_KEY": "",
+    "BUCKET_URL": "https://oss-ap-northeast-1.company.com/tf-nodereal-dev-greenfield-devnet-sp-a",
+    "P2P_PRIVATE_KEY": "",
+    "BLOCK_SYNCER_DSN_SWITCHED": "greenfield:pwd@tcp(rm-0ixxxxx.mysql.japan.rds.company.com)/block_syncer_backup?parseTime=true&multiStatements=true&loc=Local",
+    "BS_DB_SWITCHED_ADDRESS": "rm-0ixxxxx.mysql.japan.rds.company.com",
+    "BS_DB_SWITCHED_DATABASE": "block_syncer_backup",
+    "BS_DB_SWITCHED_PASSWORD": "pwd",
+    "BS_DB_SWITCHED_USER": "greenfield"
 }
 ```
 
@@ -242,3 +240,4 @@ refer to [runbook](https://github.com/bnb-chain/greenfield-docs/blob/718b662489f
 
 build command: `kustomize build . > sp.yaml`
 apply command: `kubectl apply -f ./sp.yaml`
+

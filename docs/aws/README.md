@@ -40,29 +40,5 @@ Secret Manager
 * Create secret and update secret value (example provided below)
 ![7](imgs/secret-manager.png)
 
-* Update secret value
-```json
-{
-    "SP_DB_USER":"xxx",
-    "SP_DB_PASSWORD":"xxx",
-    "SP_DB_ADDRESS":"xxx:3306",
-    "SP_DB_DATABASE":"storage_provider_db",
-    "BLOCK_SYNCER_DSN":"user:pw@tcp(xxx:3306)/block_syncer?parseTime=true&multiStatements=true&loc=Local",
-    "BS_DB_USER":"xxx",
-    "BS_DB_PASSWORD":"xxx",
-    "BS_DB_ADDRESS":"xxx:3306",
-    "BS_DB_DATABASE":"block_syncer",
-    "SIGNER_OPERATOR_PRIV_KEY":"",
-    "SIGNER_FUNDING_PRIV_KEY":"",
-    "SIGNER_APPROVAL_PRIV_KEY":"",
-    "SIGNER_SEAL_PRIV_KEY":"",
-    "BUCKET_URL":"xxx",
-    "P2P_PRIVATE_KEY":"xxx",
-    "SIGNER_GC_PRIV_KEY":"xxx",
-    "BS_DB_SWITCHED_USER":"xxx",
-    "BS_DB_SWITCHED_PASSWORD":"xxx",
-    "BS_DB_SWITCHED_ADDRESS":"xxx:3306",
-    "BS_DB_SWITCHED_DATABASE":"block_syncer_backup",
-    "BLOCK_SYNCER_DSN_SWITCHED":"user:pw@tcp(xxx:3306)/block_syncer_backup?parseTime=true&multiStatements=true&loc=Local"
-}
-``` 
+* For how the secret value should look like, please see k8s docs under this repo.
+
