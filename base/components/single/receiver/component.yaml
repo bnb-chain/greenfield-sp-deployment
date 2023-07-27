@@ -19,7 +19,7 @@ spec:
       labels:
         app: receiver
     spec:
-      serviceAccountName: nodereal-default
+      serviceAccountName: sp-default
       containers:
       - name: receiver
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3

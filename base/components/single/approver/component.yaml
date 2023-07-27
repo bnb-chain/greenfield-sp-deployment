@@ -13,7 +13,7 @@ spec:
       labels:
         app: approver
     spec:
-      serviceAccountName: nodereal-default
+      serviceAccountName: sp-default
       containers:
       - name: approver
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3

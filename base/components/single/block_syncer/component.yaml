@@ -13,7 +13,7 @@ spec:
       labels:
         app: block-syncer
     spec:
-      serviceAccountName: nodereal-default
+      serviceAccountName: sp-default
       containers:
       - name: block-syncer
         image: ghcr.io/bnb-chain/greenfield-storage-provider:block-syncer-dev-env-latest
