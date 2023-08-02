@@ -7,10 +7,10 @@ resources:
   - ../../../components/single/metadata
   - ../../../components/single/block_syncer
   - ../../../components/single/manager
-  - ../../../components/single/p2p
   - ../../../components/single/uploader
   - ../../../components/single/downloader
   - ../../../components/single/approver
+  # - ../../../components/single/p2p  # not needed at the moment
 
 patches:
 - target:
