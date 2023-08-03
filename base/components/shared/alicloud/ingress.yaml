@@ -6,17 +6,13 @@ metadata:
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
     alb.ingress.kubernetes.io/ssl-redirect: "true"
     alb.ingress.kubernetes.io/enable-cors: "true"
+    alb.ingress.kubernetes.io/cors-allow-origin: "*"
+    alb.ingress.kubernetes.io/cors-allow-credentials: "false"
+    alb.ingress.kubernetes.io/cors-allow-methods: "GET,PUT,POST,DELETE,PATCH,OPTIONS"
     alb.ingress.kubernetes.io/cors-allow-headers: "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization,X-Gnfd-Unsigned-Msg,X-Gnfd-Txn-Hash,Date,X-Gnfd-Object-ID,X-Gnfd-Piece-Index,X-Gnfd-Redundancy-Index,Address,X-Gnfd-User-Address,X-Gnfd-App-Domain,X-Gnfd-App-Reg-Nonce,X-Gnfd-App-Reg-Public-Key,X-Gnfd-App-Reg-Expiry-Date"
-    alb.ingress.kubernetes.io/cors-expose-headers: "*, X-Gnfd-Request-ID,X-Gnfd-Signed-Msg,X-Gnfd-Object-ID,X-Gnfd-Integrity-Hash,X-Gnfd-Piece-Hash"
-    alb.ingress.kubernetes.io/cors-allow-methods: "GET,POST"
-    alb.ingress.kubernetes.io/cors-allow-credentials: "true"
+    alb.ingress.kubernetes.io/cors-expose-headers: "*"
     alb.ingress.kubernetes.io/cors-max-age: "600"
-    # nginx.ingress.kubernetes.io/use-regex: "true"
-    # nginx.ingress.kubernetes.io/connection-proxy-header: ""
-    # nginx.ingress.kubernetes.io/proxy-connect-timeout: "600"
-    # nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
-    # nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
-    # nginx.ingress.kubernetes.io/proxy-body-size: "2048m"
+    # alb.ingress.kubernetes.io/cors-expose-headers: "*, X-Gnfd-Request-ID,X-Gnfd-Signed-Msg,X-Gnfd-Object-ID,X-Gnfd-Integrity-Hash,X-Gnfd-Piece-Hash"
 spec:
   ingressClassName: gf-sp
   rules:
