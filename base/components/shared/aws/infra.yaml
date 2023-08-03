@@ -3,7 +3,7 @@ kind: ServiceAccount
 metadata:
   name: sp-default
   annotations:
-    eks.amazonaws.com/role-arn: null
+    eks.amazonaws.com/role-arn: replace-me
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: SecretStore
@@ -13,7 +13,7 @@ spec:
   provider:
     aws:
       service: SecretsManager
-      region: null
+      region: replace-me
       auth:
         jwt:
           serviceAccountRef:
@@ -33,23 +33,5 @@ spec:
     creationPolicy: Owner
   dataFrom:
   - extract:
-      key: null
----
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  name: default
-spec:
-  endpoints:
-  - interval: 30s
-    path: /metrics
-    port: metrics
-    scheme: http
-  namespaceSelector:
-    matchNames:
-    - null
-  selector:
-    matchLabels:
-      team: greenfield
-      biz: storage-provider
+      key: replace-me
 
