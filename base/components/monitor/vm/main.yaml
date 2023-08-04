@@ -1,0 +1,19 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMServiceScrape
+metadata:
+  name: default
+spec:
+  endpoints:
+    - attach_metadata: {}
+      interval: 30s
+      path: /metrics
+      port: metrics
+      scheme: http
+  namespaceSelector:
+    matchNames:
+      - replace-me
+  selector:
+    matchLabels:
+      biz: storage-provider
+      team: greenfield
+

@@ -1,4 +1,4 @@
 resources:
 - infra.yaml
 - ingress.yaml
-- sm.yaml
+
