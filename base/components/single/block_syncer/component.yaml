@@ -18,17 +18,6 @@ spec:
       - name: block-syncer
         image: ghcr.io/bnb-chain/greenfield-storage-provider:block-syncer-dev-env-latest
         args: ["--log.std", "-c", "/config/config.toml", "-server", "blocksyncer"]
-        env:
-          - name: BLOCK_SYNCER_DSN
-            valueFrom:
-              secretKeyRef:
-                key: BLOCK_SYNCER_DSN
-                name: default
-          - name: BLOCK_SYNCER_DSN_SWITCHED
-            valueFrom:
-              secretKeyRef:
-                key: BLOCK_SYNCER_DSN_SWITCHED
-                name: default
         resources:
           limits:
             cpu: "4"

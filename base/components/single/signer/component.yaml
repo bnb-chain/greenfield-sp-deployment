@@ -18,52 +18,6 @@ spec:
       - name: signer
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
         args: ["--log.std", "-c", "/config/config.toml", "-server", "signer"]
-        env:
-          - name: SP_DB_USER
-            valueFrom:
-              secretKeyRef:
-                key: SP_DB_USER
-                name: default
-          - name: SP_DB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                key: SP_DB_PASSWORD
-                name: default
-          - name: SP_DB_ADDRESS
-            valueFrom:
-              secretKeyRef:
-                key: SP_DB_ADDRESS
-                name: default
-          - name: SIGNER_OPERATOR_PRIV_KEY
-            valueFrom:
-              secretKeyRef:
-                key: SIGNER_OPERATOR_PRIV_KEY
-                name: default
-          - name: SIGNER_FUNDING_PRIV_KEY
-            valueFrom:
-              secretKeyRef:
-                key: SIGNER_FUNDING_PRIV_KEY
-                name: default
-          - name: SIGNER_APPROVAL_PRIV_KEY
-            valueFrom:
-              secretKeyRef:
-                key: SIGNER_APPROVAL_PRIV_KEY
-                name: default
-          - name: SIGNER_SEAL_PRIV_KEY
-            valueFrom:
-              secretKeyRef:
-                key: SIGNER_SEAL_PRIV_KEY
-                name: default
-          - name: SIGNER_GC_PRIV_KEY
-            valueFrom:
-              secretKeyRef:
-                key: SIGNER_GC_PRIV_KEY
-                name: default
-          - name: SIGNER_BLS_PRIV_KEY
-            valueFrom:
-              secretKeyRef:
-                key: SIGNER_BLS_PRIV_KEY
-                name: default
         resources:
           limits:
             cpu: "4"

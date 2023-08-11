@@ -20,27 +20,6 @@ spec:
       - name: p2p
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.4-p2p
         args: ["--log.std", "-c", "/config/config.toml", "-server", "p2p"]
-        env:
-          - name: P2P_PRIVATE_KEY
-            valueFrom:
-              secretKeyRef:
-                key: P2P_PRIVATE_KEY
-                name: default
-          - name: SP_DB_USER
-            valueFrom:
-              secretKeyRef:
-                key: SP_DB_USER
-                name: default
-          - name: SP_DB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                key: SP_DB_PASSWORD
-                name: default
-          - name: SP_DB_ADDRESS
-            valueFrom:
-              secretKeyRef:
-                key: SP_DB_ADDRESS
-                name: default
         resources:
           limits:
             cpu: "4"
