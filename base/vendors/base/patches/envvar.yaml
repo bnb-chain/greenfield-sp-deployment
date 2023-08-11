@@ -11,11 +11,6 @@
         secretKeyRef:
           key: AWS_SECRET_KEY
           name: default
-    - name: AWS_SESSION_TOKEN
-      valueFrom:
-        secretKeyRef:
-          key: AWS_SESSION_TOKEN
-          name: default
     - name: BLOCK_SYNCER_DSN
       valueFrom:
         secretKeyRef:
