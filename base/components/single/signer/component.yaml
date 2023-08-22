@@ -16,7 +16,7 @@ spec:
       serviceAccountName: sp-default
       containers:
       - name: signer
-        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
+        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.2.4
         args: ["--log.std", "-c", "/config/config.toml", "-server", "signer"]
         env:
           - name: SP_DB_USER
@@ -29,20 +29,10 @@ spec:
               secretKeyRef:
                 key: SP_DB_PASSWORD
                 name: default
-          - name: SP_DB_ADDRESS
-            valueFrom:
-              secretKeyRef:
-                key: SP_DB_ADDRESS
-                name: default
           - name: SIGNER_OPERATOR_PRIV_KEY
             valueFrom:
               secretKeyRef:
                 key: SIGNER_OPERATOR_PRIV_KEY
-                name: default
-          - name: SIGNER_FUNDING_PRIV_KEY
-            valueFrom:
-              secretKeyRef:
-                key: SIGNER_FUNDING_PRIV_KEY
                 name: default
           - name: SIGNER_APPROVAL_PRIV_KEY
             valueFrom:

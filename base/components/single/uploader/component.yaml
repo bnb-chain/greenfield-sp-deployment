@@ -18,21 +18,9 @@ spec:
       serviceAccountName: sp-default
       containers:
       - name: uploader
-        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
+        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.2.4
         args: ["--log.std", "-c", "/config/config.toml", "-server", "uploader"]
         env:
-          - name: AWS_ACCESS_KEY
-            valueFrom:
-              secretKeyRef:
-                key: AWS_ACCESS_KEY
-                name: default
-          - name: AWS_SECRET_KEY
-            valueFrom:
-              secretKeyRef:
-                key: AWS_SECRET_KEY
-                name: default
-          - name: AWS_SESSION_TOKEN
-            value: ""
           - name: SP_DB_USER
             valueFrom:
               secretKeyRef:
@@ -42,16 +30,6 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: SP_DB_PASSWORD
-                name: default
-          - name: SP_DB_ADDRESS
-            valueFrom:
-              secretKeyRef:
-                key: SP_DB_ADDRESS
-                name: default
-          - name: BUCKET_URL
-            valueFrom:
-              secretKeyRef:
-                key: BUCKET_URL
                 name: default
         resources:
           limits:

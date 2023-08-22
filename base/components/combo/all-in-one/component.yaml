@@ -18,31 +18,11 @@ spec:
       serviceAccountName: sp-default
       containers:
       - name: sp-all-in-one
-        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
+        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.2.4
         args: ["--log.std", "-c", "/config/config.toml", "-server", "approver,authenticator,downloader,taskexecutor,gateway,manager,p2p,receiver,signer,uploader"]
         env:
-          - name: AWS_ACCESS_KEY
-            valueFrom:
-              secretKeyRef:
-                key: AWS_ACCESS_KEY
-                name: default
-          - name: AWS_SECRET_KEY
-            valueFrom:
-              secretKeyRef:
-                key: AWS_SECRET_KEY
-                name: default
-          - name: AWS_SESSION_TOKEN
-            value: ""
           - name: BLOCK_SYNCER_DSN # only used by block-syncer
             valueFrom:
-              secretKeyRef:
-                key: BLOCK_SYNCER_DSN
-                name: default
-          - name: BLOCK_SYNCER_DSN_SWITCHED
-            valueFrom:
-              secretKeyRef:
-                key: BLOCK_SYNCER_DSN_SWITCHED
-                name: default
           - name: SP_DB_USER
             valueFrom:
               secretKeyRef:
@@ -58,20 +38,10 @@ spec:
               secretKeyRef:
                 key: SP_DB_ADDRESS
                 name: default
-          - name: BUCKET_URL
-            valueFrom:
-              secretKeyRef:
-                key: BUCKET_URL
-                name: default
           - name: SIGNER_OPERATOR_PRIV_KEY
             valueFrom:
               secretKeyRef:
                 key: SIGNER_OPERATOR_PRIV_KEY
-                name: default
-          - name: SIGNER_FUNDING_PRIV_KEY
-            valueFrom:
-              secretKeyRef:
-                key: SIGNER_FUNDING_PRIV_KEY
                 name: default
           - name: SIGNER_APPROVAL_PRIV_KEY
             valueFrom:
@@ -91,42 +61,22 @@ spec:
           - name: BS_DB_USER
             valueFrom:
               secretKeyRef:
-                key: BS_DB_USER
+                key: SP_DB_USER
                 name: default
           - name: BS_DB_PASSWORD
             valueFrom:
               secretKeyRef:
-                key: BS_DB_PASSWORD
-                name: default
-          - name: BS_DB_ADDRESS
-            valueFrom:
-              secretKeyRef:
-                key: SP_DB_ADDRESS
-                name: default
-          - name: BS_DB_DATABASE
-            valueFrom:
-              secretKeyRef:
-                key: BS_DB_DATABASE
+                key: SP_DB_PASSWORD
                 name: default
           - name: BS_DB_SWITCHED_USER
             valueFrom:
               secretKeyRef:
-                key: BS_DB_SWITCHED_USER
+                key: SP_DB_USER
                 name: default
           - name: BS_DB_SWITCHED_PASSWORD
             valueFrom:
               secretKeyRef:
-                key: BS_DB_SWITCHED_PASSWORD
-                name: default
-          - name: BS_DB_SWITCHED_ADDRESS
-            valueFrom:
-              secretKeyRef:
-                key: BS_DB_SWITCHED_ADDRESS
-                name: default
-          - name: BS_DB_SWITCHED_DATABASE
-            valueFrom:
-              secretKeyRef:
-                key: BS_DB_SWITCHED_DATABASE
+                key: BS_DB_PASSWORD
                 name: default
         resources:
           limits:
