@@ -16,7 +16,7 @@ spec:
       serviceAccountName: sp-default
       containers:
       - name: approver
-        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.0.3
+        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.2.4
         args: ["--log.std", "-c", "/config/config.toml", "-server", "approver"]
         env:
           - name: SP_DB_USER
@@ -28,11 +28,6 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: SP_DB_PASSWORD
-                name: default
-          - name: SP_DB_ADDRESS
-            valueFrom:
-              secretKeyRef:
-                key: SP_DB_ADDRESS
                 name: default
         resources:
           limits:

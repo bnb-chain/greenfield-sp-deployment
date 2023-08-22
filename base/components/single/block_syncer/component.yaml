@@ -16,18 +16,18 @@ spec:
       serviceAccountName: sp-default
       containers:
       - name: block-syncer
-        image: ghcr.io/bnb-chain/greenfield-storage-provider:block-syncer-dev-env-latest
+        image: ghcr.io/bnb-chain/greenfield-storage-provider:0.2.4
         args: ["--log.std", "-c", "/config/config.toml", "-server", "blocksyncer"]
         env:
-          - name: BLOCK_SYNCER_DSN
+          - name: BS_DB_USER
             valueFrom:
               secretKeyRef:
-                key: BLOCK_SYNCER_DSN
+                key: SP_DB_USER
                 name: default
-          - name: BLOCK_SYNCER_DSN_SWITCHED
+          - name: BS_DB_PASSWORD
             valueFrom:
               secretKeyRef:
-                key: BLOCK_SYNCER_DSN_SWITCHED
+                key: SP_DB_PASSWORD
                 name: default
         resources:
           limits:
