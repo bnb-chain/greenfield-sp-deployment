@@ -19,16 +19,6 @@ spec:
         image: ghcr.io/bnb-chain/greenfield-storage-provider:0.2.4
         args: ["--log.std", "-c", "/config/config.toml", "-server", "signer"]
         env:
-          - name: SP_DB_USER
-            valueFrom:
-              secretKeyRef:
-                key: SP_DB_USER
-                name: default
-          - name: SP_DB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                key: SP_DB_PASSWORD
-                name: default
           - name: SIGNER_OPERATOR_PRIV_KEY
             valueFrom:
               secretKeyRef:
