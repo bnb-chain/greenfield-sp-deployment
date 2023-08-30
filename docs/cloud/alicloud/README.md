@@ -20,7 +20,7 @@ Greenfield Storage Provider Deployment Guide - Alicloud
 
 * Create RDS database and jot down the connection string, username and password.
 ![5](imgs/rds.png)
-after RDS created, need to init DB by creating database:
+after RDS created, need to init DB by creating database(the DB schema names are configurable in SP's config.toml file):
 1. storage_provider_db
 2. block_syncer
 3. block_syncer_backup
